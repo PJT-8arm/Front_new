@@ -34,13 +34,8 @@ const RecruitmentForm = () => {
     }
 
     return (
-<<<<<<< HEAD
         <form onSubmit={handleSubmit}>
             <input
-=======
-        <form onSubmit={handleSubmit} className='container flex'>
-            <input className='input input-bordered w-full max-w-xs'
->>>>>>> origin/development
                 type="text"
                 name="title"
                 value={formData.title}
@@ -106,11 +101,7 @@ const RecruitmentForm = () => {
                 placeholder="운동 시간 (예: 14:00:00)"
             />
 
-<<<<<<< HEAD
-            <button type="submit">모집글 작성</button>
-=======
             <button className='btn btn-primary' type="submit">모집글 작성</button>
->>>>>>> origin/development
         </form>
     );
 }

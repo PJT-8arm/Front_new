@@ -1,9 +1,18 @@
+<<<<<<< HEAD
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import RecruitmentForm from './RecruitmentForm';
 import RecruitmentDetail from './RecruitmentDetail'; // 임포트한 RecruitmentDetail 컴포넌트
 import RegisterPage from './RegisterPage';
 import LoginPage from './LoginPage';
 import ChatRoom from './components/chat/ChatRoom';
+=======
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import RecruitmentForm from './RecruitmentForm';
+import RecruitmentDetail from './RecruitmentDetail';
+import RegisterPage from './RegisterPage';
+import LoginPage from './LoginPage';
+>>>>>>> origin/development
 
 function App() {
     return (
@@ -18,7 +27,10 @@ function App() {
                 {/* 로그인 페이지 */}
                 <Route path="/login" element={<LoginPage />} />
                 {/* 다른 모든 경로에 대한 처리. 404 페이지나 메인 페이지 리다이렉트 등의 로직을 추가할 수 있습니다. */}
+<<<<<<< HEAD
                 <Route path="/chat/chat-room/:roomId" element={<ChatRoom />} />
+=======
+>>>>>>> origin/development
             </Routes>
         </Router>
     );        
