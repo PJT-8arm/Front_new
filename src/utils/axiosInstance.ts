@@ -1,6 +1,9 @@
 import Axios, { AxiosError, AxiosRequestConfig } from 'axios';
 
-export const AXIOS_INSTANCE = Axios.create({ baseURL: "http://localhost:8080" });
+export const AXIOS_INSTANCE = Axios.create({
+    baseURL: "http://localhost:8080",
+    withCredentials: true // 여기에 withCredentials 옵션을 추가하여 모든 요청에 적용
+  });
 
 export const axiosInstance = <T>(
     config: AxiosRequestConfig,
@@ -12,6 +15,7 @@ export const axiosInstance = <T>(
             ...config,
         ...options,
         cancelToken: source.token,
+        withCredentials: true, // 개별 요청에도 withCredentials를 명시적으로 적용
     }).then(({data}) => data);
 
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
