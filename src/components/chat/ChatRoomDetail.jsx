@@ -1,13 +1,15 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { useShowRoom } from '../../openapi/orval_query/api/chat/chat';
 
 const ChatRoomDetail = ({ roomId }) => {
 
     const [chatRoomDetail, setChatRoomDetail] = useState([]);
-
+    
 
     useEffect(() => {
         console.log(roomId);
+        useShowRoom
         axios.get(`/api/chat/room/${roomId}`)
             .then(response => {
                 setChatRoomDetail(response.data);
