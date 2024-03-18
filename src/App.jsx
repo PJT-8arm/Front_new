@@ -13,12 +13,12 @@ import RegisterPage from './components/signUp/RegisterPage';
 import './App.css';
 
 function App() {
-  const [isLogined, setlogin] = useState(true);
+  const [isLogined, setlogin] = useState(false);
 
   return (
     <>
       <Router>
-        <button onClick={() => {
+        <button className="btn btn-secondary" onClick={() => {
           setlogin(isLogined ? false : true);
           console.log("isLogined:", isLogined);
         }}>{isLogined ? '로그아웃' : '로그인'}</button>
