@@ -8,11 +8,19 @@
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
+<<<<<<< HEAD
     "start": "npx vite --port 3000"
+=======
+    "start": "npx vite"
+>>>>>>> 91de128 (feat : navbar 초안 구현)
   },
   "dependencies": {
     "@tanstack/react-query": "^5.28.4",
     "axios": "^1.6.7",
+<<<<<<< HEAD
+=======
+    "daisyui": "^4.7.3",
+>>>>>>> 91de128 (feat : navbar 초안 구현)
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^9.1.0",
@@ -26,11 +34,21 @@
     "@types/react-dom": "^18.2.19",
     "@types/react-redux": "^7.1.33",
     "@vitejs/plugin-react": "^4.2.1",
+<<<<<<< HEAD
+=======
+    "autoprefixer": "^10.4.18",
+>>>>>>> 91de128 (feat : navbar 초안 구현)
     "eslint": "^8.56.0",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
     "orval": "^6.25.0",
+<<<<<<< HEAD
     "vite": "^5.1.6"
+=======
+    "vite": "^5.1.6",
+    "postcss": "^8.4.35",
+    "tailwindcss": "^3.4.1"
+>>>>>>> 91de128 (feat : navbar 초안 구현)
   }
 }
