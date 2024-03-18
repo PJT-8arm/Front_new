@@ -1,9 +1,5 @@
 {
-<<<<<<< HEAD
   "name": "frontend-ts",
-=======
-  "name": "frontend",
->>>>>>> origin/development
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -12,19 +8,12 @@
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-<<<<<<< HEAD
     "start": "npx vite --port 3000"
   },
   "dependencies": {
+    "axios": "^1.6.7",
     "@tanstack/react-query": "^5.28.4",
-    "axios": "^1.6.7",
-=======
-    "start": "npx vite"
-  },
-  "dependencies": {
-    "axios": "^1.6.7",
     "daisyui": "^4.7.3",
->>>>>>> origin/development
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^9.1.0",
@@ -38,23 +27,14 @@
     "@types/react-dom": "^18.2.19",
     "@types/react-redux": "^7.1.33",
     "@vitejs/plugin-react": "^4.2.1",
-<<<<<<< HEAD
-=======
     "autoprefixer": "^10.4.18",
->>>>>>> origin/development
     "eslint": "^8.56.0",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
-<<<<<<< HEAD
     "orval": "^6.25.0",
-    "vite": "^5.1.6"
-  }
-}
-=======
+    "vite": "^5.1.6",
     "postcss": "^8.4.35",
-    "tailwindcss": "^3.4.1",
-    "vite": "^5.1.6"
+    "tailwindcss": "^3.4.1"
   }
 }
->>>>>>> origin/development
