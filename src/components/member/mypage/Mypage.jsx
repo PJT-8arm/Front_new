@@ -12,7 +12,7 @@ function Mypage(props) {
     return (
         <>
             {/* 상단 유저 정보 */}
-            <section className='flex justify-between w-full items-center'>
+            <section className='flex justify-between w-full items-center p-2'>
                 {/* 프로필 이미지 삽입 / Null일 경우 대체이미지 */}
                 {user?.imgUrl !== null &&
                     (<img className='w-20 h-20 rounded-full' src={user?.imgUrl} alt="sinsegeong1" />)}
@@ -22,11 +22,11 @@ function Mypage(props) {
                 <p>{user?.nickname + "님"}</p>
                 <button className='btn btn-primary' onClick={logOut}>로그아웃</button>
             </section>
-            <hr className='my-4'/>
+            <div className='p-2 divider'/>
             {/* 페이지 목록 */}
             <section className='flex flex-col mx-2'>
                 <article className='mt-2'>
-                    <h2 className='mt-2'>나의 활동</h2>
+                    <h2 className='mt-2 font-bold text-lg'>나의 활동</h2>
                     <LinkSetter goto={'myrecruitment'}
                     addedClassName={'flex items-center mx-4 mt-2'}
                     icon={<svg className='w-8 h-8' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M64 464c-8.8 0-16-7.2-16-16V64c0-8.8 7.2-16 16-16H224v80c0 17.7 14.3 32 32 32h80V448c0 8.8-7.2 16-16 16H64zM64 0C28.7 0 0 28.7 0 64V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V154.5c0-17-6.7-33.3-18.7-45.3L274.7 18.7C262.7 6.7 246.5 0 229.5 0H64zm56 256c-13.3 0-24 10.7-24 24s10.7 24 24 24H264c13.3 0 24-10.7 24-24s-10.7-24-24-24H120zm0 96c-13.3 0-24 10.7-24 24s10.7 24 24 24H264c13.3 0 24-10.7 24-24s-10.7-24-24-24H120z"/></svg>}
@@ -39,7 +39,7 @@ function Mypage(props) {
                     />
                 </article>
                 <article className='mt-2'>
-                    <h2 className='mt-2'>내 정보</h2>
+                    <h2 className='mt-2 font-bold text-lg'>내 정보</h2>
                     <LinkSetter goto={'profile'}
                     addedClassName={'flex items-center mx-4 mt-2'}
                     icon={<svg className='w-8 h-8' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M512 80c8.8 0 16 7.2 16 16V416c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V96c0-8.8 7.2-16 16-16H512zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zM208 256a64 64 0 1 0 0-128 64 64 0 1 0 0 128zm-32 32c-44.2 0-80 35.8-80 80c0 8.8 7.2 16 16 16H304c8.8 0 16-7.2 16-16c0-44.2-35.8-80-80-80H176zM376 144c-13.3 0-24 10.7-24 24s10.7 24 24 24h80c13.3 0 24-10.7 24-24s-10.7-24-24-24H376zm0 96c-13.3 0-24 10.7-24 24s10.7 24 24 24h80c13.3 0 24-10.7 24-24s-10.7-24-24-24H376z"/></svg>}
@@ -56,8 +56,8 @@ function Mypage(props) {
                     name={<span className='mx-2'>회원 정보 수정</span>}
                     />
                 </article>
-                <article>
-                    <h2 className='mt-2'>기타</h2>
+                <article className='mt-2'>
+                    <h2 className='mt-4 font-bold text-lg'>기타</h2>
                     <LinkSetter goto={'qna'}
                     addedClassName={'flex items-center mx-4 mt-2'}
                     icon={<svg className='w-8 h-8' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z"/></svg>}
