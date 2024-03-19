@@ -10,7 +10,6 @@ function Mypage(props) {
 
     return (
         <>
-            <h1>mypage</h1>
             {/* 상단 유저 정보 */}
             <section className='flex justify-between w-full items-center'>
                 {/* 프로필 이미지 삽입 / Null일 경우 대체이미지 */}
