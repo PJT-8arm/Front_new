@@ -36,7 +36,7 @@ function RegisterPage() {
     }
 
     try {
-      const response = await axios.post('/api/members/join', { 
+      const response = await axios.post('http://localhost:8080/api/members/join', { 
         email: Email,
         username: username,
         password: password
