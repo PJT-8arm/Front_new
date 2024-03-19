@@ -21,10 +21,6 @@ function App() {
       <Router>
         <div className='flex flex-col items-center'>
           <main className='min-h-full min-w-full'>
-            <button className="btn btn-primary" onClick={() => {
-              setlogin(isLogined ? false : true);
-              console.log("isLogined:", isLogined);
-            }}>{isLogined ? '로그아웃' : '로그인'}</button>
             <Routes>
               {/* 약속 화면으로 접근했을 때 보여줄 컴포넌트 */}
               <Route path="/appointment" element={<Appointment />}></Route>
