@@ -1,54 +1,52 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useShowMessages, useShowMessagesInfinite } from '../../openapi/orval_query/api/chat/chat';
+import InfiniteScroll from 'react-infinite-scroll-component';
+import { useChatRoom } from './ChatRoomContext';
 
-const ChatMessages = ({ roomId }) => {
-
-    const [messages, setMessages] = useState([]);
-    const [page, setPage] = useState(0); // 현재 페이지 번호
-    const [hasMore, setHasMore] = useState(true); // 더 로드할 메시지가 있는지 여부
-
-    // 메시지를 로드하는 함수
-    const loadMessages = async () => {
-        if (!hasMore) return; // 더 이상 로드할 메시지가 없으면 요청하지 않음
-        try {
-            const response = await axios.get(`/${roomId}/messages`, {
-                params: { page, size: 30 }, // 페이지와 사이즈 설정
-            });
-            setMessages(prevMessages => [...prevMessages, ...response.data.content]); // 새 메시지를 기존 메시지에 추가
-            setPage(prevPage => prevPage + 1); // 페이지 번호 증가
-            setHasMore(!response.data.last); // 마지막 페이지인지 여부에 따라 hasMore 업데이트
-        } catch (error) {
-            console.error(error);
+const ChatMessages = () => {
+  const { roomId, lastMessageId } = useChatRoom();
+  const {
+    data,
+    hasNextPage,
+    fetchNextPage,
+    isLoading,
+    isError,
+    error,
+  } = useShowMessagesInfinite(roomId,
+     {lastId: lastMessageId},
+      {
+    query: {
+      getNextPageParam: (lastPage, allPages) => {
+        if (lastPage.last === true) {
+          return undefined;
         }
-    };
+        const nextPageNumber = allPages.length;
+        return nextPageNumber;
+      },
+    },
+  });
 
-    // 스크롤 이벤트 핸들러
-    useEffect(() => {
-        const handleScroll = () => {
-            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-            // 스크롤이 상단에 도달하면 추가 메시지 로드
-            if (scrollTop === 0 && hasMore) {
-                loadMessages();
-            }
-        };
+  if (isLoading) return <div>Loading...1</div>;
+  if (isError) return <div>Error: {error.message}</div>;
 
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll); // 컴포넌트 언마운트 시 이벤트 리스너 제거
-    }, []); // 의존성 배열을 비워서 컴포넌트 마운트 시에만 이벤트 리스너 등록
-
-    // 컴포넌트 마운트 시 첫 페이지의 메시지 로드
-    useEffect(() => {
-        loadMessages();
-    }, []);
-
-    return (
-        <div>
-            {messages.map((message, index) => (
-                <div key={index}>
-                    {message.content} {/* 메시지 내용 출력 */}
-                </div>
-            ))}
-        </div>
-    );
+  return (
+    <InfiniteScroll
+      dataLength={data?.pages.reduce((acc, page) => acc + page.content.length, 0) || 0} // content 배열의 길이를 사용
+      next={fetchNextPage} // 다음 페이지 로딩 함수
+      hasMore={!!hasNextPage} // 더 로딩할 페이지가 있는지 여부
+      loader={<h4>Loading...2</h4>}
+      endMessage={<p style={{ textAlign: 'center' }}>You have seen all messages</p>}
+    >
+      {data?.pages.map((page, i) => (
+        <React.Fragment key={i}>
+          {page.content.map((message) => (
+            <div key={message.id}>{message.content}</div> // 메시지 내용을 표시
+          ))}
+        </React.Fragment>
+      ))}
+    </InfiniteScroll>
+  );
 };
+
 
 export default ChatMessages;

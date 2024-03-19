@@ -253,7 +253,7 @@ export const useShowRoom = <TData = Awaited<ReturnType<typeof showRoom>>, TError
 
 
 /**
- * @summary 채팅방 정보 조회
+ * @summary 채팅방 메세지 30개씩 반환
  */
 export const showMessages = (
     roomId: number,
@@ -276,8 +276,8 @@ export const getShowMessagesQueryKey = (roomId: number,
     }
 
     
-export const getShowMessagesInfiniteQueryOptions = <TData = InfiniteData<Awaited<ReturnType<typeof showMessages>>, ShowMessagesParams['lastId']>, TError = unknown>(roomId: number,
-    params?: ShowMessagesParams, options?: { query?:Partial<UseInfiniteQueryOptions<Awaited<ReturnType<typeof showMessages>>, TError, TData, Awaited<ReturnType<typeof showMessages>>, QueryKey, ShowMessagesParams['lastId']>>, request?: SecondParameter<typeof axiosInstance>}
+export const getShowMessagesInfiniteQueryOptions = <TData = InfiniteData<Awaited<ReturnType<typeof showMessages>>, ShowMessagesParams['page']>, TError = unknown>(roomId: number,
+    params?: ShowMessagesParams, options?: { query?:Partial<UseInfiniteQueryOptions<Awaited<ReturnType<typeof showMessages>>, TError, TData, Awaited<ReturnType<typeof showMessages>>, QueryKey, ShowMessagesParams['page']>>, request?: SecondParameter<typeof axiosInstance>}
 ) => {
 
 const {query: queryOptions, request: requestOptions} = options ?? {};
@@ -286,24 +286,24 @@ const {query: queryOptions, request: requestOptions} = options ?? {};
 
   
 
-    const queryFn: QueryFunction<Awaited<ReturnType<typeof showMessages>>, QueryKey, ShowMessagesParams['lastId']> = ({ signal, pageParam }) => showMessages(roomId,{...params, lastId: pageParam || params?.['lastId']}, requestOptions, signal);
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof showMessages>>, QueryKey, ShowMessagesParams['page']> = ({ signal, pageParam }) => showMessages(roomId,{...params, page: pageParam || params?.['page']}, requestOptions, signal);
 
       
 
       
 
-   return  { queryKey, queryFn, enabled: !!(roomId),  staleTime: 10000,  ...queryOptions} as UseInfiniteQueryOptions<Awaited<ReturnType<typeof showMessages>>, TError, TData, Awaited<ReturnType<typeof showMessages>>, QueryKey, ShowMessagesParams['lastId']> & { queryKey: QueryKey }
+   return  { queryKey, queryFn, enabled: !!(roomId),  staleTime: 10000,  ...queryOptions} as UseInfiniteQueryOptions<Awaited<ReturnType<typeof showMessages>>, TError, TData, Awaited<ReturnType<typeof showMessages>>, QueryKey, ShowMessagesParams['page']> & { queryKey: QueryKey }
 }
 
 export type ShowMessagesInfiniteQueryResult = NonNullable<Awaited<ReturnType<typeof showMessages>>>
 export type ShowMessagesInfiniteQueryError = unknown
 
 /**
- * @summary 채팅방 정보 조회
+ * @summary 채팅방 메세지 30개씩 반환
  */
-export const useShowMessagesInfinite = <TData = InfiniteData<Awaited<ReturnType<typeof showMessages>>, ShowMessagesParams['lastId']>, TError = unknown>(
+export const useShowMessagesInfinite = <TData = InfiniteData<Awaited<ReturnType<typeof showMessages>>, ShowMessagesParams['page']>, TError = unknown>(
  roomId: number,
-    params?: ShowMessagesParams, options?: { query?:Partial<UseInfiniteQueryOptions<Awaited<ReturnType<typeof showMessages>>, TError, TData, Awaited<ReturnType<typeof showMessages>>, QueryKey, ShowMessagesParams['lastId']>>, request?: SecondParameter<typeof axiosInstance>}
+    params?: ShowMessagesParams, options?: { query?:Partial<UseInfiniteQueryOptions<Awaited<ReturnType<typeof showMessages>>, TError, TData, Awaited<ReturnType<typeof showMessages>>, QueryKey, ShowMessagesParams['page']>>, request?: SecondParameter<typeof axiosInstance>}
 
   ):  UseInfiniteQueryResult<TData, TError> & { queryKey: QueryKey } => {
 
@@ -341,7 +341,7 @@ export type ShowMessagesQueryResult = NonNullable<Awaited<ReturnType<typeof show
 export type ShowMessagesQueryError = unknown
 
 /**
- * @summary 채팅방 정보 조회
+ * @summary 채팅방 메세지 30개씩 반환
  */
 export const useShowMessages = <TData = Awaited<ReturnType<typeof showMessages>>, TError = unknown>(
  roomId: number,

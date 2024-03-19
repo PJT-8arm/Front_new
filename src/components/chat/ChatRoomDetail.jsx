@@ -1,40 +1,45 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useShowRoom } from '../../openapi/orval_query/api/chat/chat';
+import { useChatRoom } from './ChatRoomContext';
 
-const ChatRoomDetail = ({ roomId }) => {
-
-    const [chatRoomDetail, setChatRoomDetail] = useState([]);
+const ChatRoomDetail = () => {
+    // useShowRoom 훅 사용. roomId와 쿼리 옵션(필요한 경우)을 전달합니다.
+    const { roomId, lastMessageId, setLastMessageId } = useChatRoom();
+    const { data: chatRoomDetail, isLoading, isError, error } = useShowRoom(roomId);
     
 
-    useEffect(() => {
-        console.log(roomId);
-        useShowRoom
-        axios.get(`/api/chat/room/${roomId}`)
-            .then(response => {
-                setChatRoomDetail(response.data);
-                console.log(response.data);
-            })
-            .catch(error => {
-                // 서버로부터의 응답 메시지가 있는지 확인하고, 있으면 출력합니다.
-                if (error.response && error.response.data) {
-                    console.error('error.response.data');
-                } else {
-                    // 응답 메시지가 없는 다른 종류의 에러인 경우, 일반적인 에러 메시지를 출력합니다.
-                    console.error('채팅방 정보를 불러오는 중 알 수 없는 오류 발생:', error);
-                }
-            });
-    }, [roomId]); // roomId가 변경될 때마다 요청을 다시 보냅니다.
+    useEffect(()=>{
+        if(lastMessageId){
+            setLastMessageId(chatRoomDetail.lastMessageId);
+        }
+    },[chatRoomDetail]);
 
-    if (!chatRoomDetail) {
+
+    // 로딩 상태 처리
+    if (isLoading) {
         return <div>Loading...</div>;
-    } else {
-        console.log(chatRoomDetail);
     }
 
+    // 에러 상태 처리
+    if (isError) {
+        // 에러 메시지는 실제 오류 객체에 따라 달라질 수 있습니다.
+        // 에러 타입에 따라 적절한 메시지를 렌더링해야 할 수도 있습니다.
+        const errorMessage = error.response?.data.message || '채팅방 정보를 불러오는 중 오류 발생';
+        return <div>Error: {errorMessage}</div>;
+    }
+
+    // chatRoomDetail이 없는 경우 (예를 들어, 데이터가 빈 배열인 경우)
+    if (!chatRoomDetail || chatRoomDetail.length === 0) {
+        return <div>채팅방 정보가 없습니다.</div>;
+    }
+
+    // chatRoomDetail 데이터가 있는 경우, 이를 사용하여 UI 렌더링
     return (
         <div>
-            {chatRoomDetail}
+            <h2>{chatRoomDetail.chatRoomId}</h2>
+            <h2>채팅방 이름 : {chatRoomDetail.chatRoomName}</h2>
+            {/* chatRoomDetail 객체의 구조에 따라 적절하게 접근하고 렌더링합니다. */}
+            {/* 예: chatRoomDetail.description 등 */}
         </div>
     );
 };
