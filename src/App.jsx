@@ -5,7 +5,7 @@ import RecruitmentDetail from './components/recuitment/RecruitmentDetail'; // ìž
 import Navbar from './components/Navbar';
 import Chat from './components/chat/Chat';
 import Mypage from './components/member/mypage/Mypage';
-import LoginPage from './LoginPage';
+import LoginPage from './components/signUp/LoginPage';
 import Home from './components/Home';
 import RegisterPage from './components/signUp/RegisterPage';
 import UserProfile from './components/userprofile/UserProfile';
