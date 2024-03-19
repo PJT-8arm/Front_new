@@ -11,6 +11,7 @@ import LoginPage from './LoginPage';
 import Home from './components/Home';
 import RegisterPage from './components/signUp/RegisterPage';
 import './App.css';
+import ChatRoom from './components/chat/ChatRoom';
 
 function App() {
   const [isLogined, setlogin] = useState(false);
@@ -31,7 +32,9 @@ function App() {
               <Route path="/ranking" element={<Ranking />}></Route>
               {/* 채팅 화면으로 접근했을 때 보여줄 컴포넌트 */}
               <Route path="/chat" element={<Chat />}></Route>
-              {/* 마이페이지 화면으로 접근했을 때 보여줄 컴포넌트 */}
+              {/* 채팅 방으로 접근했을 때 보여줄 컴포넌트 */}
+              <Route path="/chat/room/:roomId" element={<ChatRoom />}></Route>
+              {/* 마이페이지 화면으로 접근했을 때 보여줄 컴포넌트 */}      
               <Route path="/mypage" element={<Mypage />}></Route>
               {/* 로그인 화면으로 접근했을 때 보여줄 컴포넌트 */}
               <Route path="/login" element={<LoginPage />} />

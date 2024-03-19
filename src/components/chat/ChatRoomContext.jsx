@@ -4,9 +4,9 @@ import React, { createContext, useContext, useState } from 'react';
 const ChatRoomContext = createContext();
 
 // Context 데이터를 업데이트하고 자식 컴포넌트에 전달할 Provider 컴포넌트
-export const ChatRoomProvider = ({ children, initailRoomId }) => {
-    console.log(initailRoomId);
-    const [roomId, setRoomId] = useState(initailRoomId);
+export const ChatRoomProvider = ({ children, initialRoomId }) => {
+    console.log(initialRoomId);
+    const [roomId, setRoomId] = useState(initialRoomId);
     const [lastMessageId, setLastMessageId] = useState(null);
 
     return (
