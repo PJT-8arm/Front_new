@@ -81,6 +81,7 @@ function Home() {
             </li>
         );
 
+<<<<<<< HEAD
         // 페이지 번호 버튼
         let startPage = Math.max(1, currentPage - 2);
         let endPage = Math.min(startPage + 4, totalPages);
@@ -140,6 +141,41 @@ function Home() {
                   </svg>
                 </label>
               </div>
+=======
+  if (recruitmentData.length === 0) return <div>로딩중...</div>;
+  
+  return (
+    <div>
+      <h1>8Arm</h1>
+      <ul>
+        {/* recruitmentData를 반복하여 각 아이템을 표시합니다. */}
+        {recruitmentData.map((item, index) => (
+          <li key={index}>
+
+            <div>
+                <div>
+                    <div className="card w-96 bg-base-100 shadow-xl">
+                            <div className="card-body">
+                            <div className="avatar">
+                            <div className="w-24 rounded-full">
+                                <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                            </div>
+                            </div>
+                            <h2 className="card-title">오늘 저녁 같이 운동 하실 분</h2>
+                            <p>Title : {item.title}</p>
+                            <p>Member: {item.member.nickname}</p>
+                            <p>Partner Age: {item.partnerAge}</p>
+                            <p>Partner Gender: {item.partnerGender}</p>
+                            <p>Recruit Date: {item.recruit_date}</p>
+                            <p>Routine: {item.routine}</p>
+                            <div className="card-actions justify-end">
+                            <button className="btn btn-primary">모집글 보기</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+>>>>>>> b59f14f (feat : css 추가하기)
             </div>
       <ul>
       <Link to={`/recruitments/write`}>
