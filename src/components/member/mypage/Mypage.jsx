@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { mypageDetails, useMypageDetails } from '../../../openapi/orval_query/api/mypage-controller/mypage-controller';
 import { Link } from 'react-router-dom';
 import LinkSetter from '../../utils/LinkSetter';
+import { useAuth } from '../../signUp/AuthContext';
 
 function Mypage(props) {
-    const {data: details, isLoading, isError} = useMypageDetails();
+    const { user } = useAuth();
     
-    console.log(details);
+    console.log(user);
 
     return (
         <>
