@@ -5,7 +5,7 @@ import LinkSetter from '../../utils/LinkSetter';
 import { useAuth } from '../../signUp/AuthContext';
 
 function Mypage(props) {
-    const { user } = useAuth();
+    const { user, logOut } = useAuth();
     
     console.log(user);
 
@@ -14,13 +14,13 @@ function Mypage(props) {
             {/* 상단 유저 정보 */}
             <section className='flex justify-between w-full items-center'>
                 {/* 프로필 이미지 삽입 / Null일 경우 대체이미지 */}
-                {details?.imgUrl !== null &&
-                    (<img className='w-20 h-20 rounded-full' src={details?.imgUrl} alt="sinsegeong1" />)}
-                {details?.imgUrl === null &&
+                {user?.imgUrl !== null &&
+                    (<img className='w-20 h-20 rounded-full' src={user?.imgUrl} alt="sinsegeong1" />)}
+                {user?.imgUrl === null &&
                     (<img className='w-20 h-20 rounded-full' src={"src/assets/sinsegeong.png"} alt="sinsegeong2" />)}
 
-                <p>{details?.nickname + "님"}</p>
-                <Link className='link link-primary' to='pofile'>프로필 보기</Link>
+                <p>{user?.nickname + "님"}</p>
+                <button className='btn btn-primary' onClick={logOut}>로그아웃</button>
             </section>
             <hr className='my-4'/>
             {/* 페이지 목록 */}
