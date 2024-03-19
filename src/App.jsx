@@ -7,17 +7,22 @@ import Appointment from './components/appointment/Appointment';
 import Chat from './components/chat/Chat';
 import Ranking from './components/ranking/Ranking';
 import Mypage from './components/mypage/Mypage';
-import LoginPage from './LoginPage';
+import LoginPage from './components/signUp/LoginPage';
 import Home from './components/Home';
 import RegisterPage from './components/signUp/RegisterPage';
+<<<<<<< HEAD
 import './App.css';
 import ChatRoom from './components/chat/ChatRoom';
+=======
+import UserProfile from './components/userprofile/UserProfile';
+import { AuthProvider } from './components/signUp/AuthContext';
+>>>>>>> b63f1c0334471e4317acd27883586893c43fefa0
 
 function App() {
   const [isLogined, setlogin] = useState(false);
 
   return (
-    <>
+    <AuthProvider>
       <Router>
         <div className='flex flex-col items-center'>
           <main className='min-h-full'>
@@ -45,6 +50,7 @@ function App() {
               {/* 상세 페이지의 경로와 매칭될 컴포넌트 */}
               <Route path="/recruitments/detail/:id" element={<RecruitmentDetail />} />
               {/* 다른 모든 경로에 대한 처리. 404 페이지나 메인 페이지 리다이렉트 등의 로직을 추가할 수 있습니다. */}
+              <Route path='/profile' element={<UserProfile/>} />
             </Routes>
           </main>
           <footer className='h-16 w-full'>
@@ -53,7 +59,7 @@ function App() {
         </div>
       </Router>
 
-    </>
+    </ AuthProvider>
   );
 }
 
