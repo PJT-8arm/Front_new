@@ -11,12 +11,7 @@
     "start": "npx vite"
   },
   "dependencies": {
-<<<<<<< HEAD
     "axios": "^1.6.7",
-=======
-    "@tanstack/react-query": "^5.28.4",
-    "axios": "^1.6.8",
->>>>>>> 16dcc7e (feat : 메인페이지 데이터 가져오기)
     "daisyui": "^4.7.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
