@@ -6,7 +6,7 @@ import Navbar from './components/Navbar';
 import Appointment from './components/appointment/Appointment';
 import Chat from './components/chat/Chat';
 import Ranking from './components/ranking/Ranking';
-import Mypage from './components/mypage/Mypage';
+import Mypage from './components/member/mypage/Mypage';
 import LoginPage from './LoginPage';
 import Home from './components/Home';
 import RegisterPage from './components/signUp/RegisterPage';
