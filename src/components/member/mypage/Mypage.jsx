@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useAuth } from '../../signUp/AuthContext';
 import axios from 'axios'; // Axios 라이브러리 import
+import { mypageDetails, useMypageDetails } from '../../../openapi/orval_query/api/mypage-controller/mypage-controller';
+import { Link } from 'react-router-dom';
+import LinkSetter from '../../utils/LinkSetter';
 
 function Mypage(props) {
     const { user, logOut, setUser } = useAuth();
