@@ -10,6 +10,5 @@ export interface ChatRoomInfoDto {
   chatRoomId?: number;
   chatRoomName?: string;
   imgUrl?: string;
-  lastMessageId?: number;
   memberId?: number;
 }

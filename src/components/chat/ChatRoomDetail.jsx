@@ -1,19 +1,19 @@
 import React, { useEffect } from 'react';
 import { useShowRoom } from '../../openapi/orval_query/api/chat/chat';
-import { useChatRoom } from './ChatRoomContext';
+import { useChatRoomContext } from './ChatRoomContext';
 
 const ChatRoomDetail = () => {
     // useShowRoom 훅 사용. roomId와 쿼리 옵션(필요한 경우)을 전달합니다.
-    const { roomId, lastMessageId, setLastMessageId } = useChatRoom();
+    const { roomId, roomDetail, setRoomDetail } = useChatRoomContext();
     const { data: chatRoomDetail, isLoading, isError, error } = useShowRoom(roomId);
-    
 
-    useEffect(()=>{
-        if(lastMessageId){
-            setLastMessageId(chatRoomDetail.lastMessageId);
+
+    useEffect(() => {
+        if (chatRoomDetail) {
+            console.log("ChatRoomDetail:", chatRoomDetail);
+            if (chatRoomDetail) setRoomDetail(chatRoomDetail);
         }
-    },[chatRoomDetail]);
-
+    }, [chatRoomDetail]);
 
     // 로딩 상태 처리
     if (isLoading) {

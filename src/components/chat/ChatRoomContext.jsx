@@ -1,4 +1,5 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
+import { useAuth } from '../signUp/AuthContext';
 
 // 채팅방 데이터를 위한 Context 생성
 const ChatRoomContext = createContext();
@@ -7,10 +8,10 @@ const ChatRoomContext = createContext();
 export const ChatRoomProvider = ({ children, initialRoomId }) => {
     console.log(initialRoomId);
     const [roomId, setRoomId] = useState(initialRoomId);
-    const [lastMessageId, setLastMessageId] = useState(null);
+    const [roomDetail, setRoomDetail] = useState({});
 
     return (
-        <ChatRoomContext.Provider value={{roomId, lastMessageId, setLastMessageId}}>
+        <ChatRoomContext.Provider value={{roomId, roomDetail, setRoomDetail}}>
             {children}
         </ChatRoomContext.Provider>
     );
@@ -18,4 +19,4 @@ export const ChatRoomProvider = ({ children, initialRoomId }) => {
 
 
 // Context를 사용하기 위한 custom hook
-export const useChatRoom = () => useContext(ChatRoomContext);
+export const useChatRoomContext = () => useContext(ChatRoomContext);

@@ -1,9 +1,9 @@
 import React, { useRef, useState } from 'react';
 import { useWrite } from '../../openapi/orval_query/api/chat/chat';
-import { useChatRoom } from './ChatRoomContext';
+import { useChatRoomContext } from './ChatRoomContext';
 
 const ChatInput = () => {
-    const { roomId } = useChatRoom();
+    const { roomId } = useChatRoomContext();
     const [message, setMessage] = useState('');
     const { mutate: sendMessage, isError, error } = useWrite();
     const inputRef = useRef(null);

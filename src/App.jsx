@@ -10,13 +10,9 @@ import Mypage from './components/mypage/Mypage';
 import LoginPage from './components/signUp/LoginPage';
 import Home from './components/Home';
 import RegisterPage from './components/signUp/RegisterPage';
-<<<<<<< HEAD
-import './App.css';
-import ChatRoom from './components/chat/ChatRoom';
-=======
 import UserProfile from './components/userprofile/UserProfile';
 import { AuthProvider } from './components/signUp/AuthContext';
->>>>>>> b63f1c0334471e4317acd27883586893c43fefa0
+import ChatRoom from './components/chat/ChatRoom';
 
 function App() {
   const [isLogined, setlogin] = useState(false);

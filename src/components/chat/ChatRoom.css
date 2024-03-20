@@ -2,7 +2,7 @@
 .chatRoomContainer {
     display: flex;
     flex-direction: column;
-    height: 80vh;
+    height: 83vh;
     width: 100vw;
     overflow: hidden;
   }
