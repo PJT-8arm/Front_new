@@ -6,7 +6,7 @@ import Navbar from './components/Navbar';
 import Appointment from './components/appointment/Appointment';
 import Chat from './components/chat/Chat';
 import Ranking from './components/ranking/Ranking';
-import Mypage from './components/mypage/Mypage';
+import Mypage from './components/member/mypage/Mypage';
 import LoginPage from './components/signUp/LoginPage';
 import Home from './components/Home';
 import RegisterPage from './components/signUp/RegisterPage';
@@ -21,11 +21,7 @@ function App() {
     <AuthProvider>
       <Router>
         <div className='flex flex-col items-center'>
-          <main className='min-h-full'>
-            <button className="btn btn-primary" onClick={() => {
-              setlogin(isLogined ? false : true);
-              console.log("isLogined:", isLogined);
-            }}>{isLogined ? '로그아웃' : '로그인'}</button>
+          <main className='min-h-full min-w-full'>
             <Routes>
               {/* 약속 화면으로 접근했을 때 보여줄 컴포넌트 */}
               <Route path="/appointment" element={<Appointment />}></Route>
