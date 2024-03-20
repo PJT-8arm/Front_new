@@ -15,7 +15,7 @@ function Mypage(props) {
             <section className='flex justify-between w-full items-center p-2'>
                 {/* 프로필 이미지 삽입 / Null일 경우 대체이미지 */}
                 {user?.imgUrl !== null &&
-                    (<img className='w-20 h-20 rounded-full' src={user?.imgUrl} alt="sinsegeong1" />)}
+                    (<img className='w-20 h-20 rounded-full' src={user?.imgUrl} alt="null" />)}
                 {user?.imgUrl === null &&
                     (<img className='w-20 h-20 rounded-full' src={"src/assets/sinsegeong.png"} alt="sinsegeong2" />)}
 
