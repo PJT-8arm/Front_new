@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import { useNavigate } from 'react-router-dom'; // useNavigate를 임포트합니다.
+import { useRecruitmentAdd } from '../../openapi/orval_query/api/recruitments/recruitments';
 
 const RecruitmentForm = () => {
     const [formData, setFormData] = useState({
@@ -8,10 +9,13 @@ const RecruitmentForm = () => {
         recruit_date: '',
         place: '',
         partnerGender: '',
-        partnerAge: 0, // 연령은 숫자로 처리합니다.
+        partnerAge: 0,
         routine: '',
         duration: ''
     });
+
+    const navigate = useNavigate(); // useNavigate Hook을 사용합니다.
+    const { mutate, isLoading, isError, error } = useRecruitmentAdd();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -23,15 +27,20 @@ const RecruitmentForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        try {
-            const response = await axios.post('http://localhost:8080/api/recruitments/write', formData);
-            alert('모집 글이 성공적으로 생성되었습니다!');
-            // 폼 데이터 초기화 또는 추가 작업
-        } catch (error) {
-            console.error('Error creating recruitment:', error);
-            alert('모집 글 생성에 실패했습니다.');
-        }
+        mutate({data: formData}, {
+            onSuccess: () => {
+                alert('모집 글이 성공적으로 생성되었습니다!');
+                navigate('/'); // 성공 후 상세 페이지 URL로 이동합니다.
+            },
+            onError: (error) => {
+                console.error('Error creating recruitment:', error);
+                alert('모집 글 생성에 실패했습니다.');
+            }
+        });
     }
+
+    if (isLoading) return <div>Loading...</div>;
+    if (isError) return <div>Error: {error.message}</div>;
 
     return (
         <form onSubmit={handleSubmit}>
