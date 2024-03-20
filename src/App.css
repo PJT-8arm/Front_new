@@ -1,0 +1,12 @@
+.Topbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    margin-top: 10px;
+}
+
+.logo{
+    width: 150px;
+    height: fit-content;
+}
