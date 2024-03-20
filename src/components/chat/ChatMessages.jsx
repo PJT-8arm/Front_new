@@ -14,10 +14,10 @@ const ChatMessages = () => {
   const { user } = useAuth();
   const [lastId, setLastId] = useState(null);
   const { roomId, roomDetail } = useChatRoomContext();
+  const { data, isLoading, isError, error, refetch } = useShowMessages(roomId, { lastId }, {});
   const [isNewMessage, setIsNewMessage] = useState(false);
   const scrollableDivRef = useRef(null);
   const [messages, setMessages] = useState([]);
-  const { data, isLoading, isError, error, refetch } = useShowMessages(roomId, { lastId }, {});
   const [hasNext, setHasNext] = useState(true);
 
   function initializeWebSocketConnection(roomId) {
@@ -36,7 +36,7 @@ const ChatMessages = () => {
 
   const loadMessage = async () => {
     if (!hasNext || isLoading) return;
-    const currentScrollPosition = scrollableDivRef.current.scrollTop;
+    const currentScrollPosition = -scrollableDivRef.current.scrollTop;
     const scrollHeightBeforeLoad = scrollableDivRef.current.scrollHeight;
     const newLastId = messages.length > 0 ? messages[messages.length - 1].id : null;
 
@@ -47,14 +47,15 @@ const ChatMessages = () => {
     scrollableDivRef.current.scrollTop = newScrollPosition;
   };
 
-  const handleNewMessage = (message) => {
+  const handleNewMessage = async (message) => {
     // 채팅 창의 맨 아래인지 확인
     const isAtBottom = scrollableDivRef.current.scrollHeight - scrollableDivRef.current.scrollTop === scrollableDivRef.current.clientHeight;
 
     setMessages((prevMessages) => [...prevMessages, message]);
 
-    if (!isAtBottom) {
-      // 사용자가 채팅 창의 맨 아래에 있지 않다면, 알림 상태를 true로 설정
+    if (isAtBottom) {
+      scrollToBottom();
+    } else {
       setIsNewMessage(true);
     }
   };
@@ -68,12 +69,22 @@ const ChatMessages = () => {
   // imgUrls의 변경을 감지하여 컴포넌트를 업데이트 합니다.
   useEffect(() => {
     initializeWebSocketConnection(roomId);
+
   }, [roomId]);
 
   //fetch가 발생해 data가 변경된 경우 Message를 업데이트하고, 더 가져올 데이터가 있는지 확인
   useEffect(() => {
     if (data?.content) {
       const loadedMessages = data.content;
+      
+      if (lastId == null && messages.length > 0) {
+        return;
+      } else {
+        const targetId = lastId - 1;
+        const exists = messages.some(message => message.id === targetId);
+        if (exists) return;
+      }
+      
       setMessages((prevMessages) => [...prevMessages, ...loadedMessages]);
       setHasNext(!data.last);
     }
@@ -81,7 +92,7 @@ const ChatMessages = () => {
 
   if (isLoading) return <div>Loading...1</div>;
   if (isError) return <div>Error: {error.message}</div>;
-  if (!user||!roomDetail) {
+  if (!user || !roomDetail) {
     // user 정보가 아직 준비되지 않았다면 로딩 표시나 다른 대체 컨텐츠를 렌더링
     return <div>Loading user information...</div>;
   }

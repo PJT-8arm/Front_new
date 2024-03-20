@@ -11,11 +11,12 @@ const ChatInput = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setMessage(inputRef.current.value);
-        if (!message.trim()) return; // 빈 메시지는 전송하지 않음
-        sendMessage({ roomId, data: { content: message } }); // 메시지 전송
-        setMessage(''); // 입력 필드 초기화
-        inputRef.current.value = '';
+        const currentMessage = inputRef.current.value; // 현재 입력 필드의 값을 직접 가져옴
+        if (!currentMessage.trim()) return; // 빈 메시지는 전송하지 않음
+
+        sendMessage({ roomId, data: { content: currentMessage } }); // 현재 메시지 전송
+        setMessage(''); // 상태 초기화
+        inputRef.current.value = ''; // 입력 필드 초기화
     };
 
     return (
