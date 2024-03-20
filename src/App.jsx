@@ -22,7 +22,18 @@ function App() {
     <AuthProvider>
       <Router>
         <div className='flex flex-col items-center'>
-          <main className='min-h-full min-w-full'>
+          <main className='min-h-full'>
+            <div className='Topbar'>
+                <div className='logo'>
+                    <img src='/src/logo.png' alt='로고 이미지'/>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                <label style={{ height: 40, width: 180 }} className="input input-bordered flex items-center">
+                    <input style={{ paddingRight: '2rem' }} type="text" className="grow" placeholder="Search" />
+                    <svg style={{ position: 'absolute', right: 0, marginRight: '1.5rem' }} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-4 h-4 opacity-70"><path fillRule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clipRule="evenodd" /></svg>
+                </label>
+                </div>
+            </div>
             <Routes>
               {/* 약속 화면으로 접근했을 때 보여줄 컴포넌트 */}
               {/* <Route path="/appointment" element={<Appointment />}></Route> */}
