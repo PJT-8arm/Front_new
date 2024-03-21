@@ -4,6 +4,7 @@ import { useRecruitmentAdd } from '../../openapi/orval_query/api/recruitments/re
 import DatePicker from 'react-datepicker';
 import Select from 'react-select';
 import "react-datepicker/dist/react-datepicker.css";
+import moment from 'moment-timezone'
 
 const RecruitmentForm = () => {
     const [formData, setFormData] = useState({
@@ -63,14 +64,20 @@ const RecruitmentForm = () => {
 
         const [hour, minute] = formData.time.split(':');
         const hours = formData.meridiem === 'PM' ? parseInt(hour, 10) % 12 + 12 : parseInt(hour, 10) % 12;
+        console.log(moment.tz(formData.recruitDate.toISOString() , "Asia/Seoul"));
+        const year = formData.recruitDate.getFullYear();
+        const month = String(formData.recruitDate.getMonth() + 1).padStart(2, "0"); // 월은 0부터 시작하므로 +1
+        const day = String(formData.recruitDate.getDate()).padStart(2, "0");
+        console.log(`${year}-${month}-${day}`);
         const formattedDate = `${formData.recruitDate.toISOString().split('T')[0]}T${hours.toString().padStart(2, '0')}:${minute}:00`;
-
+        const recruitDate = `${year}-${month}-${day} ${hours.toString().padStart(2, '0')}:${minute}:00`;
+        
         const payload = {
             ...formData,
-            recruitDate: formattedDate,
+            recruitDate: recruitDate,
         };
 
-        mutate({data: formData}, {
+        mutate({data: payload}, {
             onSuccess: () => {
                 alert('모집 글이 성공적으로 생성되었습니다!');
                 navigate('/');
