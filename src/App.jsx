@@ -3,9 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import RecruitmentForm from './components/recuitment/RecruitmentForm';
 import RecruitmentDetail from './components/recuitment/RecruitmentDetail'; // 임포트한 RecruitmentDetail 컴포넌트
 import Navbar from './components/Navbar';
-import Appointment from './components/appointment/Appointment';
 import Chat from './components/chat/Chat';
-import Ranking from './components/ranking/Ranking';
 import Mypage from './components/member/mypage/Mypage';
 import LoginPage from './components/signUp/LoginPage';
 import Home from './components/Home';
