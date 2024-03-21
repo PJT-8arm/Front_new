@@ -4,7 +4,6 @@ import axios from 'axios'; // Axios 라이브러리 import
 import { mypageDetails, useMypageDetails } from '../../../openapi/orval_query/api/mypage-controller/mypage-controller';
 import { Link, Outlet } from 'react-router-dom';
 import LinkSetter from '../../utils/LinkSetter';
-import { useAuth } from '../../signUp/AuthContext';
 
 function Mypage(props) {
     const { user, logOut, setUser } = useAuth();
