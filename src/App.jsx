@@ -3,9 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import RecruitmentForm from './components/recuitment/RecruitmentForm';
 import RecruitmentDetail from './components/recuitment/RecruitmentDetail'; // 임포트한 RecruitmentDetail 컴포넌트
 import Navbar from './components/Navbar';
-import Appointment from './components/appointment/Appointment';
 import Chat from './components/chat/Chat';
-import Ranking from './components/ranking/Ranking';
 import Mypage from './components/member/mypage/Mypage';
 import LoginPage from './LoginPage';
 import Home from './components/Home';
@@ -27,9 +25,9 @@ function App() {
           <main className='min-h-full min-w-full'>
             <Routes>
               {/* 약속 화면으로 접근했을 때 보여줄 컴포넌트 */}
-              <Route path="/appointment" element={<Appointment />}></Route>
+              {/* <Route path="/appointment" element={<Appointment />}></Route> */}
               {/* 랭킹 화면으로 접근했을 때 보여줄 컴포넌트 */}
-              <Route path="/ranking" element={<Ranking />}></Route>
+              {/* <Route path="/ranking" element={<Ranking />}></Route> */}
               {/* 채팅 화면으로 접근했을 때 보여줄 컴포넌트 */}
               <Route path="/chat" element={<Chat />}></Route>
               {/* 마이페이지 화면으로 접근했을 때 보여줄 컴포넌트 */}
