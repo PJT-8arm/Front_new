@@ -7,7 +7,7 @@
  */
 import type { LocalTime } from './localTime';
 
-export interface RecruitmentCreateRequestDto {
+export interface RecruitmentDto {
   content?: string;
   duration?: LocalTime;
   partnerAge?: number;
