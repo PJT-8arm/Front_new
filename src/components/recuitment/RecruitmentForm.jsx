@@ -4,23 +4,21 @@ import { useRecruitmentAdd } from '../../openapi/orval_query/api/recruitments/re
 import DatePicker from 'react-datepicker';
 import Select from 'react-select';
 import "react-datepicker/dist/react-datepicker.css";
+import moment from 'moment-timezone'
 
 const RecruitmentForm = () => {
     const [formData, setFormData] = useState({
         title: '',
         content: '',
-        recruitDate: {
-            date: new Date(), // 현재 날짜로 초기화
-            hour: null,
-            period: null
-        },
+        recruitDate: new Date(), // 날짜 초기값을 현재 날짜로 설정
         place: '',
         partnerGender: '',
         partnerAge: 0,
         routine: '',
-        duration: { hour2: null, period2: null } // 시간과 AM/PM을 분리해서 관리합니다.
+        duration: '',
+        time: '12:00', // 시간 초기값 설정
+        meridiem: 'AM', // 오전/오후 초기값 설정
     });
-    
 
     const navigate = useNavigate();
     const { mutate, isLoading, isError, error } = useRecruitmentAdd();
@@ -31,41 +29,55 @@ const RecruitmentForm = () => {
             ...prevState,
             [name]: value
         }));
-    }
+    };
 
     const handleDateChange = (date) => {
-        console.log(date); // 디버깅: 선택된 날짜 값 확인
         setFormData(prevState => ({
             ...prevState,
-            recruitDate: {
-                ...prevState.recruitDate,
-                date: date
-            }
+            recruitDate: date
         }));
-    }
+    };
 
-    const handleDurationChange = (selectedOption, action) => {
-        setFormData(prevState => ({
-            ...prevState,
-            recruitDate: {
-                ...prevState.recruitDate,
-                [action.name]: selectedOption.value
-            }
-        }));
-    }
+    // 시간과 오전/오후 선택에 대한 Select 컴포넌트의 options
+    const timeOptions = Array.from({ length: 12 }, (v, i) => ({ value: `${i+1}:00`, label: `${i+1}:00` }));
+    const meridiemOptions = [
+        { value: 'AM', label: '오전' },
+        { value: 'PM', label: '오후' }
+    ];
 
-    const handleTimeChange = (selectedOption, action) => {
+    const handleTimeChange = (selectedOption) => {
         setFormData(prevState => ({
             ...prevState,
-            duration: { ...prevState.duration, [action.name]: selectedOption.value }
+            time: selectedOption.value
         }));
-    }
-    
+    };
+
+    const handleMeridiemChange = (selectedOption) => {
+        setFormData(prevState => ({
+            ...prevState,
+            meridiem: selectedOption.value
+        }));
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // 필요한 경우, formData를 서버에 맞게 조정하세요.
-        mutate({data: formData}, {
+
+        const [hour, minute] = formData.time.split(':');
+        const hours = formData.meridiem === 'PM' ? parseInt(hour, 10) % 12 + 12 : parseInt(hour, 10) % 12;
+        console.log(moment.tz(formData.recruitDate.toISOString() , "Asia/Seoul"));
+        const year = formData.recruitDate.getFullYear();
+        const month = String(formData.recruitDate.getMonth() + 1).padStart(2, "0"); // 월은 0부터 시작하므로 +1
+        const day = String(formData.recruitDate.getDate()).padStart(2, "0");
+        console.log(`${year}-${month}-${day}`);
+        const formattedDate = `${formData.recruitDate.toISOString().split('T')[0]}T${hours.toString().padStart(2, '0')}:${minute}:00`;
+        const recruitDate = `${year}-${month}-${day} ${hours.toString().padStart(2, '0')}:${minute}:00`;
+
+        const payload = {
+            ...formData,
+            recruitDate: recruitDate,
+        };
+
+        mutate({data: payload}, {
             onSuccess: () => {
                 alert('모집 글이 성공적으로 생성되었습니다!');
                 navigate('/');
@@ -75,17 +87,13 @@ const RecruitmentForm = () => {
                 alert('모집 글 생성에 실패했습니다.');
             }
         });
-    }
+
+        // 여기서 payload를 서버로 전송하는 로직을 구현합니다.
+        console.log(payload);
+    };
 
     if (isLoading) return <div>Loading...</div>;
     if (isError) return <div>Error: {error.message}</div>;
-
-    const periodOptions = [
-        { value: 'AM', label: '오전' },
-        { value: 'PM', label: '오후' }
-    ];
-
-    const hourOptions = Array.from({ length: 12 }, (_, i) => ({ value: i + 1, label: i + 1 }));
 
     return (
         <form onSubmit={handleSubmit} className="max-w-xs mx-auto pt-4">
@@ -107,34 +115,24 @@ const RecruitmentForm = () => {
                 className="textarea textarea-bordered w-full mb-2"
             />
 
-            <div className="mb-2">
-                <DatePicker
-                    selected={formData.recruitDate}
-                    onChange={handleDateChange}
-                    dateFormat="yyyy/MM/dd"
-                    placeholderText="모집 날짜 선택"
-                    className="input input-bordered w-full"
-                />
-            </div>
+            <DatePicker
+                selected={formData.recruitDate}
+                onChange={handleDateChange}
+                dateFormat="yyyy/MM/dd"
+                className="input input-bordered w-full mb-2"
+            />
 
-            <div className="flex space-x-2 mb-2">
-                <Select
-                    name="period"
-                    options={periodOptions}
-                    onChange={handleDurationChange}
-                    value={periodOptions.find(option => option.value === formData.recruitDate.period)}
-                    placeholder="AM/PM"
-                    className="w-1/3"
-                />
-                <Select
-                    name="hour"
-                    options={hourOptions}
-                    onChange={handleDurationChange}
-                    value={hourOptions.find(option => option.value === formData.recruitDate.hour)}
-                    placeholder="시간"
-                    className="w-2/3"
-                />
-            </div>
+            <Select
+                options={meridiemOptions}
+                onChange={handleMeridiemChange}
+                className="mb-2"
+            />
+
+            <Select
+                options={timeOptions}
+                onChange={handleTimeChange}
+                className="mb-2"
+            />
 
             <input
                 type="text"
@@ -175,25 +173,6 @@ const RecruitmentForm = () => {
                 className="input input-bordered w-full mb-2"
             />
 
-            <div className="flex space-x-2 mb-2">
-            <Select
-                name="period2"
-                options={periodOptions}
-                onChange={handleDurationChange}
-                value={periodOptions.find(option => option.value === formData.duration.period)} // 현재 선택된 period 옵션 객체를 찾아서 전달
-                placeholder="AM/PM"
-                className="w-1/3"
-            />
-            <Select
-                name="hour2"
-                options={hourOptions}
-                onChange={handleDurationChange}
-                value={hourOptions.find(option => option.value === formData.duration.hour)} // 현재 선택된 hour 옵션 객체를 찾아서 전달
-                placeholder="시간"
-                className="w-2/3"
-            />
-            </div>
-
             <button className="btn btn-primary w-full" type="submit">모집글 작성</button>
 
         </form>
@@ -201,4 +180,3 @@ const RecruitmentForm = () => {
 }
 
 export default RecruitmentForm;
-

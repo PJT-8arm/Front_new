@@ -29,27 +29,12 @@ const RecruitmentDetail = () => {
         </div>
       </div>
 
-      <div className="mb-6 flex items-center">
-      <h3 className="text-xl font-bold mb-2">회원 정보</h3>
-  {detail?.memberInfoDto?.imgUrl && (
-    <img
-      src={detail.memberInfoDto.imgUrl}
-      alt="Profile"
-      className="w-24 h-24 rounded-full shadow-lg"
-    />
-  )}
-  <div className="ml-4">
-    <p className="flex items-center">
-      <FaUserAlt className="mr-2" />
-      이름: <span className="font-semibold ml-1">{detail?.memberInfoDto?.name}</span>
-    </p>
-    <p className="flex items-center">
-      <FaUserAlt className="mr-2" />
-      닉네임: <span className="font-semibold ml-1">{detail?.memberInfoDto?.nickname}</span>
-    </p>
-  </div>
-</div>
-
+      <div className="mb-6">
+        <h3 className="text-xl font-bold mb-2">회원 정보</h3>
+        <p className="flex items-center"><FaUserAlt className="mr-2"/>이름: <span className="font-semibold ml-1">{detail?.memberInfoDto?.name}</span></p>
+        <p className="flex items-center"><FaUserAlt className="mr-2"/>닉네임: <span className="font-semibold ml-1">{detail?.memberInfoDto?.nickname}</span></p>
+        {detail?.memberInfoDto?.imgUrl && <img src={detail.memberInfoDto.imgUrl} alt="Profile" className="w-24 h-24 rounded-full mx-auto mt-4 shadow-lg" />}
+      </div>
 
       <div>
         <h3 className="text-xl font-bold mb-2">프로필 정보</h3>
