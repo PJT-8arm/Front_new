@@ -12,6 +12,7 @@ import Home from './components/Home';
 import RegisterPage from './components/signUp/RegisterPage';
 import UserProfile from './components/userprofile/UserProfile';
 import { AuthProvider } from './components/signUp/AuthContext';
+import Myrecruitment from './components/member/mypage/myrecruitment/Myrecruitment'
 
 function App() {
   const [isLogined, setlogin] = useState(false);
@@ -29,7 +30,10 @@ function App() {
               {/* 채팅 화면으로 접근했을 때 보여줄 컴포넌트 */}
               <Route path="/chat" element={<Chat />}></Route>
               {/* 마이페이지 화면으로 접근했을 때 보여줄 컴포넌트 */}
-              <Route path="/mypage" element={<Mypage />}></Route>
+              <Route path="/mypage/myrecruitment" element={<Myrecruitment/>}></Route>
+              <Route path="/mypage" element={<Mypage />}>
+                
+              </Route>
               {/* 로그인 화면으로 접근했을 때 보여줄 컴포넌트 */}
               <Route path="/login" element={<LoginPage />} />
               {/* 회원가입 페이지 */}
