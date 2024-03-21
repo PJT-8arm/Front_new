@@ -2,11 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useAuth } from '../../signUp/AuthContext';
 import axios from 'axios'; // Axios 라이브러리 import
 import { mypageDetails, useMypageDetails } from '../../../openapi/orval_query/api/mypage-controller/mypage-controller';
-<<<<<<< HEAD
 import { Link, Outlet } from 'react-router-dom';
-=======
-import { Link } from 'react-router-dom';
->>>>>>> 6a254b4 (feat: 로그아웃 기능 구현 (#14))
 import LinkSetter from '../../utils/LinkSetter';
 
 function Mypage(props) {
