@@ -27,9 +27,9 @@ function App() {
           <main className='min-h-full min-w-full'>
             <Routes>
               {/* 약속 화면으로 접근했을 때 보여줄 컴포넌트 */}
-              <Route path="/appointment" element={<Appointment />}></Route>
+              {/* <Route path="/appointment" element={<Appointment />}></Route> */}
               {/* 랭킹 화면으로 접근했을 때 보여줄 컴포넌트 */}
-              <Route path="/ranking" element={<Ranking />}></Route>
+              {/* <Route path="/ranking" element={<Ranking />}></Route> */}
               {/* 채팅 화면으로 접근했을 때 보여줄 컴포넌트 */}
               <Route path="/chat" element={<Chat />}></Route>
               {/* 마이페이지 화면으로 접근했을 때 보여줄 컴포넌트 */}
