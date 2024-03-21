@@ -1,36 +1,49 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { useParams } from 'react-router-dom'; // useParams 훅을 임포트합니다.
+import React from 'react';
+import { useRecruitmentDetails } from '../../openapi/orval_query/api/recruitments/recruitments'; 
+import { useParams } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
+import { FaUserAlt, FaBirthdayCake, FaVenusMars, FaWeightHanging } from 'react-icons/fa';
+import { MdPlace, MdSchedule } from 'react-icons/md';
 
 const RecruitmentDetail = () => {
-  const [detail, setDetail] = useState(null);
-  const { id } = useParams(); // useParams 훅을 사용하여 URL 파라미터에서 id를 가져옵니다.
+  const { id } = useParams();
+  const recruitmentId = parseInt(id, 10);
 
-  useEffect(() => {
-    const fetchDetail = async () => {
-      try {
-        const response = await axios.get(`http://localhost:8080/api/recruitments/list/${id}`);
-        setDetail(response.data);
-      } catch (error) {
-        console.error("상세 정보를 불러오는 데 실패했습니다.", error);
-      }
-    };
+  const { data: detail, isLoading, error } = useRecruitmentDetails(recruitmentId);
 
-    fetchDetail();
-  }, [id]); // 의존성 배열에 id를 넣어주어 id 값이 변경될 때마다 useEffect가 실행되도록 합니다.
-
-  if (!detail) return <div>로딩중...</div>;
+  if (isLoading) return <div className="flex justify-center items-center p-4">로딩중...</div>;
+  if (error) return <div className="alert alert-error shadow-lg text-center p-4"><div>{error.message}</div></div>;
 
   return (
-    <div>
-      <h2>{detail.title}</h2>
-      <p>{detail.content}</p>
-      <p>모집 날짜: {detail.recruit_date}</p>
-      <p>장소: {detail.place}</p>
-      <p>파트너 성별: {detail.partnerGender}</p>
-      <p>파트너 나이: {detail.partnerAge}</p>
-      <p>루틴: {detail.routine}</p>
-      <p>지속 시간: {detail.duration}</p>
+    <div className="max-w-lg mx-auto p-4 bg-base-100 shadow-2xl rounded-lg">
+      <div className="mb-6">
+        <h2 className="text-2xl font-bold mb-4 border-b pb-2">{detail?.recruitmentDto?.title}</h2>
+        <p className="mb-4">{detail?.recruitmentDto?.content}</p>
+        <div className="text-sm mb-4 space-y-2">
+          <p className="flex items-center"><MdSchedule className="mr-2"/>모집 날짜: <span className="font-semibold ml-1">{detail?.recruitmentDto?.recruit_date}</span></p>
+          <p className="flex items-center"><MdPlace className="mr-2"/>장소: <span className="font-semibold ml-1">{detail?.recruitmentDto?.place}</span></p>
+          <p className="flex items-center"><FaVenusMars className="mr-2"/>파트너 성별: <span className="font-semibold ml-1">{detail?.recruitmentDto?.partnerGender}</span></p>
+          <p className="flex items-center"><FaBirthdayCake className="mr-2"/>파트너 나이: <span className="font-semibold ml-1">{detail?.recruitmentDto?.partnerAge}</span></p>
+          <p className="flex items-center"><FaUserAlt className="mr-2"/>루틴: <span className="font-semibold ml-1">{detail?.recruitmentDto?.routine}</span></p>
+          <p className="flex items-center"><FaWeightHanging className="mr-2"/>지속 시간: <span className="font-semibold ml-1">{detail?.recruitmentDto?.duration}</span></p>
+        </div>
+      </div>
+
+      <div className="mb-6">
+        <h3 className="text-xl font-bold mb-2">회원 정보</h3>
+        <p className="flex items-center"><FaUserAlt className="mr-2"/>이름: <span className="font-semibold ml-1">{detail?.memberInfoDto?.name}</span></p>
+        <p className="flex items-center"><FaUserAlt className="mr-2"/>닉네임: <span className="font-semibold ml-1">{detail?.memberInfoDto?.nickname}</span></p>
+        {detail?.memberInfoDto?.imgUrl && <img src={detail.memberInfoDto.imgUrl} alt="Profile" className="w-24 h-24 rounded-full mx-auto mt-4 shadow-lg" />}
+      </div>
+
+      <div>
+        <h3 className="text-xl font-bold mb-2">프로필 정보</h3>
+        <p className="flex items-center"><FaBirthdayCake className="mr-2"/>나이: <span className="font-semibold ml-1">{detail?.profileDto?.age}</span></p>
+        <p className="flex items-center"><FaVenusMars className="mr-2"/>성별: <span className="font-semibold ml-1">{detail?.profileDto?.gender}</span></p>
+        <p className="flex items-center"><FaWeightHanging className="mr-2"/>벤치프레스: <span className="font-semibold ml-1">{detail?.profileDto?.benchPress}</span></p>
+        <p className="flex items-center"><FaWeightHanging className="mr-2"/>데드리프트: <span className="font-semibold ml-1">{detail?.profileDto?.deadLift}</span></p>
+        <p className="flex items-center"><FaWeightHanging className="mr-2"/>스쿼트: <span className="font-semibold ml-1">{detail?.profileDto?.squat}</span></p>
+      </div>
     </div>
   );
 };
