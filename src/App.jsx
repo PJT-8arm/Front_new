@@ -12,6 +12,9 @@ import Home from './components/Home';
 import RegisterPage from './components/signUp/RegisterPage';
 import UserProfile from './components/userprofile/UserProfile';
 import { AuthProvider } from './components/signUp/AuthContext';
+import ModifyInfo from './components/member/mypage/modifyInfo/ModifyInfo';
+import MypageList from './components/member/mypage/MypageList';
+import Profile from './components/member/mypage/profile/Profile';
 
 function App() {
   const [isLogined, setlogin] = useState(false);
@@ -29,7 +32,11 @@ function App() {
               {/* 채팅 화면으로 접근했을 때 보여줄 컴포넌트 */}
               <Route path="/chat" element={<Chat />}></Route>
               {/* 마이페이지 화면으로 접근했을 때 보여줄 컴포넌트 */}
-              <Route path="/mypage" element={<Mypage />}></Route>
+              <Route path="/mypage" element={<Mypage />}>
+                <Route path='/mypage/list' element={<MypageList/>}></Route>
+                <Route path='/mypage/modifyinfo' element={<ModifyInfo/>}></Route>
+                <Route path='/mypage/profile' element={<Profile />}></Route>
+              </Route>
               {/* 로그인 화면으로 접근했을 때 보여줄 컴포넌트 */}
               <Route path="/login" element={<LoginPage />} />
               {/* 회원가입 페이지 */}
