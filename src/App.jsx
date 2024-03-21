@@ -12,6 +12,7 @@ import Home from './components/Home';
 import RegisterPage from './components/signUp/RegisterPage';
 import UserProfile from './components/userprofile/UserProfile';
 import { AuthProvider } from './components/signUp/AuthContext';
+import Myrecruitment from './components/member/mypage/myrecruitment/Myrecruitment'
 import ModifyInfo from './components/member/mypage/modifyInfo/ModifyInfo';
 import MypageList from './components/member/mypage/MypageList';
 import Profile from './components/member/mypage/profile/Profile';
@@ -36,6 +37,7 @@ function App() {
                 <Route path='/mypage/list' element={<MypageList/>}></Route>
                 <Route path='/mypage/modifyinfo' element={<ModifyInfo/>}></Route>
                 <Route path='/mypage/profile' element={<Profile />}></Route>
+                <Route path="/mypage/myrecruitment" element={<Myrecruitment/>}></Route>
               </Route>
               {/* 로그인 화면으로 접근했을 때 보여줄 컴포넌트 */}
               <Route path="/login" element={<LoginPage />} />
