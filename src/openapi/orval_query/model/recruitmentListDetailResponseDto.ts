@@ -5,18 +5,12 @@
  * COMMERCE REST API DOC
  * OpenAPI spec version: 1.0.0
  */
-import type { LocalTime } from './localTime';
-import type { Member } from './member';
+import type { MemberInfoDto } from './memberInfoDto';
+import type { ProfileDto } from './profileDto';
+import type { RecruitmentDto } from './recruitmentDto';
 
 export interface RecruitmentListDetailResponseDto {
-  content?: string;
-  duration?: LocalTime;
-  id?: number;
-  member?: Member;
-  partnerAge?: number;
-  partnerGender?: string;
-  place?: string;
-  recruit_date?: string;
-  routine?: string;
-  title?: string;
+  memberInfoDto?: MemberInfoDto;
+  profileDto?: ProfileDto;
+  recruitmentDto?: RecruitmentDto;
 }
