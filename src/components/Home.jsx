@@ -56,7 +56,6 @@ function Home() {
                                         <p className='tag-list'>{'#'+ item.recruitmentDto.partnerAge}</p>
                                         <p className='tag-list'>{'#'+ item.recruitmentDto.partnerGender}</p>
                                         <p className='tag-list'>{'#'+ item.recruitmentDto.place}</p>
-
                                     </div>
                                     <p className='date'>{formatDate(item.recruitmentDto.recruit_date)}</p>
                                 </div>
