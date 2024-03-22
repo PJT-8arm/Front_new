@@ -54,7 +54,7 @@ function App() {
               {/* 회원가입 페이지 */}
               <Route path="/register" element={<RegisterPage />} />
               {/* 메인 페이지로 접근했을 때 보여줄 컴포넌트 */}
-              <Route path="/" element={<Home />} />
+                <Route exact path="/" element={<Home />} />
               {/* 모집 글 작성페이지로 접글했을 때 보여줄 컴포넌트 */}
               <Route path="/recruitments/write" element={<RecruitmentForm />} />
               {/* 상세 페이지의 경로와 매칭될 컴포넌트 */}

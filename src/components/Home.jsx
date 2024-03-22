@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import './home.css'
 
 function Home() {
@@ -40,6 +41,7 @@ function Home() {
         {/* recruitmentData를 반복하여 각 아이템을 표시합니다. */}
         {recruitmentData.map((item, index) => (
           <li key={index}>
+            <Link to = {`/recruitments/detail/${item.recruitmentDto.id}`}>
             <div>
                 <div style={{ display: 'flex' , justifyContent: 'center' }}>
                     <div className="card w-90 bg-base-100 shadow-xl">
@@ -56,6 +58,7 @@ function Home() {
                                         <p className='tag-list'>{'#'+ item.recruitmentDto.partnerAge}</p>
                                         <p className='tag-list'>{'#'+ item.recruitmentDto.partnerGender}</p>
                                         <p className='tag-list'>{'#'+ item.recruitmentDto.place}</p>
+                                        <p className='tag-list'>{'#'+ item.recruitmentDto.routine}</p>
                                     </div>
                                     <p className='date'>{formatDate(item.recruitmentDto.recruit_date)}</p>
                                 </div>
@@ -63,6 +66,7 @@ function Home() {
                     </div>
                 </div>
             </div>
+            </Link>
           </li>
         ))}
       </ul>
