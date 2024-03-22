@@ -1,0 +1,10 @@
+.date-size {
+    font-size: 0.75rem; /* 예시 크기입니다. 적절히 조정하세요. */
+}
+
+.text-ellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 150px; /* 또는 원하는 최대 너비 */
+  }

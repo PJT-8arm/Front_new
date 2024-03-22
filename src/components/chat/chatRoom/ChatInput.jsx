@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { useWrite } from '../../openapi/orval_query/api/chat/chat';
+import { useWrite } from '../../../openapi/orval_query/api/chat/chat';
 import { useChatRoomContext } from './ChatRoomContext';
 
 const ChatInput = () => {

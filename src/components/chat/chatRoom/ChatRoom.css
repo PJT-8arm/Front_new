@@ -28,3 +28,11 @@
       padding: 16px; /* 메시지 리스트의 패딩도 조정 */
     }
   }
+
+  .alert-fixed-bottom {
+    position: fixed;
+    bottom: 20%; /* 화면 하단에 위치 */
+    left: 0; /* 화면 왼쪽에 위치 */
+    width: 100%; /* 화면 너비에 맞게 조정 */
+    z-index: 1000; /* 다른 컨텐츠 위에 표시되도록 z-index 설정 */
+  }

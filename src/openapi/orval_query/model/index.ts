@@ -9,6 +9,7 @@
 export * from './chatMessage';
 export * from './chatMessagesDto';
 export * from './chatRoom';
+export * from './chatRoomDetailDto';
 export * from './chatRoomInfoDto';
 export * from './chatRoomListDto';
 export * from './exitChatRoom200';

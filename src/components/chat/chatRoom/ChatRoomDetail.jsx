@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useShowRoom } from '../../openapi/orval_query/api/chat/chat';
+import { useShowRoom } from '../../../openapi/orval_query/api/chat/chat';
 import { useChatRoomContext } from './ChatRoomContext';
 
 const ChatRoomDetail = () => {

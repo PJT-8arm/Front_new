@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { useAuth } from '../signUp/AuthContext';
+import { useAuth } from '../../signUp/AuthContext';
 
 // 채팅방 데이터를 위한 Context 생성
 const ChatRoomContext = createContext();

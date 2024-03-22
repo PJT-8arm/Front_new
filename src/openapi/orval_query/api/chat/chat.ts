@@ -23,8 +23,8 @@ import type {
 } from '@tanstack/react-query'
 import type {
   ChatMessagesDto,
+  ChatRoomDetailDto,
   ChatRoomInfoDto,
-  ChatRoomListDto,
   ExitChatRoom200,
   ModifyChatRoomName200,
   ModifyRequestBody,
@@ -369,7 +369,7 @@ export const makeChatRoom = (
 ) => {
       
       
-      return axiosInstance<ChatRoomInfoDto>(
+      return axiosInstance<number>(
       {url: `/api/chat/room/make/${theirName}`, method: 'GET', signal
     },
       options);
@@ -464,54 +464,54 @@ export const useMakeChatRoom = <TData = Awaited<ReturnType<typeof makeChatRoom>>
 /**
  * @summary 채팅방 목록 조회
  */
-export const showList = (
+export const showList2 = (
     
  options?: SecondParameter<typeof axiosInstance>,signal?: AbortSignal
 ) => {
       
       
-      return axiosInstance<ChatRoomListDto>(
+      return axiosInstance<ChatRoomDetailDto>(
       {url: `/api/chat/room/list`, method: 'GET', signal
     },
       options);
     }
   
 
-export const getShowListQueryKey = () => {
+export const getShowList2QueryKey = () => {
     return [`/api/chat/room/list`] as const;
     }
 
     
-export const getShowListInfiniteQueryOptions = <TData = InfiniteData<Awaited<ReturnType<typeof showList>>>, TError = unknown>( options?: { query?:Partial<UseInfiniteQueryOptions<Awaited<ReturnType<typeof showList>>, TError, TData>>, request?: SecondParameter<typeof axiosInstance>}
+export const getShowList2InfiniteQueryOptions = <TData = InfiniteData<Awaited<ReturnType<typeof showList2>>>, TError = unknown>( options?: { query?:Partial<UseInfiniteQueryOptions<Awaited<ReturnType<typeof showList2>>, TError, TData>>, request?: SecondParameter<typeof axiosInstance>}
 ) => {
 
 const {query: queryOptions, request: requestOptions} = options ?? {};
 
-  const queryKey =  queryOptions?.queryKey ?? getShowListQueryKey();
+  const queryKey =  queryOptions?.queryKey ?? getShowList2QueryKey();
 
   
 
-    const queryFn: QueryFunction<Awaited<ReturnType<typeof showList>>> = ({ signal }) => showList(requestOptions, signal);
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof showList2>>> = ({ signal }) => showList2(requestOptions, signal);
 
       
 
       
 
-   return  { queryKey, queryFn,   staleTime: 10000,  ...queryOptions} as UseInfiniteQueryOptions<Awaited<ReturnType<typeof showList>>, TError, TData> & { queryKey: QueryKey }
+   return  { queryKey, queryFn,   staleTime: 10000,  ...queryOptions} as UseInfiniteQueryOptions<Awaited<ReturnType<typeof showList2>>, TError, TData> & { queryKey: QueryKey }
 }
 
-export type ShowListInfiniteQueryResult = NonNullable<Awaited<ReturnType<typeof showList>>>
-export type ShowListInfiniteQueryError = unknown
+export type ShowList2InfiniteQueryResult = NonNullable<Awaited<ReturnType<typeof showList2>>>
+export type ShowList2InfiniteQueryError = unknown
 
 /**
  * @summary 채팅방 목록 조회
  */
-export const useShowListInfinite = <TData = InfiniteData<Awaited<ReturnType<typeof showList>>>, TError = unknown>(
-  options?: { query?:Partial<UseInfiniteQueryOptions<Awaited<ReturnType<typeof showList>>, TError, TData>>, request?: SecondParameter<typeof axiosInstance>}
+export const useShowList2Infinite = <TData = InfiniteData<Awaited<ReturnType<typeof showList2>>>, TError = unknown>(
+  options?: { query?:Partial<UseInfiniteQueryOptions<Awaited<ReturnType<typeof showList2>>, TError, TData>>, request?: SecondParameter<typeof axiosInstance>}
 
   ):  UseInfiniteQueryResult<TData, TError> & { queryKey: QueryKey } => {
 
-  const queryOptions = getShowListInfiniteQueryOptions(options)
+  const queryOptions = getShowList2InfiniteQueryOptions(options)
 
   const query = useInfiniteQuery(queryOptions) as  UseInfiniteQueryResult<TData, TError> & { queryKey: QueryKey };
 
@@ -522,36 +522,36 @@ export const useShowListInfinite = <TData = InfiniteData<Awaited<ReturnType<type
 
 
 
-export const getShowListQueryOptions = <TData = Awaited<ReturnType<typeof showList>>, TError = unknown>( options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof showList>>, TError, TData>>, request?: SecondParameter<typeof axiosInstance>}
+export const getShowList2QueryOptions = <TData = Awaited<ReturnType<typeof showList2>>, TError = unknown>( options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof showList2>>, TError, TData>>, request?: SecondParameter<typeof axiosInstance>}
 ) => {
 
 const {query: queryOptions, request: requestOptions} = options ?? {};
 
-  const queryKey =  queryOptions?.queryKey ?? getShowListQueryKey();
+  const queryKey =  queryOptions?.queryKey ?? getShowList2QueryKey();
 
   
 
-    const queryFn: QueryFunction<Awaited<ReturnType<typeof showList>>> = ({ signal }) => showList(requestOptions, signal);
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof showList2>>> = ({ signal }) => showList2(requestOptions, signal);
 
       
 
       
 
-   return  { queryKey, queryFn,   staleTime: 10000,  ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof showList>>, TError, TData> & { queryKey: QueryKey }
+   return  { queryKey, queryFn,   staleTime: 10000,  ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof showList2>>, TError, TData> & { queryKey: QueryKey }
 }
 
-export type ShowListQueryResult = NonNullable<Awaited<ReturnType<typeof showList>>>
-export type ShowListQueryError = unknown
+export type ShowList2QueryResult = NonNullable<Awaited<ReturnType<typeof showList2>>>
+export type ShowList2QueryError = unknown
 
 /**
  * @summary 채팅방 목록 조회
  */
-export const useShowList = <TData = Awaited<ReturnType<typeof showList>>, TError = unknown>(
-  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof showList>>, TError, TData>>, request?: SecondParameter<typeof axiosInstance>}
+export const useShowList2 = <TData = Awaited<ReturnType<typeof showList2>>, TError = unknown>(
+  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof showList2>>, TError, TData>>, request?: SecondParameter<typeof axiosInstance>}
 
   ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } => {
 
-  const queryOptions = getShowListQueryOptions(options)
+  const queryOptions = getShowList2QueryOptions(options)
 
   const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
 
