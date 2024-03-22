@@ -45,7 +45,7 @@ function Home() {
                     <div className="card w-90 bg-base-100 shadow-xl">
                             <div className="cardbody">
                                 <div className="avatar">
-                                    <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" className="rounded-full" alt="avatar" />
+                                    <img src={item.member.imgUrl} className="rounded-full" alt="avatar" />
                                 </div>
                                 <div className='content'>
                                     <div className="badge badge-primary">
