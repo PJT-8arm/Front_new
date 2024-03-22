@@ -1,0 +1,55 @@
+.card{
+    margin-bottom: 10px;
+    width: 350px;
+}
+
+.cardbody {
+    height: 120px;
+    width: 340px;
+    display : flex;
+    align-items: center;
+}
+
+
+.nickname {
+    color: rgb(255, 255, 255);
+}
+
+.level-name {
+    display: flex;
+}
+
+.avatar {
+    width: 80px;
+    height: 80px;
+    margin-left: 15px;
+}
+
+.rounded-full {
+    border-radius: 50%; /* 반지름이 요소의 절반 크기인 원 모양을 만듭니다. */
+}
+
+.title{
+    font-size: 24px;
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    margin-left: 10px;
+}
+
+.tag{
+    display: flex;
+}
+
+.tag-list {
+    margin-right: 5px;
+    color: lightgray;
+}
+
+.date{
+    font-size: 10px;
+    text-align: end;
+}
