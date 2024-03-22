@@ -40,7 +40,6 @@ function Home() {
         {/* recruitmentData를 반복하여 각 아이템을 표시합니다. */}
         {recruitmentData.map((item, index) => (
           <li key={index}>
-            {/* <Link to={`/recruitments/detail/${item.id}`} className="card-link"> Link 컴포넌트를 사용하여 클릭 시 해당 URL로 이동하도록 설정합니다. */}
             <div>
                 <div style={{ display: 'flex' , justifyContent: 'center' }}>
                     <div className="card w-90 bg-base-100 shadow-xl">
@@ -63,7 +62,6 @@ function Home() {
                     </div>
                 </div>
             </div>
-            {/* </Link> */}
           </li>
         ))}
       </ul>
