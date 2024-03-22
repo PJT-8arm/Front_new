@@ -12,5 +12,9 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <QueryClientProvider client={queryClient}>
     <App />
     </QueryClientProvider>
+<<<<<<< HEAD
   </>,
+=======
+  </React.StrictMode>
+>>>>>>> 133dd125a115cc716a0b7eab477a0a0f9e641acd
 )

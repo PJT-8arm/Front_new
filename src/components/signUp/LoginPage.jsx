@@ -19,7 +19,7 @@ function LoginPage() {
                 // 로그인 성공 시
                 console.log(response);
                 logIn(response); // Context의 user 상태를 업데이트
-                navigator("/profile");
+                navigator("/mypage/list");
             },
         });
     };
