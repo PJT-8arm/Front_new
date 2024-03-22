@@ -10,9 +10,9 @@ function Home() {
     // recruitmentList API 호출
     const fetchRecruitmentData = async () => {
       try {
-        const response = await axios.get('/api/recruitments/list');
+        const response = await axios.get('http://localhost:8080/api/recruitments/list');
         setRecruitmentData(response.data);
-        // console.log('Recruitment Data:', response.data); // 데이터 로그 출력
+
       } catch (error) {
         console.error('Error fetching recruitment data:', error);
       }
@@ -45,18 +45,19 @@ function Home() {
                     <div className="card w-90 bg-base-100 shadow-xl">
                             <div className="cardbody">
                                 <div className="avatar">
-                                    <img src={item.member.imgUrl} className="rounded-full" alt="avatar" />
+                                    <img src={item.memberInfoDto.imgUrl} className="rounded-full" alt="avatar" />
                                 </div>
                                 <div className='content'>
                                     <div className="badge badge-primary">
-                                        <p className='nickname'>{item.member.nickname}</p>
+                                        <p className='nickname'>{item.memberInfoDto.nickname}</p>
                                     </div>                                   
-                                    <h2 className="title">{item.title}</h2>
+                                    <h2 className="title">{item.recruitmentDto.title}</h2>
                                     <div className='tag'>
-                                        <p className='tag-list'>{'#'+ item.partnerAge}</p>
-                                        <p className='tag-list'>{'#'+ item.partnerGender}</p>
+                                        <p className='tag-list'>{'#'+ item.recruitmentDto.partnerAge}</p>
+                                        <p className='tag-list'>{'#'+ item.recruitmentDto.partnerGender}</p>
+                                        <p className='tag-list'>{'#'+ item.recruitmentDto.place}</p>
                                     </div>
-                                    <p className='date'>{formatDate(item.recruit_date)}</p>
+                                    <p className='date'>{formatDate(item.recruitmentDto.recruit_date)}</p>
                                 </div>
                             </div>
                     </div>
