@@ -4,19 +4,24 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 function RegisterPage() {
-  const [Email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [ConfirmPassword, setConfirmPassword] = useState("");
-  const [error, setError] = useState("");
+  const [name, setName] = useState('');
+  const [username, setUsername] = useState('');
+  const [nickname, setNickname] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  const onEmailHandler = (event) => {
-    setEmail(event.currentTarget.value);
+  const onNameHandler = (event) => {
+    setName(event.currentTarget.value);
   }
 
   const onUsernameHandler = (event) => {
     setUsername(event.currentTarget.value);
+  }
+
+  const onNicknameHandler = (event) => {
+    setNickname(event.currentTarget.value);
   }
 
   const onPasswordHandler = (event) => {
@@ -30,26 +35,27 @@ function RegisterPage() {
   const onSubmitHandler = async (event) => {
     event.preventDefault();
 
-    if (password !== ConfirmPassword) {
-      setError('비밀번호와 비밀번호 확인이 같지 않습니다.');
+    if (password !== confirmPassword) {
+      setError('비밀번호와 비밀번호 확인이 일치하지 않습니다.');
       return;
     }
 
     try {
       const response = await axios.post('http://localhost:8080/api/members/join', { 
-        email: Email,
-        username: username,
-        password: password
+        name,
+        username,
+        nickname,
+        password
       });
 
-      console.log('회원가입 성공:', response.data); // 성공 응답 출력
+      console.log('회원가입 성공:', response.data);
 
-      // 여기에 회원가입 성공 시 필요한 처리를 추가할 수 있습니다.
-      navigate('/login'); // 회원가입 성공 시 로그인 페이지로 이동
+      // 회원가입 성공 시 필요한 처리를 추가할 수 있습니다.
+      navigate('/login');
 
     } catch (error) {
-      console.error('회원가입 오류:', error); // 오류 처리
-      setError('회원가입 중 오류가 발생했습니다.'); // 오류 메시지 설정
+      console.error('회원가입 오류:', error);
+      setError('회원가입 중 오류가 발생했습니다.');
     }
   }
 
@@ -57,24 +63,28 @@ function RegisterPage() {
     <div className='container'>
       <form className='signup-form' onSubmit={onSubmitHandler}>
         <div className='input-forms-item'>
-          <label className='input-label'>Email</label>
-          <input type='email' value={Email} onChange={onEmailHandler} />
+          <label className='input-label'>이름</label>
+          <input type='text' value={name} onChange={onNameHandler} />
         </div>
         <div className='input-forms-item'>
-          <label className='input-label'>Username</label> 
+          <label className='input-label'>아이디</label>
           <input type='text' value={username} onChange={onUsernameHandler} />
         </div>
         <div className='input-forms-item'>
-          <label className='input-label'>Password</label>
+          <label className='input-label'>닉네임</label>
+          <input type='text' value={nickname} onChange={onNicknameHandler} />
+        </div>
+        <div className='input-forms-item'>
+          <label className='input-label'>비밀번호</label>
           <input type='password' value={password} onChange={onPasswordHandler} />
         </div>
         <div className='input-forms-item'>
-          <label className='input-label'>Confirm Password</label>
-          <input type='password' value={ConfirmPassword} onChange={onConfirmPasswordHandler} />
+          <label className='input-label'>비밀번호 확인</label>
+          <input type='password' value={confirmPassword} onChange={onConfirmPasswordHandler} />
         </div>
-        {error && <p style={{ color: 'red' }}>{error}</p>} {/* 에러 메시지 표시 */}
+        {error && <p style={{ color: 'red' }}>{error}</p>}
         <div className='button-container'>
-          <button type='submit'>회원가입</button>
+          <button type='submit'>가입하기</button>
         </div>
       </form>
     </div>
