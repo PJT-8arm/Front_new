@@ -146,7 +146,7 @@ function Home() {
                 <div style={{ display: 'flex', justifyContent: 'center' }}>
                   <div className="card w-90 bg-base-100 shadow-xl">
                     <div className="cardbody">
-                      <div className="avatar">
+                      <div className="avatar2">
                         <img src={item.memberInfoDto.imgUrl} className="rounded-full" alt="avatar" />
                       </div>
                       <div className='content'>
@@ -173,30 +173,6 @@ function Home() {
       {/* 페이지네이션 버튼 */}
       <ul className="pagination">
         {renderPagination()}
-        {/* <li>
-            <button className="btn btn-ghost btn-sm" onClick={() => paginate(currentPage - 1)} disabled={currentPage === 1}>
-            이전
-            </button>
-        </li> */}
-        {/* 페이지 번호 버튼 */}
-        {/* {Array.from({ length: Math.min(totalPages, 5 ) }, (_, i) => {
-            const pageNumber = currentPage <= 4 ? i + 1 : currentPage - 4 + i;
-            return (
-            <li key={i}>
-                <button
-                className={`btn btn-sm ${currentPage === pageNumber ? 'btn-active btn-link' : 'btn-ghost'}`}
-                onClick={() => paginate(pageNumber)}
-                >
-                {pageNumber}
-                </button>
-            </li>
-            );
-        })}
-        <li>
-            <button className="btn btn-ghost btn-sm" onClick={() => paginate(currentPage + 1)} disabled={currentPage === totalPages}>
-            다음
-            </button>
-        </li> */}
         </ul>
 
     </div>
