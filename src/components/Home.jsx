@@ -174,7 +174,6 @@ function Home() {
       <ul className="pagination">
         {renderPagination()}
         </ul>
-
     </div>
   );
 }
