@@ -15,7 +15,7 @@ const Signup = () => {
 
     try {
       // 회원가입 요청을 서버로 보냅니다.
-      const response = await axios.post('http://localhost:8080/api/members.join', {
+      const response = await axios.post('http://localhost:8080/api/members/join', {
         username,
         email,
         password
