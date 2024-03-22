@@ -28,36 +28,29 @@ const ChatRoomList = () => {
 
     return (
         <div>
-            <div className="overflow-x-auto">
-                <table className="table w-full"> {/* 테이블의 너비를 전체로 설정 */}
-                    <tbody> {/* tbody 태그를 추가 */}
-                        {data && data.map((chatRoom) => (
-                            <tr key={chatRoom.chatRoomId} className="hover" onClick={() => handleRoomClick(chatRoom.chatRoomId)}>
-                                <td>
-                                    <div className="flex items-center gap-3">
-                                        <div className="avatar">
-                                            <div className="mask mask-squircle w-12 h-12">
-                                                <img src={chatRoom.imgUrl} alt="Avatar" />
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <div className="font-bold">{chatRoom.chatRoomName}</div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div className="date-size text-sm opacity-50">
-                                        {formatDate(chatRoom.lastMessageDate)}
-                                    </div>
-                                    <div className="text-ellipsis overflow-hidden max-w-xs whitespace-nowrap">
-                                        {chatRoom.lastMessageContent}
-                                    </div>
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </div>
+            {data && data.map((chatRoom) => (
+                <div key={chatRoom.chatRoomId} className="hover" onClick={() => handleRoomClick(chatRoom.chatRoomId)}>
+                    <div className="flex items-center gap-3">
+                        <div className="avatar">
+                            <div className="mask mask-squircle w-12 h-12">
+                                <img src={chatRoom.imgUrl} alt="Avatar" />
+                            </div>
+                        </div>
+                        <div>
+                            <div className="font-bold">{chatRoom.chatRoomName}</div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div className="date-size text-sm opacity-50">
+                            {formatDate(chatRoom.lastMessageDate)}
+                        </div>
+                        <div className="text-ellipsis overflow-hidden max-w-xs whitespace-nowrap">
+                        {chatRoom.lastMessageContent}
+                        </div>
+                    </div>
+                </div>
+            ))}
         </div>
     );
 };

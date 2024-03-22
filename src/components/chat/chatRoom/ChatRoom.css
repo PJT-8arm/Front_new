@@ -1,38 +1,47 @@
 /* ChatRoom.css - 기본적으로 모바일에 최적화된 스타일 */
 .chatRoomContainer {
-    display: flex;
-    flex-direction: column;
-    height: 90vh;
-    width: 100vw;
-    overflow: hidden;
-  }
-  
-  .chatRoomDetail, .chatInput {
-    flex-shrink: 0;
-    padding: 8px; /* 모바일 환경에서는 패딩을 줄입니다 */
-  }
-  
-  .chatMessages {
-    flex-grow: 1;
-    overflow-y: auto;
-    padding: 8px; /* 메시지 리스트의 패딩도 조정합니다 */
-  }
-  
-  /* 더 큰 화면을 위한 스타일 추가는 미디어 쿼리를 사용 */
-  @media (min-width: 600px) {
-    .chatRoomDetail, .chatInput {
-      padding: 16px; /* 화면이 클 때는 더 넓은 패딩을 제공 */
-    }
-  
-    .chatMessages {
-      padding: 16px; /* 메시지 리스트의 패딩도 조정 */
-    }
+  display: flex;
+  flex-direction: column;
+  height: 83vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.chatInput, .chatRoomDetail {
+  flex-shrink: 0;
+  padding: 8px;
+  /* 모바일 환경에서는 패딩을 줄입니다 */
+  border: 1px solid black;
+}
+
+.chatMessages {
+  overflow-y: auto;
+  border: 1px solid black;
+}
+
+/* 더 큰 화면을 위한 스타일 추가는 미디어 쿼리를 사용 */
+@media (min-width: 600px) {
+
+  .chatRoomDetail,
+  .chatInput {
+    padding: 16px;
+    /* 화면이 클 때는 더 넓은 패딩을 제공 */
   }
 
-  .alert-fixed-bottom {
-    position: fixed;
-    bottom: 20%; /* 화면 하단에 위치 */
-    left: 0; /* 화면 왼쪽에 위치 */
-    width: 100%; /* 화면 너비에 맞게 조정 */
-    z-index: 1000; /* 다른 컨텐츠 위에 표시되도록 z-index 설정 */
+  .chatMessages {
+    padding: 16px;
+    /* 메시지 리스트의 패딩도 조정 */
   }
+}
+
+.alert-fixed-bottom {
+  position: fixed;
+  bottom: 20%;
+  /* 화면 하단에 위치 */
+  left: 0;
+  /* 화면 왼쪽에 위치 */
+  width: 100%;
+  /* 화면 너비에 맞게 조정 */
+  z-index: 1000;
+  /* 다른 컨텐츠 위에 표시되도록 z-index 설정 */
+}
