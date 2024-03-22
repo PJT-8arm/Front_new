@@ -18,7 +18,7 @@ function RecruitmentCard({ item, index }) {
         const recruite_date = item['recruitmentDto']['recruit_date']
         const date = recruite_date.split("T")[0].split("-");
         const time = recruite_date.split("T")[1].split(".")[0].split(":");
-        const duration = item['recruitmentDto']['duration'].split(":")
+        const duration = item['recruitmentDto']['duration'].split(":") // null인 경우 배제
 
         setCard({
             ...item['recruitmentDto'],
@@ -30,7 +30,7 @@ function RecruitmentCard({ item, index }) {
     return (
         <>
             <Link className="card w-3/4 bg-base-100 shadow-sm hover:shadow-2xl m-2"
-             to='/recruitments/detail/:id' element={<RecruitmentDetail />}>
+             to={`/recruitments/detail/${card.id}`} element={<RecruitmentDetail />}>
                     <div className="card-body">
                         <h2 className="card-title">{card.title}</h2>
                         <div className='text-sm'>

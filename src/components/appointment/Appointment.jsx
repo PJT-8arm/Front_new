@@ -1,11 +1,11 @@
-import React from 'react';
+// import React from 'react';
 
-function Appointment() {
-    return (
-        <div>
-            약속
-        </div>
-    );
-}
+// function Appointment() {
+//     return (
+//         <div>
+//             약속
+//         </div>
+//     );
+// }
 
-export default Appointment;
+// export default Appointment;
