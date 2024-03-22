@@ -6,10 +6,15 @@
 .cardbody {
     height: 120px;
     width: 340px;
+<<<<<<< HEAD
     margin-top: 0.5rem;
     display : flex;
     align-items: center;
     justify-content: center;
+=======
+    display : flex;
+    align-items: center;
+>>>>>>> b339b99 (refactor : clone 후home.jsx 추가)
 }
 
 
@@ -21,7 +26,11 @@
     display: flex;
 }
 
+<<<<<<< HEAD
 .avatar2 {
+=======
+.avatar {
+>>>>>>> b339b99 (refactor : clone 후home.jsx 추가)
     width: 80px;
     height: 80px;
     margin-left: 15px;
@@ -33,12 +42,15 @@
 
 .title{
     font-size: 24px;
+<<<<<<< HEAD
     
 
 }
 
 .titlebox{
     height: 36px;
+=======
+>>>>>>> b339b99 (refactor : clone 후home.jsx 추가)
 }
 
 .content{
