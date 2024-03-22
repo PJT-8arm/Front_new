@@ -23,7 +23,7 @@ function App() {
       <Router>
         <div className='flex flex-col items-center'>
           <main className='min-h-full min-w-full'>
-          <div className='Topbar' style={{display: 'flex', justifyContent: 'space-evenly'}}>
+          <div className='Topbar' style={{display: 'flex', justifyContent: 'space-evenly', marginBottom: '5px'}}>
                 <div className='logo' style={{margin:'0.5rem 1rem 0rem 1rem'}}>
                     <img src='/src/logo.png' alt='로고 이미지'/>
                 </div>
