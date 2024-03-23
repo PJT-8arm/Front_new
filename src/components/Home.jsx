@@ -44,7 +44,7 @@ function Home() {
                 <div style={{ display: 'flex' , justifyContent: 'center' }}>
                     <div className="card w-90 bg-base-100 shadow-xl">
                             <div className="cardbody">
-                                <div className="avatar">
+                                <div className="avatar2">
                                     <img src={item.memberInfoDto.imgUrl} className="rounded-full" alt="avatar" />
                                 </div>
                                 <div className='content'>

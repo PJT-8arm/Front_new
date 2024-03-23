@@ -47,7 +47,7 @@ const ChatMessages = () => {
 
   //스톰프 메세지 처리
   const handleNewMessage = (newMessage) => {
-    const isAtBottom = scrollableDivRef.current.scrollTop === 1;
+    const isAtBottom = scrollableDivRef.current.scrollTop === 0;
 
     setMessages((prevMessages) => {
       if (prevMessages[0] && prevMessages[0].id === newMessage.id) {
@@ -59,8 +59,8 @@ const ChatMessages = () => {
 
     if (isAtBottom) {
       scrollToBottom();
-    } else { 
-      setIsNewMessage(true); 
+    } else {
+      setIsNewMessage(true);
     }
 
     setReceptedMessage(true);
@@ -82,7 +82,7 @@ const ChatMessages = () => {
 
   // 새 메시지 알림 클릭 시 스크롤을 맨 아래로 이동
   const scrollToBottom = () => {
-    scrollableDivRef.current.scrollTop = 1;
+    scrollableDivRef.current.scrollTop = 0;
     setIsNewMessage(false); // 알림 상태를 초기화
   };
 
@@ -92,13 +92,14 @@ const ChatMessages = () => {
   }, [roomId]);
 
   useEffect(() => {
+    console.log('data',data);
     if (data?.content) {
       const loadedMessages = data.content;
 
       if (lastId == null && messages.length > 0) {
         return;
       } else {
-        const targetId = lastId - 1;
+        const targetId = data.content[0].id;
         const exists = messages.some(message => message.id === targetId);
         if (exists) return;
       }
@@ -108,7 +109,7 @@ const ChatMessages = () => {
     }
   }, [data]);
 
-  
+
   if (isError) return <div>Error: {error.message}</div>;
   if (!user || !roomDetail) {
     // user 정보가 아직 준비되지 않았다면 로딩 표시나 다른 대체 컨텐츠를 렌더링
@@ -147,27 +148,6 @@ const ChatMessages = () => {
         scrollableTarget="scrollableDiv"
       >
         {messages.map((message) => (
-          // 컨테이너 아이템 카드 (flex)
-          // end이면 거꾸로 나와야하니까 flex-direcion: reverse-row
-          <div key={message.id}>
-            {/* 이미지 부분 flex:1, flex-shrink: 0 */} 
-            {/* width, hegiht, 100% */}
-            <div> 
-              <img alt="Chat avatar" src={`${message.senderId === user.id ? user.imgUrl : roomDetail.imgUrl}`} />
-            </div>
-            <div>
-            {/* 채팅 버블 부분 (flex. direction: column) */}
-            <div>
-              <span>{message.id} {message.writerName}</span>
-              <div>{message.content}</div>
-              <div>
-                <time>{formatDistanceToNow(new Date(message.createDate), { addSuffix: true, locale: ko },)}</time>
-              </div>
-              </div>
-            </div>
-          </div>
-        ))}
-        {/* {messages.map((message) => (
           <div key={message.id} className={`chat ${message.senderId === user.id ? 'chat-end' : 'chat-start'}`}>
             <div className="chat-image avatar">
               <div className="w-10 rounded-full">
@@ -177,15 +157,13 @@ const ChatMessages = () => {
             <div className="chat-header">
               {message.id} {message.writerName}
             </div>
-            <div className="chat-bubble">{message.content}</div>
+            <div className="chat-bubble">{message.content}ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ</div>
             <div className='chat-footer'>
               <time className="text-xs opacity-50">{formatDistanceToNow(new Date(message.createDate), { addSuffix: true, locale: ko },)}</time>
             </div>
           </div>
-        ))} */}
+        ))}
       </InfiniteScroll>
-          
-          {/*  */}
     </div>
   );
 };

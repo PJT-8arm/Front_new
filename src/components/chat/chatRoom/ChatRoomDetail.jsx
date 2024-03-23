@@ -34,12 +34,23 @@ const ChatRoomDetail = () => {
     }
 
     // chatRoomDetail 데이터가 있는 경우, 이를 사용하여 UI 렌더링
+
     return (
-        <div>
-            <h2>{chatRoomDetail.chatRoomId}</h2>
-            <h2>채팅방 이름 : {chatRoomDetail.chatRoomName}</h2>
-            {/* chatRoomDetail 객체의 구조에 따라 적절하게 접근하고 렌더링합니다. */}
-            {/* 예: chatRoomDetail.description 등 */}
+        <div className="chat-room-header">
+            <div className="chat-room-header-img">
+                <img src={chatRoomDetail.imgUrl} alt="Chat Room Avatar" />
+            </div>
+            <div className='chat-room-box1'>
+                <div className="chat-room-info">
+                    <strong>{chatRoomDetail.chatRoomName}</strong>
+                    <div className="text-xs opacity-50">참여자 2명</div>
+                </div>
+                <div className="chat-room-actions">
+                    <div className='action-img'>
+                        <img src="" />
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };

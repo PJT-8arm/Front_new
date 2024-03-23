@@ -11,12 +11,11 @@
   flex-shrink: 0;
   padding: 8px;
   /* 모바일 환경에서는 패딩을 줄입니다 */
-  border: 1px solid black;
+  background-color: rgb(238, 238, 238);
 }
 
 .chatMessages {
   overflow-y: auto;
-  border: 1px solid black;
 }
 
 /* 더 큰 화면을 위한 스타일 추가는 미디어 쿼리를 사용 */
@@ -44,4 +43,58 @@
   /* 화면 너비에 맞게 조정 */
   z-index: 1000;
   /* 다른 컨텐츠 위에 표시되도록 z-index 설정 */
+}
+
+.chat-start {
+  margin-left: 15px;
+}
+
+.chat-end {
+  margin-right: 15px;
+}
+
+.chat-bubble {
+  max-width: 60% !important;
+  word-break: break-word; /* 필요한 경우 단어 내에서도 줄바꿈을 허용 */
+  overflow-wrap: break-word; /* 오버플로를 방지하기 위해 단어를 줄바꿈 */
+}
+
+.chat-room-header {
+  display: flex;
+  flex-direction: row;
+}
+
+.chat-room-header-img {
+  height: 3rem;
+  width: 3rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.chat-room-header-img img{
+  border-radius: 50%;
+}
+
+.chat-room-box1 {
+  display: flex;
+  margin-left: 1rem;
+  flex-direction: row;
+  flex-grow: 1;
+  justify-content: space-between;
+}
+
+.chat-room-actions {
+  display: flex;
+  align-items: center;
+}
+
+.chatRoomDetail strong{
+  color: rgb(105, 105, 105);
+}
+
+.action-img {
+  height: 2.5rem;
+  width: 2.5rem;
+  object-fit: cover;
+  border: 1px solid black;
 }
