@@ -10,6 +10,7 @@ import type { LocalTime } from './localTime';
 export interface RecruitmentDto {
   content?: string;
   duration?: LocalTime;
+  id?: number;
   partnerAge?: number;
   partnerGender?: string;
   place?: string;

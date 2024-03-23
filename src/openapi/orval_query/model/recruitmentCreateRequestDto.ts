@@ -13,7 +13,7 @@ export interface RecruitmentCreateRequestDto {
   partnerAge?: number;
   partnerGender?: string;
   place?: string;
-  recruit_date?: string;
+  recruitDate?: string;
   routine?: string;
   title?: string;
 }
