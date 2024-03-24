@@ -1,12 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useShowRoom } from '../../../openapi/orval_query/api/chat/chat';
 import { useChatRoomContext } from './ChatRoomContext';
+import ChatDropDown from './ChatDropDown';
 
 const ChatRoomDetail = () => {
     // useShowRoom 훅 사용. roomId와 쿼리 옵션(필요한 경우)을 전달합니다.
     const { roomId, roomDetail, setRoomDetail } = useChatRoomContext();
     const { data: chatRoomDetail, isLoading, isError, error } = useShowRoom(roomId);
-
+    const [showDropdown, setShowDropdown] = useState(false);
 
     useEffect(() => {
         if (chatRoomDetail) {
@@ -46,9 +47,10 @@ const ChatRoomDetail = () => {
                     <div className="text-xs opacity-50">참여자 2명</div>
                 </div>
                 <div className="chat-room-actions">
-                    <div className='action-img'>
-                        <img src="" />
+                    <div onClick={() => { setShowDropdown(!showDropdown) }} className='action-img'>
+                        <img src={showDropdown ? '/src/assets/chevron-up.svg' : '/src/assets/menu.svg'} />
                     </div>
+                    {showDropdown && (<ul className='chat-room-dropdown'><ChatDropDown /></ul>)}
                 </div>
             </div>
         </div>

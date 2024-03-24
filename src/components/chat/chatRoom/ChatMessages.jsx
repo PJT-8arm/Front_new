@@ -66,6 +66,12 @@ const ChatMessages = () => {
     setReceptedMessage(true);
   };
 
+  // 새 메시지 알림 클릭 시 스크롤을 맨 아래로 이동
+  const scrollToBottom = () => {
+    scrollableDivRef.current.scrollTop = 0;
+    setIsNewMessage(false); // 알림 상태를 초기화
+  };
+
   useEffect(() => {
     //메세지 길이 변경 시 스크롤 위치 조정
     if (!scrollableDivRef) return;
@@ -80,19 +86,16 @@ const ChatMessages = () => {
     }
   }, [messages?.length]);
 
-  // 새 메시지 알림 클릭 시 스크롤을 맨 아래로 이동
-  const scrollToBottom = () => {
-    scrollableDivRef.current.scrollTop = 0;
-    setIsNewMessage(false); // 알림 상태를 초기화
-  };
-
   // imgUrls의 변경을 감지하여 컴포넌트를 업데이트 합니다.
   useEffect(() => {
+    console.log('useEffect');
     initializeWebSocketConnection(roomId);
-  }, [roomId]);
+  }, []);
 
   useEffect(() => {
-    console.log('data',data);
+    if (!data) return;
+    console.log('messages', messages);
+    console.log('data', data);
     if (data?.content) {
       const loadedMessages = data.content;
 
@@ -147,8 +150,8 @@ const ChatMessages = () => {
         endMessage={<p style={{ textAlign: 'center' }}>You have seen all messages</p>}
         scrollableTarget="scrollableDiv"
       >
-        {messages.map((message) => (
-          <div key={message.id} className={`chat ${message.senderId === user.id ? 'chat-end' : 'chat-start'}`}>
+        {messages.map((message, index) => (
+          <div key={index} className={`chat ${message.senderId === user.id ? 'chat-end' : 'chat-start'}`}>
             <div className="chat-image avatar">
               <div className="w-10 rounded-full">
                 <img alt="Chat avatar" src={`${message.senderId === user.id ? user.imgUrl : roomDetail.imgUrl}`} />
@@ -157,7 +160,7 @@ const ChatMessages = () => {
             <div className="chat-header">
               {message.id} {message.writerName}
             </div>
-            <div className="chat-bubble">{message.content}ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ</div>
+            <pre className="chat-bubble">{message.content}</pre>
             <div className='chat-footer'>
               <time className="text-xs opacity-50">{formatDistanceToNow(new Date(message.createDate), { addSuffix: true, locale: ko },)}</time>
             </div>
