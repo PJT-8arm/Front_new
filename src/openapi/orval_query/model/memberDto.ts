@@ -5,14 +5,14 @@
  * COMMERCE REST API DOC
  * OpenAPI spec version: 1.0.0
  */
-import type { Profile } from './profile';
+import type { ProfileDto } from './profileDto';
 
 export interface MemberDto {
   id?: number;
   imgUrl?: string;
   name?: string;
   nickname?: string;
-  profile?: Profile;
+  profile?: ProfileDto;
   roles?: string[];
   username?: string;
 }
