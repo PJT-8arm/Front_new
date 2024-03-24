@@ -1,11 +1,33 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useShowList2 } from '../../../openapi/orval_query/api/chat/chat';
 import './ChatRoomList.css'
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../signUp/AuthContext';
+import SockJS from 'sockjs-client';
+import Stomp from 'stompjs';
 
 const ChatRoomList = () => {
     const { data, isLoading, isError, error, refetch } = useShowList2();
     const navigate = useNavigate();
+    const { user } = useAuth();
+    const list = useState();
+
+    const handleNewMessage = () => {
+        refetch();
+      };
+    
+
+    function initializeWebSocketConnection() {
+        const socket = new SockJS('http://localhost:8080/ws');
+        const stompClient = Stomp.over(socket);
+        stompClient.connect({}, frame => {
+            console.log('Connected: ' + frame);
+
+            stompClient.subscribe(`/topic/chat/room/list/${user.id}/message`, function (response) {
+                handleNewMessage();
+            });
+        });
+    }
 
     // 날짜를 MM/DD 형식으로 포맷하는 함수
     const formatDate = (dateString) => {
@@ -27,6 +49,10 @@ const ChatRoomList = () => {
         navigate(`/chat/room/${roomId}`); // 해당 roomId를 가진 URL로 이동
     };
 
+    useEffect(() => {
+        initializeWebSocketConnection();
+    }, [])
+
     return (
         <>
             {data && data.map((chatRoom) => (
@@ -34,6 +60,7 @@ const ChatRoomList = () => {
                     <div className="chat-list-img">
                         <img src={chatRoom.imgUrl} alt="채팅방 이미지" />
                     </div>
+                    <div>{chatRoom.unreadMessagesCount}</div>
                     <div>
                         <div className='chat-list-name-date'>
                             <div className="font-bold">{chatRoom.chatRoomName}</div>
