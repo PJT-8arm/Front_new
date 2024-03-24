@@ -60,12 +60,12 @@
 .chat-room-header-img {
   height: 3rem;
   width: 3rem;
-  border-radius: 50%;
+  border-radius: 30%;
   object-fit: cover;
 }
 
 .chat-room-header-img img {
-  border-radius: 50%;
+  border-radius: 30%;
 }
 
 .chat-room-box1 {
