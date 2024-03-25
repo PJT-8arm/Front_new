@@ -8,6 +8,7 @@
 import type { Profile } from './profile';
 
 export interface Member {
+  address?: string;
   createDate?: string;
   id?: number;
   imgUrl?: string;

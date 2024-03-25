@@ -16,17 +16,19 @@ function ModifyInfo(props) {
         imgUrl: "",
         postPassword: "",
         prePassword: "",
+        address: "",
     });
 
     useEffect(() => {
         if (memberDto) {
             setFormdata({
-                username: memberDto.username,
-                imgUrl: memberDto.imgUrl,
-                name: memberDto.name,
-                nickname: memberDto.nickname,
+                username: memberDto.username || "", // memberDto에 username이 없다면 빈 문자열을 사용
+                imgUrl: memberDto.imgUrl || "",
+                name: memberDto.name || "",
+                nickname: memberDto.nickname || "",
                 postPassword: "",
                 prePassword: "",
+                address: memberDto.address || "", // memberDto에 address가 없다면 빈 문자열을 사용
             })
         }
     }, [memberDto])
@@ -49,6 +51,7 @@ function ModifyInfo(props) {
             postPassword: formdata.postPassword,
             prePassword: formdata.prePassword,
             username: formdata.username,
+            address: formdata.address,
         }
 
         await postData({ data: memberModifyDto });
@@ -69,7 +72,7 @@ function ModifyInfo(props) {
     return (
         <>
         <h1 className='font-bold text-lg m-2'>회원정보 수정</h1>
-            <form className='m-2' action="POST" onSubmit={onSubmitHandler}>
+            <form className='m-2' onSubmit={onSubmitHandler}>
                 <label className="input input-bordered flex items-center gap-2 mt-2">
                     아이디
                     <div className="grow">{formdata.username}</div>
@@ -89,6 +92,10 @@ function ModifyInfo(props) {
                 <label className="input input-bordered flex items-center gap-2 mt-2">
                     닉네임
                     <input type="text" className="grow" placeholder="닉네임을 적어주세요" id='nickname' value={formdata.nickname} onChange={handleChange} />
+                </label>
+                <label className="input input-bordered flex items-center gap-2 mt-2">
+                    주소
+                    <input type="text" className="grow" placeholder="주소를 적어주세요" id='address' value={formdata.address} onChange={handleChange} />
                 </label>
                 <div className='flex justify-center items-center'>
                     <button className='btn btn-primary m-4' type='submit'>수정</button>

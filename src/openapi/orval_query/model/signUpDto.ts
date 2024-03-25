@@ -7,6 +7,7 @@
  */
 
 export interface SignUpDto {
+  address?: string;
   checkPassword?: string;
   imgUrl?: string;
   name?: string;
