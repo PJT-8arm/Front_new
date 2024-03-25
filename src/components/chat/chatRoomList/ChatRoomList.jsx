@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useShowList2 } from '../../../openapi/orval_query/api/chat/chat';
+import { useShowList2, setLastViewId } from '../../../openapi/orval_query/api/chat/chat';
 import './ChatRoomList.css'
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../signUp/AuthContext';
@@ -16,7 +16,6 @@ const ChatRoomList = () => {
         refetch();
       };
     
-
     function initializeWebSocketConnection() {
         const socket = new SockJS('http://localhost:8080/ws');
         const stompClient = Stomp.over(socket);
@@ -45,7 +44,8 @@ const ChatRoomList = () => {
     };
 
     // 채팅방을 클릭했을 때 호출되는 함수
-    const handleRoomClick = (roomId) => {
+    const handleRoomClick = async (roomId) => {
+        setLastViewId(roomId);
         navigate(`/chat/room/${roomId}`); // 해당 roomId를 가진 URL로 이동
     };
 

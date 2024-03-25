@@ -28,6 +28,8 @@ import type {
   ExitChatRoom200,
   ModifyChatRoomName200,
   ModifyRequestBody,
+  SetLastViewId200,
+  SetLastViewIdParams,
   ShowMessagesParams,
   ShowRoom403,
   ShowRoom404,
@@ -45,6 +47,58 @@ type SecondParameter<T extends (...args: any) => any> = Parameters<T>[1];
 
 
 /**
+ * @summary 마지막으로 읽은 메세지 최신화
+ */
+export const setLastViewId = (
+    roomId: number,
+    params?: SetLastViewIdParams,
+ options?: SecondParameter<typeof axiosInstance>,) => {
+      
+      
+      return axiosInstance<SetLastViewId200>(
+      {url: `/api/chat/room/${roomId}/updateId`, method: 'PUT',
+        params
+    },
+      options);
+    }
+  
+
+
+export const getSetLastViewIdMutationOptions = <TError = unknown,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof setLastViewId>>, TError,{roomId: number;params?: SetLastViewIdParams}, TContext>, request?: SecondParameter<typeof axiosInstance>}
+): UseMutationOptions<Awaited<ReturnType<typeof setLastViewId>>, TError,{roomId: number;params?: SetLastViewIdParams}, TContext> => {
+ const {mutation: mutationOptions, request: requestOptions} = options ?? {};
+
+      
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof setLastViewId>>, {roomId: number;params?: SetLastViewIdParams}> = (props) => {
+          const {roomId,params} = props ?? {};
+
+          return  setLastViewId(roomId,params,requestOptions)
+        }
+
+        
+
+
+   return  { mutationFn, ...mutationOptions }}
+
+    export type SetLastViewIdMutationResult = NonNullable<Awaited<ReturnType<typeof setLastViewId>>>
+    
+    export type SetLastViewIdMutationError = unknown
+
+    /**
+ * @summary 마지막으로 읽은 메세지 최신화
+ */
+export const useSetLastViewId = <TError = unknown,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof setLastViewId>>, TError,{roomId: number;params?: SetLastViewIdParams}, TContext>, request?: SecondParameter<typeof axiosInstance>}
+) => {
+
+      const mutationOptions = getSetLastViewIdMutationOptions(options);
+
+      return useMutation(mutationOptions);
+    }
+    /**
  * @summary 메세지 전송
  */
 export const write = (

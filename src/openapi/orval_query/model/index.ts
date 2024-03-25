@@ -32,6 +32,8 @@ export * from './recruitmentDto';
 export * from './recruitmentListDetailResponseDto';
 export * from './recruitmentListResponseDto';
 export * from './recruitmentUpdateResponseDto';
+export * from './setLastViewId200';
+export * from './setLastViewIdParams';
 export * from './showMessagesParams';
 export * from './showRoom403';
 export * from './showRoom404';
