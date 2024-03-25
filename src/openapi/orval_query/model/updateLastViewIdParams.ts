@@ -6,8 +6,6 @@
  * OpenAPI spec version: 1.0.0
  */
 
-export type ShowMessagesParams = {
+export type UpdateLastViewIdParams = {
 lastId?: number;
-page?: number;
-size?: number;
 };
