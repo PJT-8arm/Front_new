@@ -41,7 +41,7 @@ function App() {
                 <Route path='/mypage/list' element={<MypageList />}></Route>
                 <Route path='/mypage/modifyinfo' element={<ModifyInfo />}></Route>
                 <Route path='/mypage/profile' element={<Profile />}></Route>
-                <Route path="/mypage/myrecruitment" element={<Myrecruitment />}></Route>
+                <Route path="myrecruitment" element={<Myrecruitment/>}></Route>
               </Route>
               {/* 로그인 화면으로 접근했을 때 보여줄 컴포넌트 */}
               <Route path="/login" element={<LoginPage />} />
