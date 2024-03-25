@@ -5,9 +5,11 @@
  * COMMERCE REST API DOC
  * OpenAPI spec version: 1.0.0
  */
-import type { ChatMessage } from './chatMessage';
 
 export interface ChatMessagesDto {
-  hasNext?: boolean;
-  messages?: ChatMessage[];
+  content?: string;
+  createDate?: string;
+  id?: number;
+  senderId?: number;
+  writerName?: string;
 }
