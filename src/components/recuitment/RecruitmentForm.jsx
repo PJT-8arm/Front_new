@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useRecruitmentAdd } from '../../openapi/orval_query/api/recruitments/recruitments';
 import DatePicker from 'react-datepicker';
@@ -13,7 +13,7 @@ const RecruitmentForm = () => {
         recruitDate: new Date(), // 날짜 초기값을 현재 날짜로 설정
         place: '',
         partnerGender: '',
-        partnerAge: 0,
+        partnerAge: '',
         routine: '',
         duration: '',
         time: '12:00', // 시간 초기값 설정
@@ -22,6 +22,30 @@ const RecruitmentForm = () => {
 
     const navigate = useNavigate();
     const { mutate, isLoading, isError, error } = useRecruitmentAdd();
+
+    // 주소 검색 결과를 state에 저장
+    const [address, setAddress] = useState('');
+
+    useEffect(() => {
+        // 카카오 주소 검색 스크립트 동적 로드
+        const script = document.createElement('script');
+        script.src = "//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js";
+        document.head.appendChild(script);
+    }, []);
+
+    const handleAddressSearch = () => {
+        new window.daum.Postcode({
+            oncomplete: function(data) {
+                // 사용자가 검색한 주소를 state에 저장
+                setAddress(data.address);
+                // 폼 데이터에도 주소 반영
+                setFormData(prevState => ({
+                    ...prevState,
+                    place: data.address
+                }));
+            }
+        }).open();
+    };
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -134,14 +158,19 @@ const RecruitmentForm = () => {
                 className="mb-2"
             />
 
-            <input
-                type="text"
-                name="place"
-                value={formData.place}
-                onChange={handleChange}
-                placeholder="장소"
-                className="input input-bordered w-full mb-2"
-            />
+            <div class="flex gap-2 mb-2">
+                <input
+                    type="text"
+                    name="place"
+                    value={formData.place}
+                    onChange={handleChange}
+                    placeholder="장소"
+                    className="input input-bordered w-full"
+                />
+                <button type="button" onClick={handleAddressSearch} className="btn btn-primary">
+                    주소 검색
+                </button>
+            </div>
 
             <select
                 name="partnerGender"
@@ -155,14 +184,19 @@ const RecruitmentForm = () => {
                 <option value="any">무관</option>
             </select>
 
-            <input
-                type="number"
+            <select
                 name="partnerAge"
                 value={formData.partnerAge}
                 onChange={handleChange}
-                placeholder="동반자 연령"
-                className="input input-bordered w-full mb-2"
-            />
+                className="select select-bordered w-full mb-2"
+            >
+                <option value="">원하는 파트너 연령대</option>
+                <option value="10">10대</option>
+                <option value="20">20대</option>
+                <option value="30">30대</option>
+                <option value="40">40대</option>
+                <option value="50">50대</option>
+            </select>
 
             <input
                 type="text"
