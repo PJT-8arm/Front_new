@@ -30,7 +30,6 @@ function App() {
     <AuthProvider>
       <Router>
         <div className='App'>
-          <Topbar />
           <main className='main-content'>
             <Routes>
               {/* 약속 화면으로 접근했을 때 보여줄 컴포넌트 */}

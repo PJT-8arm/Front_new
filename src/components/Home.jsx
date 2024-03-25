@@ -6,7 +6,7 @@ import './home.css';
 function Home() {
     const [recruitmentData, setRecruitmentData] = useState([]);
     const [currentPage, setCurrentPage] = useState(1); // 현재 페이지 번호
-    const [itemsPerPage] = useState(5); // 페이지당 표시할 항목 수
+    const [itemsPerPage] = useState(4); // 페이지당 표시할 항목 수
     const [searchTerm, setSearchTerm] = useState(''); // 검색어 상태
 
 
@@ -153,7 +153,9 @@ function Home() {
                         <div className="badge badge-primary">
                           <p className='nickname'>{item.memberInfoDto.nickname}</p>
                         </div>
-                        <h2 className="title">{item.recruitmentDto.title}</h2>
+                        <div className='titlebox'>
+                          <p className='title'>{item.recruitmentDto.title}</p>
+                        </div>
                         <div className='tag'>
                           <p className='tag-list'>{'#' + item.recruitmentDto.partnerAge + '대'}</p>
                           <p className='tag-list'>{'#' + item.recruitmentDto.partnerGender}</p>
