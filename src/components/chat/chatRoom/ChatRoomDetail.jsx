@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useShowRoom } from '../../../openapi/orval_query/api/chat/chat';
+import { modifyChatRoomName, useShowRoom } from '../../../openapi/orval_query/api/chat/chat';
 import { useChatRoomContext } from './ChatRoomContext';
 import ChatDropDown from './ChatDropDown';
 
@@ -8,7 +8,29 @@ const ChatRoomDetail = () => {
     const { roomId, roomDetail, setRoomDetail } = useChatRoomContext();
     const { data: chatRoomDetail, isLoading, isError, error } = useShowRoom(roomId);
     const [showDropdown, setShowDropdown] = useState(false);
-    const [isModifying, SetIsModifying] = useState(false);
+    const [isModifying, setIsModifying] = useState(false);
+
+    const handleModifyStart = () => {
+        setIsModifying(true);
+    };
+
+    const handleNameChange = (event) => {
+        if (event.key === "Enter") {
+            const newName = event.target.value;
+            
+            const requestBody = {
+                chatRoomName: newName
+            };
+
+            modifyChatRoomName(roomId, requestBody).then((response) => {
+                setIsModifying(false);
+                // setRoomDetail을 사용하여 chatRoomDetail 상태 업데이트
+                setRoomDetail(prev => ({ ...prev, chatRoomName: newName }));
+            }).catch((error) => {
+                console.error("Chat room name update failed", error);
+            });
+        }
+    };
 
     useEffect(() => {
         if (chatRoomDetail) {
@@ -44,14 +66,20 @@ const ChatRoomDetail = () => {
             </div>
             <div className='chat-room-box1'>
                 <div className="chat-room-info">
-                    {<strong>{chatRoomDetail.chatRoomName}</strong>}
+                    {isModifying ?
+                        (<input
+                            type="text"
+                            defaultValue={roomDetail.chatRoomName}
+                            onKeyPress={handleNameChange}
+                        />)
+                        : (<strong>{roomDetail.chatRoomName}</strong>)}
                     <div className="text-xs opacity-50">참여자 2명</div>
                 </div>
                 <div className="chat-room-actions">
                     <div onClick={() => { setShowDropdown(!showDropdown) }} className='action-img'>
                         <img src={showDropdown ? '/src/assets/chevron-up.svg' : '/src/assets/menu.svg'} />
                     </div>
-                    {showDropdown && (<ChatDropDown />)}
+                    {showDropdown && (<ChatDropDown onModify={handleModifyStart} />)}
                 </div>
             </div>
         </div>
