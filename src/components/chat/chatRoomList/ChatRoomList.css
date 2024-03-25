@@ -46,7 +46,9 @@
 
   .chat-room-message-content{
     margin-left: 1.5rem;
-    color: rgb(109, 109, 109)
+    font-size: 0.9rem;
+    
+    color: rgb(80, 80, 80)
   }
 
   .chat-list-unreadCount{
