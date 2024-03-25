@@ -41,14 +41,8 @@ export * from './showMessagesParams';
 export * from './showRoom403';
 export * from './showRoom404';
 export * from './signUpDto';
-<<<<<<< HEAD
-export * from './sortObject';
-export * from './updateLastViewId200';
-export * from './updateLastViewIdParams';
-=======
 export * from './updateLastViewId200';
 export * from './updateLastViewIdParams';
 export * from './sortObject';
->>>>>>> f0e4f5fc86a82d5f252fe524dde8488d0b04c694
 export * from './write200';
 export * from './writeRequestBody';
