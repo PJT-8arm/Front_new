@@ -334,7 +334,7 @@ export const getMypageMyRecruitmentQueryKey = (params: MypageMyRecruitmentParams
     }
 
     
-export const getMypageMyRecruitmentInfiniteQueryOptions = <TData = InfiniteData<Awaited<ReturnType<typeof mypageMyRecruitment>>, MypageMyRecruitmentParams['lastId']>, TError = unknown>(params: MypageMyRecruitmentParams, options?: { query?:Partial<UseInfiniteQueryOptions<Awaited<ReturnType<typeof mypageMyRecruitment>>, TError, TData, Awaited<ReturnType<typeof mypageMyRecruitment>>, QueryKey, MypageMyRecruitmentParams['lastId']>>, request?: SecondParameter<typeof axiosInstance>}
+export const getMypageMyRecruitmentInfiniteQueryOptions = <TData = InfiniteData<Awaited<ReturnType<typeof mypageMyRecruitment>>, MypageMyRecruitmentParams['page']>, TError = unknown>(params: MypageMyRecruitmentParams, options?: { query?:Partial<UseInfiniteQueryOptions<Awaited<ReturnType<typeof mypageMyRecruitment>>, TError, TData, Awaited<ReturnType<typeof mypageMyRecruitment>>, QueryKey, MypageMyRecruitmentParams['page']>>, request?: SecondParameter<typeof axiosInstance>}
 ) => {
 
 const {query: queryOptions, request: requestOptions} = options ?? {};
@@ -343,20 +343,20 @@ const {query: queryOptions, request: requestOptions} = options ?? {};
 
   
 
-    const queryFn: QueryFunction<Awaited<ReturnType<typeof mypageMyRecruitment>>, QueryKey, MypageMyRecruitmentParams['lastId']> = ({ signal, pageParam }) => mypageMyRecruitment({...params, lastId: pageParam || params?.['lastId']}, requestOptions, signal);
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof mypageMyRecruitment>>, QueryKey, MypageMyRecruitmentParams['page']> = ({ signal, pageParam }) => mypageMyRecruitment({...params, page: pageParam || params?.['page']}, requestOptions, signal);
 
       
 
       
 
-   return  { queryKey, queryFn,   staleTime: 10000,  ...queryOptions} as UseInfiniteQueryOptions<Awaited<ReturnType<typeof mypageMyRecruitment>>, TError, TData, Awaited<ReturnType<typeof mypageMyRecruitment>>, QueryKey, MypageMyRecruitmentParams['lastId']> & { queryKey: QueryKey }
+   return  { queryKey, queryFn,   staleTime: 10000,  ...queryOptions} as UseInfiniteQueryOptions<Awaited<ReturnType<typeof mypageMyRecruitment>>, TError, TData, Awaited<ReturnType<typeof mypageMyRecruitment>>, QueryKey, MypageMyRecruitmentParams['page']> & { queryKey: QueryKey }
 }
 
 export type MypageMyRecruitmentInfiniteQueryResult = NonNullable<Awaited<ReturnType<typeof mypageMyRecruitment>>>
 export type MypageMyRecruitmentInfiniteQueryError = unknown
 
-export const useMypageMyRecruitmentInfinite = <TData = InfiniteData<Awaited<ReturnType<typeof mypageMyRecruitment>>, MypageMyRecruitmentParams['lastId']>, TError = unknown>(
- params: MypageMyRecruitmentParams, options?: { query?:Partial<UseInfiniteQueryOptions<Awaited<ReturnType<typeof mypageMyRecruitment>>, TError, TData, Awaited<ReturnType<typeof mypageMyRecruitment>>, QueryKey, MypageMyRecruitmentParams['lastId']>>, request?: SecondParameter<typeof axiosInstance>}
+export const useMypageMyRecruitmentInfinite = <TData = InfiniteData<Awaited<ReturnType<typeof mypageMyRecruitment>>, MypageMyRecruitmentParams['page']>, TError = unknown>(
+ params: MypageMyRecruitmentParams, options?: { query?:Partial<UseInfiniteQueryOptions<Awaited<ReturnType<typeof mypageMyRecruitment>>, TError, TData, Awaited<ReturnType<typeof mypageMyRecruitment>>, QueryKey, MypageMyRecruitmentParams['page']>>, request?: SecondParameter<typeof axiosInstance>}
 
   ):  UseInfiniteQueryResult<TData, TError> & { queryKey: QueryKey } => {
 

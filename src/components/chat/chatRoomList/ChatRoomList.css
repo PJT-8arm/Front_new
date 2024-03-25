@@ -1,8 +1,15 @@
 .chat-list-container {
     margin: 0.5rem;
     padding: 0.5rem;
-    display: flex;
-    flex-direction: row;
+}
+
+.chat-list-item-inside {
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-list-name-date-container {
+  flex-grow: 1;
 }
 
 .chat-list-name-date {
@@ -11,6 +18,14 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+}
+
+.chat-list-img-count{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-grow: 1;
+  justify-content: space-between;
 }
 
 .chat-list-img {
@@ -36,7 +51,7 @@
 
   .chat-list-unreadCount{
     background-color: red;
-    min-width: 2rem;
+    min-width: 1rem;
     border-radius: 20px;
     color: white;
     display: inline-flex;

@@ -8,6 +8,7 @@ const ChatRoomDetail = () => {
     const { roomId, roomDetail, setRoomDetail } = useChatRoomContext();
     const { data: chatRoomDetail, isLoading, isError, error } = useShowRoom(roomId);
     const [showDropdown, setShowDropdown] = useState(false);
+    const [isModifying, SetIsModifying] = useState(false);
 
     useEffect(() => {
         if (chatRoomDetail) {
@@ -43,7 +44,7 @@ const ChatRoomDetail = () => {
             </div>
             <div className='chat-room-box1'>
                 <div className="chat-room-info">
-                    <strong>{chatRoomDetail.chatRoomName}</strong>
+                    {<strong>{chatRoomDetail.chatRoomName}</strong>}
                     <div className="text-xs opacity-50">참여자 2명</div>
                 </div>
                 <div className="chat-room-actions">
