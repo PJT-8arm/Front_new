@@ -29,7 +29,6 @@ const RecruitmentDetail = () => {
         </div>
       </div>
 
-
       <div className="mb-6">
         <h3 className="text-xl font-bold mb-2">회원 정보</h3>
         <div className="flex items-center">
@@ -38,7 +37,7 @@ const RecruitmentDetail = () => {
           )}
           <div>
             <p className="flex items-center"><FaUserAlt className="mr-2"/>이름: <span className="font-semibold ml-1">{detail?.memberInfoDto?.name}</span></p>
-            <p className="flex items-center"><FaUserAlt className="mr-2"/>닉네임: <span className="font-semibold ml-1">{detail?.memberInfoDto?.nickname}</span></p>
+            <p className="flex items-center"><FaUserAlt className="mr-2"/>장소: <span className="font-semibold ml-1">{detail?.memberInfoDto?.address}</span></p>
           </div>
         </div>
       </div>
