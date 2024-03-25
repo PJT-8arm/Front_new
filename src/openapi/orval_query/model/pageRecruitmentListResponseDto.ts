@@ -18,7 +18,7 @@ export interface PageRecruitmentListResponseDto {
   numberOfElements?: number;
   pageable?: PageableObject;
   size?: number;
-  sort?: SortObject;
+  sort?: SortObject[];
   totalElements?: number;
   totalPages?: number;
 }

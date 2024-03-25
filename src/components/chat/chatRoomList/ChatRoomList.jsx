@@ -76,28 +76,32 @@ const ChatRoomList = () => {
     return (
         <>
             {data && data.map((chatRoom) => (
-                <div className='card bg-base-100 shadow-xl chat-list-container'
+                <div className='chat-list-container card bg-base-100 shadow-xl'
                     key={chatRoom.chatRoomId}
                     onClick={() => handleRoomClick(chatRoom.chatRoomId)}
                     onContextMenu={(e) => handleContextMenu(e, chatRoom.chatRoomId)}
                 >
-                    <div className="chat-list-img">
-                        <img src={chatRoom.imgUrl} alt="채팅방 이미지" />
-                    </div>
-                    <div>
-                        <div className='chat-list-unreadCount'>{chatRoom.unreadMessagesCount > 100 ? '100+' : chatRoom.unreadMessagesCount}</div>
-                    </div>
-                    <div>
-                        <div className='chat-list-name-date'>
-                            <div className="font-bold">{chatRoom.chatRoomName}</div>
-                            <strong className="chat-room-message-date">
-                                {formatDate(chatRoom.lastMessageDate)}
-                            </strong>
+                    <div className='chat-list-item-inside'>
+                        <div className='chat-list-img-count'>
+                            <div className="chat-list-img">
+                                <img src={chatRoom.imgUrl} alt="채팅방 이미지" />
+                            </div>
+                            <div>
+                                <div className='chat-list-unreadCount'>{chatRoom.unreadMessagesCount > 100 ? '100+' : chatRoom.unreadMessagesCount}</div>
+                            </div>
                         </div>
-                        <div className="chat-room-message-content">
-                            {chatRoom.lastMessageContent}
+                        <div className='chat-list-name-date-container'>
+                            <div className='chat-list-name-date'>
+                                <div className="font-bold">{chatRoom.chatRoomName}</div>
+                                <strong className="chat-room-message-date">
+                                    {formatDate(chatRoom.lastMessageDate)}
+                                </strong>
+                            </div>
+                            <div className="chat-room-message-content">
+                                {chatRoom.lastMessageContent}
+                            </div>
                         </div>
-                    </div> 
+                    </div>
                 </div>
             ))}
         </>

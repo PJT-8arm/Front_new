@@ -7,7 +7,9 @@
  */
 
 export interface SortObject {
-  empty?: boolean;
-  sorted?: boolean;
-  unsorted?: boolean;
+  ascending?: boolean;
+  direction?: string;
+  ignoreCase?: boolean;
+  nullHandling?: string;
+  property?: string;
 }
