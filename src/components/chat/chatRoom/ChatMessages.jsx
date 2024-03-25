@@ -112,7 +112,7 @@ const ChatMessages = () => {
     }
   }, [data]);
 
-  
+
 
   if (isError) return <div>Error: {error.message}</div>;
   if (!user || !roomDetail) {
@@ -144,11 +144,11 @@ const ChatMessages = () => {
       <InfiniteScroll
         dataLength={messages.length} // content 배열의 길이를 사용
         next={loadMessage} // 다음 페이지 로딩 함수
-        style={{ display: 'flex', flexDirection: 'column-reverse' }}
+        style={{ display: 'flex', flexDirection: 'column-reverse', flexGrow: 1}}
         inverse={true}
         hasMore={hasNext} // 더 로딩할 페이지가 있는지 여부
         loader={<h4>Loading...2</h4>}
-        endMessage={<p style={{ textAlign: 'center' }}>You have seen all messages</p>}
+        endMessage={<p style={{ textAlign: 'center' }}>마지막 메세지입니다.</p>}
         scrollableTarget="scrollableDiv"
       >
         {messages.map((message, index) => (
@@ -159,7 +159,7 @@ const ChatMessages = () => {
               </div>
             </div>
             <div className="chat-header">
-              {message.id} {message.writerName}
+              {message.writerName}
             </div>
             <pre className="chat-bubble">{message.content}</pre>
             <div className='chat-footer'>

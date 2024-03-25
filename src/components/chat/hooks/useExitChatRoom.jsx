@@ -8,7 +8,6 @@ const useExitChatRoom = () => {
     const handleExitChatRoom = async (roomId) => {
         try {
             await exitChatRoom(roomId);
-            alert('채팅방을 나갔습니다.');
             navigate('/chat/list');
         } catch (error) {
             console.error(error);
