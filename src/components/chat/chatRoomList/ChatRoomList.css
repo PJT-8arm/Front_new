@@ -33,3 +33,15 @@
     margin-left: 1.5rem;
     color: rgb(109, 109, 109)
   }
+
+  .chat-list-unreadCount{
+    background-color: red;
+    min-width: 2rem;
+    border-radius: 20px;
+    color: white;
+    display: inline-flex;
+    justify-content: center;
+    padding: 0 0.5rem;
+    font-size: 0.9rem;
+    font-weight: bold;
+  }

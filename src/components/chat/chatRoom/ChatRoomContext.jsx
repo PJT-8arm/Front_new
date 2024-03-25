@@ -9,6 +9,7 @@ export const ChatRoomProvider = ({ children, initialRoomId }) => {
     console.log(initialRoomId);
     const [roomId, setRoomId] = useState(initialRoomId);
     const [roomDetail, setRoomDetail] = useState({});
+    
 
     return (
         <ChatRoomContext.Provider value={{roomId, roomDetail, setRoomDetail}}>

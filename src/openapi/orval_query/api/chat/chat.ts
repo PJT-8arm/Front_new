@@ -28,11 +28,11 @@ import type {
   ExitChatRoom200,
   ModifyChatRoomName200,
   ModifyRequestBody,
-  SetLastViewId200,
-  SetLastViewIdParams,
   ShowMessagesParams,
   ShowRoom403,
   ShowRoom404,
+  UpdateLastViewId200,
+  UpdateLastViewIdParams,
   Write200,
   WriteRequestBody
 } from '../../model'
@@ -49,13 +49,13 @@ type SecondParameter<T extends (...args: any) => any> = Parameters<T>[1];
 /**
  * @summary 마지막으로 읽은 메세지 최신화
  */
-export const setLastViewId = (
+export const updateLastViewId = (
     roomId: number,
-    params?: SetLastViewIdParams,
+    params?: UpdateLastViewIdParams,
  options?: SecondParameter<typeof axiosInstance>,) => {
       
       
-      return axiosInstance<SetLastViewId200>(
+      return axiosInstance<UpdateLastViewId200>(
       {url: `/api/chat/room/${roomId}/updateId`, method: 'PUT',
         params
     },
@@ -64,18 +64,18 @@ export const setLastViewId = (
   
 
 
-export const getSetLastViewIdMutationOptions = <TError = unknown,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof setLastViewId>>, TError,{roomId: number;params?: SetLastViewIdParams}, TContext>, request?: SecondParameter<typeof axiosInstance>}
-): UseMutationOptions<Awaited<ReturnType<typeof setLastViewId>>, TError,{roomId: number;params?: SetLastViewIdParams}, TContext> => {
+export const getUpdateLastViewIdMutationOptions = <TError = unknown,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof updateLastViewId>>, TError,{roomId: number;params?: UpdateLastViewIdParams}, TContext>, request?: SecondParameter<typeof axiosInstance>}
+): UseMutationOptions<Awaited<ReturnType<typeof updateLastViewId>>, TError,{roomId: number;params?: UpdateLastViewIdParams}, TContext> => {
  const {mutation: mutationOptions, request: requestOptions} = options ?? {};
 
       
 
 
-      const mutationFn: MutationFunction<Awaited<ReturnType<typeof setLastViewId>>, {roomId: number;params?: SetLastViewIdParams}> = (props) => {
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof updateLastViewId>>, {roomId: number;params?: UpdateLastViewIdParams}> = (props) => {
           const {roomId,params} = props ?? {};
 
-          return  setLastViewId(roomId,params,requestOptions)
+          return  updateLastViewId(roomId,params,requestOptions)
         }
 
         
@@ -83,18 +83,18 @@ export const getSetLastViewIdMutationOptions = <TError = unknown,
 
    return  { mutationFn, ...mutationOptions }}
 
-    export type SetLastViewIdMutationResult = NonNullable<Awaited<ReturnType<typeof setLastViewId>>>
+    export type UpdateLastViewIdMutationResult = NonNullable<Awaited<ReturnType<typeof updateLastViewId>>>
     
-    export type SetLastViewIdMutationError = unknown
+    export type UpdateLastViewIdMutationError = unknown
 
     /**
  * @summary 마지막으로 읽은 메세지 최신화
  */
-export const useSetLastViewId = <TError = unknown,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof setLastViewId>>, TError,{roomId: number;params?: SetLastViewIdParams}, TContext>, request?: SecondParameter<typeof axiosInstance>}
+export const useUpdateLastViewId = <TError = unknown,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof updateLastViewId>>, TError,{roomId: number;params?: UpdateLastViewIdParams}, TContext>, request?: SecondParameter<typeof axiosInstance>}
 ) => {
 
-      const mutationOptions = getSetLastViewIdMutationOptions(options);
+      const mutationOptions = getUpdateLastViewIdMutationOptions(options);
 
       return useMutation(mutationOptions);
     }

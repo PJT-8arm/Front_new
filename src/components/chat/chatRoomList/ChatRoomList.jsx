@@ -1,21 +1,25 @@
 import React, { useEffect, useState } from 'react';
-import { useShowList2, setLastViewId } from '../../../openapi/orval_query/api/chat/chat';
+import { useShowList2, updateLastViewId } from '../../../openapi/orval_query/api/chat/chat';
 import './ChatRoomList.css'
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../signUp/AuthContext';
 import SockJS from 'sockjs-client';
 import Stomp from 'stompjs';
+import useExitChatRoom from '../hooks/useExitChatRoom';
 
 const ChatRoomList = () => {
     const { data, isLoading, isError, error, refetch } = useShowList2();
     const navigate = useNavigate();
     const { user } = useAuth();
     const list = useState();
+    const [showDropdown, setShowDropdown] = useState(false);
+    const [dropdownPosition, setDropdownPosition] = useState({ x: 0, y: 0 });
+    const { handleExitChatRoom } = useExitChatRoom();
 
     const handleNewMessage = () => {
         refetch();
-      };
-    
+    };
+
     function initializeWebSocketConnection() {
         const socket = new SockJS('http://localhost:8080/ws');
         const stompClient = Stomp.over(socket);
@@ -27,6 +31,22 @@ const ChatRoomList = () => {
             });
         });
     }
+
+    // 우클릭 이벤트 핸들러
+    const handleContextMenu = (e, chatRoomId) => {
+        e.preventDefault(); // 기본 컨텍스트 메뉴를 방지
+        setShowDropdown(true); // 드롭다운을 표시
+        setDropdownPosition({ x: e.pageX, y: e.pageY }); // 드롭다운 위치 설정
+    };
+
+    const handleDropdownItemClick = (e, action, chatRoomId) => {
+        e.stopPropagation(); // 이벤트 버블링 방지
+        // 여기서 action에 따라 다른 작업 수행
+        if (action === 'exit') {
+            handleExitChatRoom(chatRoomId);
+        }
+        setShowDropdown(false); // 드롭다운 숨김
+    };
 
     // 날짜를 MM/DD 형식으로 포맷하는 함수
     const formatDate = (dateString) => {
@@ -45,7 +65,7 @@ const ChatRoomList = () => {
 
     // 채팅방을 클릭했을 때 호출되는 함수
     const handleRoomClick = async (roomId) => {
-        setLastViewId(roomId);
+        updateLastViewId(roomId);
         navigate(`/chat/room/${roomId}`); // 해당 roomId를 가진 URL로 이동
     };
 
@@ -56,11 +76,17 @@ const ChatRoomList = () => {
     return (
         <>
             {data && data.map((chatRoom) => (
-                <div className='card bg-base-100 shadow-xl chat-list-container' key={chatRoom.chatRoomId} onClick={() => handleRoomClick(chatRoom.chatRoomId)}>
+                <div className='card bg-base-100 shadow-xl chat-list-container'
+                    key={chatRoom.chatRoomId}
+                    onClick={() => handleRoomClick(chatRoom.chatRoomId)}
+                    onContextMenu={(e) => handleContextMenu(e, chatRoom.chatRoomId)}
+                >
                     <div className="chat-list-img">
                         <img src={chatRoom.imgUrl} alt="채팅방 이미지" />
                     </div>
-                    <div>{chatRoom.unreadMessagesCount}</div>
+                    <div>
+                        <div className='chat-list-unreadCount'>{chatRoom.unreadMessagesCount > 100 ? '100+' : chatRoom.unreadMessagesCount}</div>
+                    </div>
                     <div>
                         <div className='chat-list-name-date'>
                             <div className="font-bold">{chatRoom.chatRoomName}</div>
@@ -71,7 +97,7 @@ const ChatRoomList = () => {
                         <div className="chat-room-message-content">
                             {chatRoom.lastMessageContent}
                         </div>
-                    </div>
+                    </div> 
                 </div>
             ))}
         </>

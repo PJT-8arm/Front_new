@@ -38,5 +38,7 @@ export * from './showMessagesParams';
 export * from './showRoom403';
 export * from './showRoom404';
 export * from './signUpDto';
+export * from './updateLastViewId200';
+export * from './updateLastViewIdParams';
 export * from './write200';
 export * from './writeRequestBody';

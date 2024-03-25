@@ -50,7 +50,7 @@ const ChatRoomDetail = () => {
                     <div onClick={() => { setShowDropdown(!showDropdown) }} className='action-img'>
                         <img src={showDropdown ? '/src/assets/chevron-up.svg' : '/src/assets/menu.svg'} />
                     </div>
-                    {showDropdown && (<ul className='chat-room-dropdown'><ChatDropDown /></ul>)}
+                    {showDropdown && (<ChatDropDown />)}
                 </div>
             </div>
         </div>
