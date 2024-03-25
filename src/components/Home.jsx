@@ -146,28 +146,18 @@ function Home() {
                 <div style={{ display: 'flex', justifyContent: 'center' }}>
                   <div className="card w-90 bg-base-100 shadow-xl">
                     <div className="cardbody">
-<<<<<<< HEAD
                       <div className="avatar2">
-=======
-                      <div className="avatar">
->>>>>>> 6543fb4 (feat : 페이지네이션 추가)
                         <img src={item.memberInfoDto.imgUrl} className="rounded-full" alt="avatar" />
                       </div>
                       <div className='content'>
                         <div className="badge badge-primary">
                           <p className='nickname'>{item.memberInfoDto.nickname}</p>
                         </div>
-<<<<<<< HEAD
                         <div className='titlebox'>
                           <p className='title'>{item.recruitmentDto.title}</p>
                         </div>
                         <div className='tag'>
                           <p className='tag-list'>{'#' + item.recruitmentDto.partnerAge + '대'}</p>
-=======
-                        <h2 className="title">{item.recruitmentDto.title}</h2>
-                        <div className='tag'>
-                          <p className='tag-list'>{'#' + item.recruitmentDto.partnerAge}</p>
->>>>>>> 6543fb4 (feat : 페이지네이션 추가)
                           <p className='tag-list'>{'#' + item.recruitmentDto.partnerGender}</p>
                           <p className='tag-list'>{'#' + item.recruitmentDto.place}</p>
                           <p className='tag-list'>{'#' + item.recruitmentDto.routine}</p>
@@ -184,37 +174,8 @@ function Home() {
       </ul>
       {/* 페이지네이션 버튼 */}
       <ul className="pagination">
-<<<<<<< HEAD
         {renderPagination()}
         </ul>
-=======
-        <li>
-            <button className="btn btn-ghost btn-sm" onClick={() => paginate(currentPage - 1)} disabled={currentPage === 1}>
-            이전
-            </button>
-        </li>
-        {/* 페이지 번호 버튼 */}
-        {Array.from({ length: Math.min(totalPages, 5 ) }, (_, i) => {
-            const pageNumber = currentPage <= 4 ? i + 1 : currentPage - 4 + i;
-            return (
-            <li key={i}>
-                <button
-                className={`btn btn-sm ${currentPage === pageNumber ? 'btn-active btn-link' : 'btn-ghost'}`}
-                onClick={() => paginate(pageNumber)}
-                >
-                {pageNumber}
-                </button>
-            </li>
-            );
-        })}
-        <li>
-            <button className="btn btn-ghost btn-sm" onClick={() => paginate(currentPage + 1)} disabled={currentPage === totalPages}>
-            다음
-            </button>
-        </li>
-        </ul>
-
->>>>>>> 6543fb4 (feat : 페이지네이션 추가)
     </div>
   );
 }
