@@ -16,17 +16,38 @@ function ModifyInfo(props) {
         imgUrl: "",
         postPassword: "",
         prePassword: "",
+        address: "",
     });
+
+    useEffect(() => {
+        // Daum 우편번호 스크립트를 동적으로 로드하는 부분
+        const script = document.createElement('script');
+        script.src = "//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js";
+        document.body.appendChild(script);
+    }, []);
+    
+    // Daum 우편번호 서비스를 실행하는 함수
+    const sample5_execDaumPostcode = () => {
+        new window.daum.Postcode({
+            oncomplete: function(data) {
+                // 최종 주소 변수
+                var addr = data.address;
+                // 주소 정보를 formdata에 설정
+                setFormdata({...formdata, address: addr});
+            }
+        }).open();
+    };
 
     useEffect(() => {
         if (memberDto) {
             setFormdata({
-                username: memberDto.username,
-                imgUrl: memberDto.imgUrl,
-                name: memberDto.name,
-                nickname: memberDto.nickname,
+                username: memberDto.username || "", // memberDto에 username이 없다면 빈 문자열을 사용
+                imgUrl: memberDto.imgUrl || "",
+                name: memberDto.name || "",
+                nickname: memberDto.nickname || "",
                 postPassword: "",
                 prePassword: "",
+                address: memberDto.address || "", // memberDto에 address가 없다면 빈 문자열을 사용
             })
         }
     }, [memberDto])
@@ -49,6 +70,7 @@ function ModifyInfo(props) {
             postPassword: formdata.postPassword,
             prePassword: formdata.prePassword,
             username: formdata.username,
+            address: formdata.address,
         }
 
         await postData({ data: memberModifyDto });
@@ -69,7 +91,7 @@ function ModifyInfo(props) {
     return (
         <>
         <h1 className='font-bold text-lg m-2'>회원정보 수정</h1>
-            <form className='m-2' action="POST" onSubmit={onSubmitHandler}>
+            <form className='m-2' onSubmit={onSubmitHandler}>
                 <label className="input input-bordered flex items-center gap-2 mt-2">
                     아이디
                     <div className="grow">{formdata.username}</div>
@@ -90,6 +112,14 @@ function ModifyInfo(props) {
                     닉네임
                     <input type="text" className="grow" placeholder="닉네임을 적어주세요" id='nickname' value={formdata.nickname} onChange={handleChange} />
                 </label>
+                <div className="flex items-center gap-2 mt-2">
+                    <div className="flex flex-row flex-grow items-center gap-2 input input-bordered">
+                        <span className="whitespace-nowrap">주소</span>
+                        <input type="text" placeholder="주소를 적어주세요" id='address' className="w-full" value={formdata.address} onChange={handleChange} />
+                    </div>
+                    <button onClick={sample5_execDaumPostcode} className="btn btn-primary">주소 검색</button>
+                </div>
+
                 <div className='flex justify-center items-center'>
                     <button className='btn btn-primary m-4' type='submit'>수정</button>
                     <button className='btn btn-primary m-4'><Link to="/mypage/list">이전</Link></button>
