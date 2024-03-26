@@ -1,0 +1,121 @@
+/* ChatRoom.css - 기본적으로 모바일에 최적화된 스타일 */
+.chatRoomContainer {
+  display: flex;
+  flex-direction: column;
+  height: 83vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.chatInput,
+.chatRoomDetail {
+  flex-shrink: 0;
+  background-color: rgb(247, 247, 247);
+}
+
+.chatMessages {
+  min-height: 67vh;
+  overflow-y: auto;
+}
+
+.infinite-scroll-component__outerdiv {
+  flex-grow: 1;
+}
+
+.alert-fixed-bottom {
+  position: fixed;
+  bottom: 20%;
+  /* 화면 하단에 위치 */
+  left: 0;
+  /* 화면 왼쪽에 위치 */
+  width: 100%;
+  /* 화면 너비에 맞게 조정 */
+  z-index: 1000;
+  /* 다른 컨텐츠 위에 표시되도록 z-index 설정 */
+}
+
+.chat-start {
+  margin-left: 15px;
+}
+
+.chat-end {
+  margin-right: 15px;
+}
+
+.chat-bubble {
+  max-width: 60% !important;
+  white-space: pre-wrap;
+  word-break: break-word;
+  /* 필요한 경우 단어 내에서도 줄바꿈을 허용 */
+  overflow-wrap: break-word;
+  /* 오버플로를 방지하기 위해 단어를 줄바꿈 */
+}
+
+.chat-room-header {
+  display: flex;
+  flex-direction: row;
+  padding: 0.5rem;
+}
+
+.chat-room-header-img {
+  height: 3rem;
+  width: 3rem;
+  border-radius: 30%;
+  object-fit: cover;
+}
+
+.chat-room-header-img img {
+  border-radius: 30%;
+}
+
+.chat-room-box1 {
+  display: flex;
+  margin-left: 1rem;
+  flex-direction: row;
+  flex-grow: 1;
+  justify-content: space-between;
+}
+
+.chat-room-actions {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.chatRoomDetail strong {
+  color: rgb(105, 105, 105);
+}
+
+.action-img {
+  display: flex;
+  align-items: center;
+  height: 2.5rem;
+  width: 2.5rem;
+  object-fit: cover;
+}
+
+.chat-room-input {
+  background-color: white;
+  margin: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  border-radius: 10px;
+}
+
+.chat-room-input-text {
+  display: flex;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  flex-grow: 1;
+  height: auto;
+  outline: none;
+  /* 포커스 시 테두리 제거 */
+  max-height: 9rem;
+}
+
+.chat-room-input-send {
+  margin-right: 0.5rem;
+  height: 2rem;
+  width: 2rem;
+  object-fit: cover;
+}

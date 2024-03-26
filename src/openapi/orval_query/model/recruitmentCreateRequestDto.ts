@@ -10,11 +10,10 @@ import type { LocalTime } from './localTime';
 export interface RecruitmentCreateRequestDto {
   content?: string;
   duration?: LocalTime;
-  id?: number;
   partnerAge?: number;
   partnerGender?: string;
   place?: string;
-  recruit_date?: string;
+  recruitDate?: string;
   routine?: string;
   title?: string;
 }

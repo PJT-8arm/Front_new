@@ -8,5 +8,6 @@
 
 export type ShowMessagesParams = {
 lastId?: number;
+page?: number;
 size?: number;
 };

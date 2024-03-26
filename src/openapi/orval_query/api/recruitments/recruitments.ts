@@ -85,7 +85,10 @@ export const getRecruitmentUpdateMutationOptions = <TError = unknown,
 
       return useMutation(mutationOptions);
     }
-    export const recruitmentAdd = (
+    /**
+ * @summary 모집 글 작성
+ */
+export const recruitmentAdd = (
     recruitmentCreateRequestDto: RecruitmentCreateRequestDto,
  options?: SecondParameter<typeof axiosInstance>,) => {
       
@@ -123,7 +126,10 @@ export const getRecruitmentAddMutationOptions = <TError = unknown,
     export type RecruitmentAddMutationBody = RecruitmentCreateRequestDto
     export type RecruitmentAddMutationError = unknown
 
-    export const useRecruitmentAdd = <TError = unknown,
+    /**
+ * @summary 모집 글 작성
+ */
+export const useRecruitmentAdd = <TError = unknown,
     TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof recruitmentAdd>>, TError,{data: RecruitmentCreateRequestDto}, TContext>, request?: SecondParameter<typeof axiosInstance>}
 ) => {
 
@@ -131,98 +137,9 @@ export const getRecruitmentAddMutationOptions = <TError = unknown,
 
       return useMutation(mutationOptions);
     }
-    export const recruitmentDetails = (
-    id: number,
- options?: SecondParameter<typeof axiosInstance>,signal?: AbortSignal
-) => {
-      
-      
-      return axiosInstance<RecruitmentListDetailResponseDto>(
-      {url: `/api/recruitments/list${id}`, method: 'GET', signal
-    },
-      options);
-    }
-  
-
-export const getRecruitmentDetailsQueryKey = (id: number,) => {
-    return [`/api/recruitments/list${id}`] as const;
-    }
-
-    
-export const getRecruitmentDetailsInfiniteQueryOptions = <TData = InfiniteData<Awaited<ReturnType<typeof recruitmentDetails>>>, TError = unknown>(id: number, options?: { query?:Partial<UseInfiniteQueryOptions<Awaited<ReturnType<typeof recruitmentDetails>>, TError, TData>>, request?: SecondParameter<typeof axiosInstance>}
-) => {
-
-const {query: queryOptions, request: requestOptions} = options ?? {};
-
-  const queryKey =  queryOptions?.queryKey ?? getRecruitmentDetailsQueryKey(id);
-
-  
-
-    const queryFn: QueryFunction<Awaited<ReturnType<typeof recruitmentDetails>>> = ({ signal }) => recruitmentDetails(id, requestOptions, signal);
-
-      
-
-      
-
-   return  { queryKey, queryFn, enabled: !!(id),  staleTime: 10000,  ...queryOptions} as UseInfiniteQueryOptions<Awaited<ReturnType<typeof recruitmentDetails>>, TError, TData> & { queryKey: QueryKey }
-}
-
-export type RecruitmentDetailsInfiniteQueryResult = NonNullable<Awaited<ReturnType<typeof recruitmentDetails>>>
-export type RecruitmentDetailsInfiniteQueryError = unknown
-
-export const useRecruitmentDetailsInfinite = <TData = InfiniteData<Awaited<ReturnType<typeof recruitmentDetails>>>, TError = unknown>(
- id: number, options?: { query?:Partial<UseInfiniteQueryOptions<Awaited<ReturnType<typeof recruitmentDetails>>, TError, TData>>, request?: SecondParameter<typeof axiosInstance>}
-
-  ):  UseInfiniteQueryResult<TData, TError> & { queryKey: QueryKey } => {
-
-  const queryOptions = getRecruitmentDetailsInfiniteQueryOptions(id,options)
-
-  const query = useInfiniteQuery(queryOptions) as  UseInfiniteQueryResult<TData, TError> & { queryKey: QueryKey };
-
-  query.queryKey = queryOptions.queryKey ;
-
-  return query;
-}
-
-
-
-export const getRecruitmentDetailsQueryOptions = <TData = Awaited<ReturnType<typeof recruitmentDetails>>, TError = unknown>(id: number, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof recruitmentDetails>>, TError, TData>>, request?: SecondParameter<typeof axiosInstance>}
-) => {
-
-const {query: queryOptions, request: requestOptions} = options ?? {};
-
-  const queryKey =  queryOptions?.queryKey ?? getRecruitmentDetailsQueryKey(id);
-
-  
-
-    const queryFn: QueryFunction<Awaited<ReturnType<typeof recruitmentDetails>>> = ({ signal }) => recruitmentDetails(id, requestOptions, signal);
-
-      
-
-      
-
-   return  { queryKey, queryFn, enabled: !!(id),  staleTime: 10000,  ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof recruitmentDetails>>, TError, TData> & { queryKey: QueryKey }
-}
-
-export type RecruitmentDetailsQueryResult = NonNullable<Awaited<ReturnType<typeof recruitmentDetails>>>
-export type RecruitmentDetailsQueryError = unknown
-
-export const useRecruitmentDetails = <TData = Awaited<ReturnType<typeof recruitmentDetails>>, TError = unknown>(
- id: number, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof recruitmentDetails>>, TError, TData>>, request?: SecondParameter<typeof axiosInstance>}
-
-  ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } => {
-
-  const queryOptions = getRecruitmentDetailsQueryOptions(id,options)
-
-  const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
-
-  query.queryKey = queryOptions.queryKey ;
-
-  return query;
-}
-
-
-
+    /**
+ * @summary 모집 글 목록
+ */
 export const recruitmentList = (
     
  options?: SecondParameter<typeof axiosInstance>,signal?: AbortSignal
@@ -262,6 +179,9 @@ const {query: queryOptions, request: requestOptions} = options ?? {};
 export type RecruitmentListInfiniteQueryResult = NonNullable<Awaited<ReturnType<typeof recruitmentList>>>
 export type RecruitmentListInfiniteQueryError = unknown
 
+/**
+ * @summary 모집 글 목록
+ */
 export const useRecruitmentListInfinite = <TData = InfiniteData<Awaited<ReturnType<typeof recruitmentList>>>, TError = unknown>(
   options?: { query?:Partial<UseInfiniteQueryOptions<Awaited<ReturnType<typeof recruitmentList>>, TError, TData>>, request?: SecondParameter<typeof axiosInstance>}
 
@@ -299,12 +219,116 @@ const {query: queryOptions, request: requestOptions} = options ?? {};
 export type RecruitmentListQueryResult = NonNullable<Awaited<ReturnType<typeof recruitmentList>>>
 export type RecruitmentListQueryError = unknown
 
+/**
+ * @summary 모집 글 목록
+ */
 export const useRecruitmentList = <TData = Awaited<ReturnType<typeof recruitmentList>>, TError = unknown>(
   options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof recruitmentList>>, TError, TData>>, request?: SecondParameter<typeof axiosInstance>}
 
   ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } => {
 
   const queryOptions = getRecruitmentListQueryOptions(options)
+
+  const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
+
+  query.queryKey = queryOptions.queryKey ;
+
+  return query;
+}
+
+
+
+/**
+ * @summary 모집 글 상세
+ */
+export const recruitmentDetails = (
+    id: number,
+ options?: SecondParameter<typeof axiosInstance>,signal?: AbortSignal
+) => {
+      
+      
+      return axiosInstance<RecruitmentListDetailResponseDto>(
+      {url: `/api/recruitments/list/${id}`, method: 'GET', signal
+    },
+      options);
+    }
+  
+
+export const getRecruitmentDetailsQueryKey = (id: number,) => {
+    return [`/api/recruitments/list/${id}`] as const;
+    }
+
+    
+export const getRecruitmentDetailsInfiniteQueryOptions = <TData = InfiniteData<Awaited<ReturnType<typeof recruitmentDetails>>>, TError = unknown>(id: number, options?: { query?:Partial<UseInfiniteQueryOptions<Awaited<ReturnType<typeof recruitmentDetails>>, TError, TData>>, request?: SecondParameter<typeof axiosInstance>}
+) => {
+
+const {query: queryOptions, request: requestOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getRecruitmentDetailsQueryKey(id);
+
+  
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof recruitmentDetails>>> = ({ signal }) => recruitmentDetails(id, requestOptions, signal);
+
+      
+
+      
+
+   return  { queryKey, queryFn, enabled: !!(id),  staleTime: 10000,  ...queryOptions} as UseInfiniteQueryOptions<Awaited<ReturnType<typeof recruitmentDetails>>, TError, TData> & { queryKey: QueryKey }
+}
+
+export type RecruitmentDetailsInfiniteQueryResult = NonNullable<Awaited<ReturnType<typeof recruitmentDetails>>>
+export type RecruitmentDetailsInfiniteQueryError = unknown
+
+/**
+ * @summary 모집 글 상세
+ */
+export const useRecruitmentDetailsInfinite = <TData = InfiniteData<Awaited<ReturnType<typeof recruitmentDetails>>>, TError = unknown>(
+ id: number, options?: { query?:Partial<UseInfiniteQueryOptions<Awaited<ReturnType<typeof recruitmentDetails>>, TError, TData>>, request?: SecondParameter<typeof axiosInstance>}
+
+  ):  UseInfiniteQueryResult<TData, TError> & { queryKey: QueryKey } => {
+
+  const queryOptions = getRecruitmentDetailsInfiniteQueryOptions(id,options)
+
+  const query = useInfiniteQuery(queryOptions) as  UseInfiniteQueryResult<TData, TError> & { queryKey: QueryKey };
+
+  query.queryKey = queryOptions.queryKey ;
+
+  return query;
+}
+
+
+
+export const getRecruitmentDetailsQueryOptions = <TData = Awaited<ReturnType<typeof recruitmentDetails>>, TError = unknown>(id: number, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof recruitmentDetails>>, TError, TData>>, request?: SecondParameter<typeof axiosInstance>}
+) => {
+
+const {query: queryOptions, request: requestOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getRecruitmentDetailsQueryKey(id);
+
+  
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof recruitmentDetails>>> = ({ signal }) => recruitmentDetails(id, requestOptions, signal);
+
+      
+
+      
+
+   return  { queryKey, queryFn, enabled: !!(id),  staleTime: 10000,  ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof recruitmentDetails>>, TError, TData> & { queryKey: QueryKey }
+}
+
+export type RecruitmentDetailsQueryResult = NonNullable<Awaited<ReturnType<typeof recruitmentDetails>>>
+export type RecruitmentDetailsQueryError = unknown
+
+/**
+ * @summary 모집 글 상세
+ */
+export const useRecruitmentDetails = <TData = Awaited<ReturnType<typeof recruitmentDetails>>, TError = unknown>(
+ id: number, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof recruitmentDetails>>, TError, TData>>, request?: SecondParameter<typeof axiosInstance>}
+
+  ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } => {
+
+  const queryOptions = getRecruitmentDetailsQueryOptions(id,options)
 
   const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
 
