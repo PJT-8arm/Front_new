@@ -15,7 +15,6 @@ import Myrecruitment from './components/member/mypage/myrecruitment/Myrecruitmen
 import ModifyInfo from './components/member/mypage/modifyInfo/ModifyInfo';
 import MypageList from './components/member/mypage/MypageList';
 import Profile from './components/member/mypage/profile/Profile';
-import Topbar from './components/Topbar'
 import './App.css'
 import Upload from './components/file/Upload';
 
