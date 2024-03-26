@@ -70,7 +70,8 @@ const ChatRoomDetail = () => {
                         (<input
                             type="text"
                             defaultValue={roomDetail.chatRoomName}
-                            onKeyPress={handleNameChange}
+                            className='chat-room-modify-name'
+                            onKeyUp={handleNameChange}
                         />)
                         : (<strong>{roomDetail.chatRoomName}</strong>)}
                     <div className="text-xs opacity-50">참여자 2명</div>
