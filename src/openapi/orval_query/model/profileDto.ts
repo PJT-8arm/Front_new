@@ -12,6 +12,7 @@ export interface ProfileDto {
   benchPress?: number;
   deadLift?: number;
   gender?: ProfileDtoGender;
+  id?: number;
   squat?: number;
   totalWeight?: number;
 }
