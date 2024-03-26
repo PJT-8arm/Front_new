@@ -7,6 +7,7 @@
  */
 
 export interface MemberModifyDto {
+  address?: string;
   imgUrl?: string;
   name?: string;
   nickname?: string;
