@@ -6,8 +6,10 @@
 .cardbody {
     height: 120px;
     width: 340px;
+    margin-top: 0.5rem;
     display : flex;
     align-items: center;
+    justify-content: center;
 }
 
 
@@ -31,6 +33,12 @@
 
 .title{
     font-size: 24px;
+    
+
+}
+
+.titlebox{
+    height: 36px;
 }
 
 .content{
@@ -52,4 +60,10 @@
 .date{
     font-size: 10px;
     text-align: end;
+}
+
+.pagination{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
 }

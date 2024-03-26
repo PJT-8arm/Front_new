@@ -150,9 +150,9 @@ const RecruitmentForm = () => {
                 className="select select-bordered w-full mb-2"
             >
                 <option value="">성별 선택</option>
-                <option value="male">남성</option>
-                <option value="female">여성</option>
-                <option value="any">무관</option>
+                <option value="남성">남성</option>
+                <option value="여성">여성</option>
+                <option value="성별 무관">무관</option>
             </select>
 
             <input

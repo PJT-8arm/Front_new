@@ -18,14 +18,18 @@ import Profile from './components/member/mypage/profile/Profile';
 import Topbar from './components/Topbar'
 import './App.css'
 
+
+
+
+
 function App() {
   const [isLogined, setlogin] = useState(false);
+
 
   return (
     <AuthProvider>
       <Router>
         <div className='App'>
-          <Topbar />
           <main className='main-content'>
             <Routes>
               {/* 약속 화면으로 접근했을 때 보여줄 컴포넌트 */}
