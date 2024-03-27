@@ -1,0 +1,12 @@
+.profile-uploading-img {
+    margin-top: 1rem;
+    height: 10rem;
+    width: 10rem;
+    object-fit: cover;
+    display: flex;
+}
+
+
+.file-uploading {
+    margin-top: 1rem;
+}

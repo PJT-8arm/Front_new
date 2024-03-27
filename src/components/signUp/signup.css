@@ -90,3 +90,10 @@ body {
   width: 200px; /* 입력 필드 너비 조정 */
   max-width: 100%;
 }
+
+.profile-image-uploading-container {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  align-self: start;
+}

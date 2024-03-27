@@ -61,3 +61,11 @@
     font-size: 0.9rem;
     font-weight: bold;
   }
+
+  .chat-list-none {
+    display: flex;
+    margin-top: 3rem;
+    justify-content: center;
+    font-weight: bold;
+    color: darkgray;
+  }

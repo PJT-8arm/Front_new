@@ -75,6 +75,7 @@ const ChatRoomList = () => {
 
     return (
         <>
+            {data.length===0 && <h2 className='chat-list-none'>채팅 내역이 없습니다.</h2>}
             {data && data.map((chatRoom) => (
                 <div className='chat-list-container card bg-base-100 shadow-xl'
                     key={chatRoom.chatRoomId}
