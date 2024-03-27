@@ -78,7 +78,7 @@ const ChatRoomDetail = () => {
                 </div>
                 <div className="chat-room-actions">
                     <div onClick={() => { setShowDropdown(!showDropdown) }} className='action-img'>
-                        <img src={showDropdown ? '/src/assets/chevron-up.svg' : '/src/assets/menu.svg'} />
+                        <img src={showDropdown ? '/public/chevron-up.svg' : '/public/menu.svg'} />
                     </div>
                     {showDropdown && (<ChatDropDown onModify={handleModifyStart} />)}
                 </div>

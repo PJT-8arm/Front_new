@@ -36,7 +36,7 @@ function LoginPage() {
     return (
         <div className="container">
             <div className='title' style={{width : '16rem'}}>
-                <img src='/src/logo.png'></img>
+                <img src='/public/logo.png'></img>
             </div>
             <form className="login-form" onSubmit={onSubmitHandler}>
                 <div className="label-container">
@@ -57,7 +57,7 @@ function LoginPage() {
                 </div>
                 {/* 버튼으로 회원가입 페이지로 이동 */}
                 <button type="button" className="signup-link" onClick={goToRegisterPage}>
-                    <img src='/src/join.png'></img> 
+                    <img src='/public/join.png'></img> 
                     <p>회원가입</p>
                 </button> {/* 회원가입 버튼 추가 */}
             </form>
