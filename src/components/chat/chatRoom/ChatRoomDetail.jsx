@@ -70,14 +70,15 @@ const ChatRoomDetail = () => {
                         (<input
                             type="text"
                             defaultValue={roomDetail.chatRoomName}
-                            onKeyPress={handleNameChange}
+                            className='chat-room-modify-name'
+                            onKeyUp={handleNameChange}
                         />)
                         : (<strong>{roomDetail.chatRoomName}</strong>)}
                     <div className="text-xs opacity-50">참여자 2명</div>
                 </div>
                 <div className="chat-room-actions">
                     <div onClick={() => { setShowDropdown(!showDropdown) }} className='action-img'>
-                        <img src={showDropdown ? '/src/assets/chevron-up.svg' : '/src/assets/menu.svg'} />
+                        <img src={showDropdown ? '/images/chevron-up.svg' : '/images/menu.svg'} />
                     </div>
                     {showDropdown && (<ChatDropDown onModify={handleModifyStart} />)}
                 </div>

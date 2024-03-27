@@ -121,7 +121,7 @@ function Home() {
            </div>
             <div className='Topbar' style={{position: 'fixed', top: 0, left: 0, right: 0, zIndex: 999, display: 'flex', backgroundColor: 'white' }}>
               <div className='logo' style={{margin:'0.5rem 1rem 0rem 1rem'}}>
-                <img src='/src/logo.png' alt='로고 이미지'/>
+                <img src='/images/logo.png' alt='로고 이미지'/>
               </div>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', margin:'0.5rem 1rem 0.5rem 1rem'}}>
                 <label style={{ height: 30, width: 180 }} className="input input-bordered flex items-center">

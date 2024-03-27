@@ -44,7 +44,7 @@ function Mypage(props) {
                 {user?.imgUrl !== null &&
                     (<img className='w-20 h-20 rounded-full' src={user?.imgUrl} alt="null" />)}
                 {user?.imgUrl === null &&
-                    (<img className='w-20 h-20 rounded-full' src={"src/assets/sinsegeong.png"} alt="sinsegeong2" />)}
+                    (<img className='w-20 h-20 rounded-full' src={"/images/sinsegeong.png"} alt="sinsegeong2" />)}
 
                 <p>{user?.nickname + "님"}</p>
                 <button className='btn btn-outline btn-error btn-sm' onClick={handleLogout}>로그아웃</button>
