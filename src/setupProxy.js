@@ -4,7 +4,7 @@ module.exports = function(app) {
   app.use(
     '/ws',
     createProxyMiddleware({
-      target: 'http://localhost:8080',
+      target: 'http://api.arm.genj.me',
       changeOrigin: true,
       ws: true,
     })

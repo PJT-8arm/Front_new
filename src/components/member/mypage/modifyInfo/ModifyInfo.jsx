@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useMypageDetails, useMypageModifyDetails } from '../../../../openapi/orval_query/api/mypage-controller/mypage-controller';
 import { Form, Link } from 'react-router-dom';
+import Upload from '../../../file/Upload';
 
 function ModifyInfo(props) {
     const { data: memberDto, isLoading: loadingGet, isError: ErrorGet } = useMypageDetails();
@@ -8,6 +9,8 @@ function ModifyInfo(props) {
     // console.log("memberDto : ", memberDto);
     // console.log("memberDto.name : ", memberDto.name);
     // console.log("refname:", refName.current.value);
+    const [imgUrl, setImgUrl] = useState();
+
 
     const [formdata, setFormdata] = useState({
         username: "",
@@ -64,7 +67,7 @@ function ModifyInfo(props) {
         event.preventDefault();
 
         const memberModifyDto = {
-            imgUrl: formdata.imgUrl,
+            imgUrl: imgUrl,
             name: formdata.name,
             nickname: formdata.nickname,
             postPassword: formdata.postPassword,
@@ -119,7 +122,7 @@ function ModifyInfo(props) {
                     </div>
                     <button onClick={sample5_execDaumPostcode} className="btn btn-primary">주소 검색</button>
                 </div>
-
+                <Upload setImgUrl={setImgUrl}/>
                 <div className='flex justify-center items-center'>
                     <button className='btn btn-primary m-4' type='submit'>수정</button>
                     <button className='btn btn-primary m-4'><Link to="/mypage/list">이전</Link></button>
