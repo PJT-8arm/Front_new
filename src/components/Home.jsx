@@ -11,13 +11,13 @@ function Home() {
 
 
     const axiosInstance = axios.create({
-        baseURL: 'http://api.arm.genj.me/api/'
+        baseURL: 'http://api.arm.genj.me/'
     })
   
     useEffect(() => {
       const fetchRecruitmentData = async () => {
         try {
-          const response = await axiosInstance.get('recruitments/list');
+          const response = await axiosInstance.get('/recruitments/list');
           // 등록 시간이 늦은 순으로 정렬
           const sortedData = response.data.sort((a, b) => new Date(b.recruitmentDto.recruit_date) - new Date(a.recruitmentDto.recruit_date));
           setRecruitmentData(sortedData);

@@ -28,7 +28,7 @@ const RecruitmentForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axiosInstance.post('recruitments/write', formData);
+            const response = await axiosInstance.post('/recruitments/write', formData);
             alert('모집 글이 성공적으로 생성되었습니다!');
             // 폼 데이터 초기화 또는 추가 작업
         } catch (error) {
