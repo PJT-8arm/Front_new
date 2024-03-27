@@ -10,6 +10,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  margin-top: -2rem;
 }
 
 .signup-form {
@@ -18,15 +19,17 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  width: 20rem;
+  font-size: 14px;
 }
 
 .input-label {
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: bold;
+  text-align: center;
   color: #282c34;
-  margin-bottom: 8px;
+  padding-top: 12px;
 }
 
 .input-forms-item {
@@ -35,8 +38,6 @@ body {
 
 .input-forms-item input {
   width: 100%;
-  padding: 8px;
-  margin-top: 4px;
   border: 1px solid #ddd;
   border-radius: 5px;
   box-sizing: border-box;
@@ -51,8 +52,10 @@ body {
 
 .button-container {
   display: flex;
-  justify-content: center; /* 중앙 정렬 */
-  align-items: center; /* 세로 정렬 */
+  justify-content: center;
+  /* 중앙 정렬 */
+  align-items: center;
+  /* 세로 정렬 */
   margin-top: 20px;
 }
 
@@ -73,20 +76,52 @@ body {
 /* 추가된 스타일: 폼 요소들을 오른쪽으로 배치 */
 .input-forms-item {
   display: flex;
-  flex-direction: row; /* 가로 배치 */
-  justify-content: flex-end; /* 오른쪽 정렬 */
+  flex-direction: row;
+  /* 가로 배치 */
+  justify-content: flex-end;
+  /* 오른쪽 정렬 */
   align-items: center;
   width: 100%;
-  flex-wrap: nowrap; /* 한 줄로만 표시되도록 설정 */
+  flex-wrap: nowrap;
+  /* 한 줄로만 표시되도록 설정 */
 }
 
 .input-label {
-  width: 140px; /* 라벨 너비 조정 */
-  margin-right: 20px; /* 라벨과 입력 필드 간격 조정 */
-  flex-wrap: nowrap; /* 한 줄로만 표시되도록 설정 */
+  width: 100px;
+  /* 라벨 너비 조정 */
+  margin-right: 0px;
+  /* 라벨과 입력 필드 간격 조정 */
+  flex-wrap: nowrap;
+  /* 한 줄로만 표시되도록 설정 */
 }
 
 .input-forms-item input {
-  width: 200px; /* 입력 필드 너비 조정 */
+  width: 200px;
+  /* 입력 필드 너비 조정 */
   max-width: 100%;
+  height: 35px;
+}
+
+.profile-image-uploading-container {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  align-self: start;
+}
+
+.memberjoin {
+  display: flex;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+.memberjoin>img {
+  width: 2.5rem;
+  height: 2rem;
+  margin-right: 1rem;
+}
+
+.memberjoin>p {
+  font-size: 1.5rem;
+  font-weight: bold;
 }

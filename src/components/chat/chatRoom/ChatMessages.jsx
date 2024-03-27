@@ -24,7 +24,7 @@ const ChatMessages = () => {
   const [scrollTop, setScrollTop] = useState(0);
 
   function initializeWebSocketConnection(roomId) {
-    const socket = new SockJS('http://localhost:8080/ws');
+    const socket = new SockJS('http://api.arm.genj.me/ws');
     const stompClient = Stomp.over(socket);
     stompClient.connect({}, frame => {
       console.log('Connected: ' + frame);
@@ -148,7 +148,7 @@ const ChatMessages = () => {
         inverse={true}
         hasMore={hasNext} // 더 로딩할 페이지가 있는지 여부
         loader={<h4>Loading...2</h4>}
-        endMessage={<p style={{ textAlign: 'center' }}>마지막 메세지입니다.</p>}
+        endMessage={<p style={{ textAlign: 'center', color: 'darkgray', fontWeight: 'bold' }}>마지막 메세지입니다.</p>}
         scrollableTarget="scrollableDiv"
       >
         {messages.map((message, index) => (

@@ -6,9 +6,7 @@
  * OpenAPI spec version: 1.0.0
  */
 
-export interface MemberInfoDto {
-  address?: string;
-  imgUrl?: string;
-  name?: string;
-  nickname?: string;
+export interface PreSignedUrlRequestBody {
+  fileName?: string;
+  prefix?: string;
 }
