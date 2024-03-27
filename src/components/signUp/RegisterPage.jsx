@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './signup.css';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import Upload from '../file/Upload';
 
 function RegisterPage() {
   const [name, setName] = useState('');
@@ -10,6 +11,7 @@ function RegisterPage() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
+  const [imgUrl, setImgUrl] = useState();
   const navigate = useNavigate();
 
   const axiosInstance = axios.create({
@@ -50,7 +52,8 @@ function RegisterPage() {
         name,
         username,
         nickname,
-        password
+        password,
+        imgUrl
       });
 
       console.log('회원가입 성공:', response.data);
@@ -67,7 +70,7 @@ function RegisterPage() {
   return (
     <div className='container'>
       <div className='memberjoin'>
-        <img src='/src/join.png'></img>
+        <img src='/images/join.png'></img>
         <p>회원가입</p>
       </div>
       <form className='signup-form' onSubmit={onSubmitHandler}>
@@ -91,10 +94,16 @@ function RegisterPage() {
           <label className='input-label'>비밀번호 확인</label>
           <input type='password' value={confirmPassword} onChange={onConfirmPasswordHandler} />
         </div>
+        <div className='profile-image-uploading-container'>
+          <label className='input-label'>프로필 사진</label>
+          <Upload setImgUrl={setImgUrl}/>
+        </div>
+        
         {error && <p style={{ color: 'red' }}>{error}</p>}
         <div className='button-container'>
           <button type='submit'>가입하기</button>
         </div>
+        
       </form>
     </div>
   );
