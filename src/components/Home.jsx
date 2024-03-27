@@ -11,13 +11,21 @@ function Home() {
 
 
     const axiosInstance = axios.create({
+<<<<<<< HEAD
         baseURL: 'http://api.arm.genj.me/'
+=======
+        baseURL: 'http://localhost:8080/api/'
+>>>>>>> 37e3792 (7/e/mainpage (#36))
     })
   
     useEffect(() => {
       const fetchRecruitmentData = async () => {
         try {
+<<<<<<< HEAD
           const response = await axiosInstance.get('/recruitments/list');
+=======
+          const response = await axiosInstance.get('recruitments/list');
+>>>>>>> 37e3792 (7/e/mainpage (#36))
           // 등록 시간이 늦은 순으로 정렬
           const sortedData = response.data.sort((a, b) => new Date(b.recruitmentDto.recruit_date) - new Date(a.recruitmentDto.recruit_date));
           setRecruitmentData(sortedData);
@@ -110,11 +118,17 @@ function Home() {
 
         return paginationButtons;
     };
+
+    
   
       
   return (
     <div>
+<<<<<<< HEAD
            <div style={{marginTop: '3rem'}}> {/* 상단에 고정된 Topbar 높이 만큼 공간 확보 */}
+=======
+           <div style={{marginTop: '4rem'}}> {/* 상단에 고정된 Topbar 높이 만큼 공간 확보 */}
+>>>>>>> 37e3792 (7/e/mainpage (#36))
             {/* 이하 내용은 그대로 유지 */}
            </div>
             <div className='Topbar' style={{position: 'fixed', top: 0, left: 0, right: 0, zIndex: 999, display: 'flex', backgroundColor: 'white' }}>
@@ -144,7 +158,11 @@ function Home() {
       <ul>
       <Link to={`/recruitments/write`}>
         <div style={{display: 'flex', justifyContent : 'end', marginRight: '1rem'}}>
+<<<<<<< HEAD
             <button className="btn  btn-sm " style={{fontSize: '1rem'}}>📝 모집글 작성</button>
+=======
+            <button className="btn  btn-sm " style={{fontSize: '1rem'}}>📝 모집글 작성하기</button>
+>>>>>>> 37e3792 (7/e/mainpage (#36))
         </div>
         </Link>
         {/* 현재 페이지의 데이터만 반복하여 표시합니다. */}

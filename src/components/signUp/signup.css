@@ -125,3 +125,20 @@ body {
   font-size: 1.5rem;
   font-weight: bold;
 }
+
+.memberjoin{
+  display: flex;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+.memberjoin > img {
+  width: 2.5rem;
+  height: 2rem;
+  margin-right: 1rem;
+}
+
+.memberjoin > p {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
