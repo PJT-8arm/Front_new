@@ -405,6 +405,3 @@ export const useMypageMyRecruitment = <TData = Awaited<ReturnType<typeof mypageM
 
   return query;
 }
-
-
-

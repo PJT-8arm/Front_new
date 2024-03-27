@@ -14,6 +14,10 @@ function RegisterPage() {
   const [imgUrl, setImgUrl] = useState();
   const navigate = useNavigate();
 
+  const axiosInstance = axios.create({
+      baseURL: 'http://localhost:8080/api/'
+  })
+
   const onNameHandler = (event) => {
     setName(event.currentTarget.value);
   }
@@ -34,6 +38,7 @@ function RegisterPage() {
     setConfirmPassword(event.currentTarget.value);
   }
 
+  
   const onSubmitHandler = async (event) => {
     event.preventDefault();
 
@@ -43,7 +48,7 @@ function RegisterPage() {
     }
 
     try {
-      const response = await axios.post('http://localhost:8080/api/members/join', { 
+      const response = await axiosInstance.post('members/join', { 
         name,
         username,
         nickname,
@@ -64,6 +69,10 @@ function RegisterPage() {
 
   return (
     <div className='container'>
+      <div className='memberjoin'>
+        <img src='/src/join.png'></img>
+        <p>회원가입</p>
+      </div>
       <form className='signup-form' onSubmit={onSubmitHandler}>
         <div className='input-forms-item'>
           <label className='input-label'>이름</label>

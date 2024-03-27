@@ -35,30 +35,32 @@ function LoginPage() {
 
     return (
         <div className="container">
+            <div className='title' style={{width : '16rem'}}>
+                <img src='/src/logo.png'></img>
+            </div>
             <form className="login-form" onSubmit={onSubmitHandler}>
-                <div className='title'>
-                    <p>8Arm💪</p>
-                </div>
                 <div className="label-container">
                     <div className='content'>
                         <label>아이디</label>
                     </div>
-                <input type="text" ref={usernameRef} />
+                <input type="text" ref={usernameRef} style={{width : '100%'}} />
                 </div>
                 <div className="label-container">
                     <div className='content'>
                         <label>비밀번호</label>
                     </div>
-                <input type="password" ref={passwordRef} />
+                <input type="password" ref={passwordRef} style={{width : '100%'}}/>
                 {isError && <p style={{ color: 'red' }}>{errorMessage || error}</p>}
                 </div>
                 <div className='button-container'>
                     <button type="submit" className="login-button">로그인</button> {/* 로그인 버튼에 클래스 추가 */}
                 </div>
                 {/* 버튼으로 회원가입 페이지로 이동 */}
-                <button type="button" className="signup-link" onClick={goToRegisterPage}>📝회원가입</button> {/* 회원가입 버튼 추가 */}
+                <button type="button" className="signup-link" onClick={goToRegisterPage}>
+                    <img src='/src/join.png'></img> 
+                    <p>회원가입</p>
+                </button> {/* 회원가입 버튼 추가 */}
             </form>
-            <div style={{ minHeight: '50px' }}></div> {/* 로그인 버튼이 항상 표시되도록 빈 div 추가 */}
         </div>
     );
 }

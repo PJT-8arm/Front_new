@@ -8,6 +8,7 @@
 import type { ProfileDto } from './profileDto';
 
 export interface MemberDto {
+  address?: string;
   id?: number;
   imgUrl?: string;
   name?: string;

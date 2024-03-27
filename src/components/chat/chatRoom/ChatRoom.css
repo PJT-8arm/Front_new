@@ -2,7 +2,7 @@
 .chatRoomContainer {
   display: flex;
   flex-direction: column;
-  height: 83vh;
+  height: 90.3vh;
   width: 100vw;
   overflow: hidden;
 }
@@ -14,7 +14,7 @@
 }
 
 .chatMessages {
-  min-height: 67vh;
+  height: 90.3vh;
   overflow-y: auto;
 }
 
