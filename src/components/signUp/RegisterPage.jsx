@@ -15,7 +15,7 @@ function RegisterPage() {
   const navigate = useNavigate();
 
   const axiosInstance = axios.create({
-      baseURL: 'http://api.arm.genj.me/api/'
+      baseURL: 'http://api.arm.genj.me/'
   })
 
   const onNameHandler = (event) => {
@@ -48,7 +48,7 @@ function RegisterPage() {
     }
 
     try {
-      const response = await axiosInstance.post('members/join', { 
+      const response = await axiosInstance.post('/members/join', { 
         name,
         username,
         nickname,

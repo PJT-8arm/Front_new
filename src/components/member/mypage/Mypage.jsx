@@ -47,7 +47,7 @@ function Mypage(props) {
                     (<img className='w-20 h-20 rounded-full' src={"/images/sinsegeong.png"} alt="sinsegeong2" />)}
 
                 <p>{user?.nickname + "님"}</p>
-                <button className='btn btn-primary' onClick={handleLogout}>로그아웃</button>
+                <button className='btn btn-sm btn-outline btn-error' onClick={handleLogout}>로그아웃</button>
             </section>
             <div className='p-2 divider' />
             <main>
