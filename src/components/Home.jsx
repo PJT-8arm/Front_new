@@ -116,7 +116,7 @@ function Home() {
       
   return (
     <div>
-           <div style={{marginTop: '4rem'}}> {/* 상단에 고정된 Topbar 높이 만큼 공간 확보 */}
+           <div style={{marginTop: '3rem'}}> {/* 상단에 고정된 Topbar 높이 만큼 공간 확보 */}
             {/* 이하 내용은 그대로 유지 */}
            </div>
             <div className='Topbar' style={{position: 'fixed', top: 0, left: 0, right: 0, zIndex: 999, display: 'flex', backgroundColor: 'white' }}>
