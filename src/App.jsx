@@ -15,12 +15,10 @@ import Myrecruitment from './components/member/mypage/myrecruitment/Myrecruitmen
 import ModifyInfo from './components/member/mypage/modifyInfo/ModifyInfo';
 import MypageList from './components/member/mypage/MypageList';
 import Profile from './components/member/mypage/profile/Profile';
+import AppointmentForm from './components/appointment/AppointmentForm';
+import AppointmentList from './components/appointment/AppointmentList';
 import Topbar from './components/Topbar'
 import './App.css'
-
-
-
-
 
 function App() {
   const [isLogined, setlogin] = useState(false);
@@ -59,6 +57,10 @@ function App() {
               <Route path="/recruitments/detail/:id" element={<RecruitmentDetail />} />
               {/* 다른 모든 경로에 대한 처리. 404 페이지나 메인 페이지 리다이렉트 등의 로직을 추가할 수 있습니다. */}
               <Route path='/profile' element={<UserProfile />} />
+              {/* 약속 작성페이지 컴포넌트 */}
+              <Route path="/appointment/write" element={<AppointmentForm />} />
+              {/* 약속 목록 컴포넌트 */}
+              <Route path="/appointment/list" element={<AppointmentList />} />
             </Routes>
           </main>
           <footer className='h-16 w-full Navbar'>
