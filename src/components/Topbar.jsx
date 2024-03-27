@@ -5,7 +5,7 @@ const Topbar = () => {
     return (
         <div className='Topbar' style={{ display: 'flex' }}>
             <div className='logo' style={{ margin: '0.5rem 1rem 0rem 1rem' }}>
-                <img src='/public/logo.png' alt='로고 이미지' />
+                <img src='/images/logo.png' alt='로고 이미지' />
             </div>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0.5rem 1rem 0rem 1rem' }}>
                 <label style={{ height: 40, width: 180 }} className="input input-bordered flex items-center">

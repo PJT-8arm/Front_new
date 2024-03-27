@@ -40,7 +40,7 @@ const ChatInput = () => {
                     onInput={adjustTextareaHeight} // 사용자 입력시 높이 조정
                 />
                 <button className='chat-room-input-send' type="submit">
-                    <img src='/public/send-button.svg' alt='전송버튼' />
+                    <img src='/images/send-button.svg' alt='전송버튼' />
                 </button>
             </form>
             {isError && <p style={{ color: 'red' }}>메시지 전송 실패: {error?.message}</p>}

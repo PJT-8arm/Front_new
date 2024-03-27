@@ -70,7 +70,7 @@ function RegisterPage() {
   return (
     <div className='container'>
       <div className='memberjoin'>
-        <img src='/public/join.png'></img>
+        <img src='/images/join.png'></img>
         <p>회원가입</p>
       </div>
       <form className='signup-form' onSubmit={onSubmitHandler}>
