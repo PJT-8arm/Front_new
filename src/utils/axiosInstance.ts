@@ -1,7 +1,7 @@
 import Axios, { AxiosError, AxiosRequestConfig } from 'axios';
 
 export const AXIOS_INSTANCE = Axios.create({
-    baseURL: "https://app.genj.me",
+    baseURL: "https://api.arm.genj.me",
     withCredentials: true // 여기에 withCredentials 옵션을 추가하여 모든 요청에 적용
   });
 
