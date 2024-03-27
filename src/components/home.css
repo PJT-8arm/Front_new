@@ -31,14 +31,14 @@
     border-radius: 50%; /* 반지름이 요소의 절반 크기인 원 모양을 만듭니다. */
 }
 
-.title{
-    font-size: 24px;
-    
-
+.title {
+    font-size: 20px;
 }
 
 .titlebox{
-    height: 36px;
+    height: 30px;
+    padding-top: 1.3rem;
+    padding-bottom: 1.3rem;
 }
 
 .content{
