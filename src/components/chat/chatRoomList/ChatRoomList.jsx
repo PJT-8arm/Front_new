@@ -15,17 +15,14 @@ const ChatRoomList = () => {
     const [showDropdown, setShowDropdown] = useState(false);
     const [dropdownPosition, setDropdownPosition] = useState({ x: 0, y: 0 });
     const { handleExitChatRoom } = useExitChatRoom();
-<<<<<<< HEAD
     const [chatRooms, setChatRooms] = useState([]);
-=======
->>>>>>> main
 
     const handleNewMessage = () => {
         refetch();
     };
 
     function initializeWebSocketConnection() {
-        const socket = new SockJS('http://localhost:8080/ws');
+        const socket = new SockJS('http://api.arm.genj.me/ws');
         const stompClient = Stomp.over(socket);
         stompClient.connect({}, frame => {
             console.log('Connected: ' + frame);
@@ -77,7 +74,6 @@ const ChatRoomList = () => {
         initializeWebSocketConnection();
     }, [])
 
-<<<<<<< HEAD
     useEffect(() => {
         if (data) {
             setChatRooms(data);
@@ -88,11 +84,6 @@ const ChatRoomList = () => {
         <>
             {(chatRooms == null || chatRooms.length === 0) && <h2 className='chat-list-none'>채팅 내역이 없습니다.</h2>}
             {chatRooms && chatRooms.map((chatRoom) => (
-=======
-    return (
-        <>
-            {data && data.map((chatRoom) => (
->>>>>>> main
                 <div className='chat-list-container card bg-base-100 shadow-xl'
                     key={chatRoom.chatRoomId}
                     onClick={() => handleRoomClick(chatRoom.chatRoomId)}

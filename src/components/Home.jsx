@@ -10,22 +10,14 @@ function Home() {
     const [searchTerm, setSearchTerm] = useState(''); // 검색어 상태
 
 
-<<<<<<< HEAD
     const axiosInstance = axios.create({
-        baseURL: 'http://localhost:8080/api/'
+        baseURL: 'http://api.arm.genj.me/api/'
     })
-=======
-
->>>>>>> main
   
     useEffect(() => {
       const fetchRecruitmentData = async () => {
         try {
-<<<<<<< HEAD
           const response = await axiosInstance.get('recruitments/list');
-=======
-          const response = await axios.get('http://localhost:8080/api/recruitments/list');
->>>>>>> main
           // 등록 시간이 늦은 순으로 정렬
           const sortedData = response.data.sort((a, b) => new Date(b.recruitmentDto.recruit_date) - new Date(a.recruitmentDto.recruit_date));
           setRecruitmentData(sortedData);
@@ -118,35 +110,20 @@ function Home() {
 
         return paginationButtons;
     };
-<<<<<<< HEAD
-
-    
-=======
->>>>>>> main
   
       
   return (
     <div>
-<<<<<<< HEAD
            <div style={{marginTop: '4rem'}}> {/* 상단에 고정된 Topbar 높이 만큼 공간 확보 */}
             {/* 이하 내용은 그대로 유지 */}
            </div>
             <div className='Topbar' style={{position: 'fixed', top: 0, left: 0, right: 0, zIndex: 999, display: 'flex', backgroundColor: 'white' }}>
               <div className='logo' style={{margin:'0.5rem 1rem 0rem 1rem'}}>
                 <img src='/images/logo.png' alt='로고 이미지'/>
-=======
-         <div className='Topbar' style={{display: 'flex', justifyContent: 'space-evenly', marginBottom: '5px'}}>
-              <div className='logo' style={{margin:'0.5rem 1rem 0rem 1rem'}}>
-                <img src='/src/logo.png' alt='로고 이미지'/>
->>>>>>> main
               </div>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', margin:'0.5rem 1rem 0.5rem 1rem'}}>
                 <label style={{ height: 30, width: 180 }} className="input input-bordered flex items-center">
                   <input
-<<<<<<< HEAD
-=======
-                    style={{ paddingRight: '2rem' }}
->>>>>>> main
                     type="text"
                     className="grow"
                     placeholder="Search"
@@ -165,14 +142,11 @@ function Home() {
               </div>
             </div>
       <ul>
-<<<<<<< HEAD
       <Link to={`/recruitments/write`}>
         <div style={{display: 'flex', justifyContent : 'end', marginRight: '1rem'}}>
             <button className="btn  btn-sm " style={{fontSize: '1rem'}}>📝 모집글 작성하기</button>
         </div>
         </Link>
-=======
->>>>>>> main
         {/* 현재 페이지의 데이터만 반복하여 표시합니다. */}
         {currentItems.map((item, index) => (
           <li key={index}>
@@ -208,17 +182,11 @@ function Home() {
         ))}
       </ul>
       {/* 페이지네이션 버튼 */}
-<<<<<<< HEAD
       {currentItems.length > 0 && (
       <ul className="pagination" >
         {renderPagination()}
         </ul>
       )}
-=======
-      <ul className="pagination">
-        {renderPagination()}
-        </ul>
->>>>>>> main
     </div>
   );
 }

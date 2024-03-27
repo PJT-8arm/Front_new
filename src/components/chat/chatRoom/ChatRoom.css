@@ -2,11 +2,7 @@
 .chatRoomContainer {
   display: flex;
   flex-direction: column;
-<<<<<<< HEAD
   height: 90.3vh;
-=======
-  height: 83vh;
->>>>>>> main
   width: 100vw;
   overflow: hidden;
 }
@@ -18,11 +14,7 @@
 }
 
 .chatMessages {
-<<<<<<< HEAD
   height: 90.3vh;
-=======
-  min-height: 67vh;
->>>>>>> main
   overflow-y: auto;
 }
 
@@ -126,12 +118,9 @@
   height: 2rem;
   width: 2rem;
   object-fit: cover;
-<<<<<<< HEAD
 }
 
 .chat-room-modify-name {
   border: 1px solid rgb(48, 48, 48);
   padding-left: 0.5rem;
-=======
->>>>>>> main
 }

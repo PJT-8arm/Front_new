@@ -31,7 +31,6 @@
     border-radius: 50%; /* 반지름이 요소의 절반 크기인 원 모양을 만듭니다. */
 }
 
-<<<<<<< HEAD
 .title {
     font-size: 20px;
 }
@@ -40,16 +39,6 @@
     height: 30px;
     padding-top: 1.3rem;
     padding-bottom: 1.3rem;
-=======
-.title{
-    font-size: 24px;
-    
-
-}
-
-.titlebox{
-    height: 36px;
->>>>>>> main
 }
 
 .content{

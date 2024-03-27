@@ -30,11 +30,8 @@ export * from './mypageDetails200';
 export * from './mypageMyRecruitmentParams';
 export * from './pageRecruitmentListResponseDto';
 export * from './pageableObject';
-<<<<<<< HEAD
 export * from './preSignedUrlDto';
 export * from './preSignedUrlRequestBody';
-=======
->>>>>>> main
 export * from './profile';
 export * from './profileDto';
 export * from './profileDtoGender';
@@ -51,11 +48,8 @@ export * from './showMessagesParams';
 export * from './showRoom403';
 export * from './showRoom404';
 export * from './signUpDto';
-<<<<<<< HEAD
 export * from './updateLastViewId200';
 export * from './updateLastViewIdParams';
-=======
->>>>>>> main
 export * from './sortObject';
 export * from './updateLastViewId200';
 export * from './updateLastViewIdParams';

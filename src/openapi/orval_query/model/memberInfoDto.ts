@@ -7,10 +7,7 @@
  */
 
 export interface MemberInfoDto {
-<<<<<<< HEAD
-=======
   address?: string;
->>>>>>> main
   imgUrl?: string;
   name?: string;
   nickname?: string;

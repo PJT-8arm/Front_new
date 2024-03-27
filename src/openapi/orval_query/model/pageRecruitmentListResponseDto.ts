@@ -21,8 +21,4 @@ export interface PageRecruitmentListResponseDto {
   sort?: SortObject[];
   totalElements?: number;
   totalPages?: number;
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> main

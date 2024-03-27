@@ -17,8 +17,4 @@ export interface RecruitmentDto {
   recruit_date?: string;
   routine?: string;
   title?: string;
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> main

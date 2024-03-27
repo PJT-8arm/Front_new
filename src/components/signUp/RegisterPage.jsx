@@ -2,10 +2,7 @@ import React, { useState } from 'react';
 import './signup.css';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-<<<<<<< HEAD
 import Upload from '../file/Upload';
-=======
->>>>>>> main
 
 function RegisterPage() {
   const [name, setName] = useState('');
@@ -14,18 +11,13 @@ function RegisterPage() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
-<<<<<<< HEAD
   const [imgUrl, setImgUrl] = useState();
   const navigate = useNavigate();
 
   const axiosInstance = axios.create({
-      baseURL: 'http://localhost:8080/api/'
+      baseURL: 'http://api.arm.genj.me/api/'
   })
 
-=======
-  const navigate = useNavigate();
-
->>>>>>> main
   const onNameHandler = (event) => {
     setName(event.currentTarget.value);
   }
@@ -46,10 +38,7 @@ function RegisterPage() {
     setConfirmPassword(event.currentTarget.value);
   }
 
-<<<<<<< HEAD
   
-=======
->>>>>>> main
   const onSubmitHandler = async (event) => {
     event.preventDefault();
 
@@ -59,20 +48,12 @@ function RegisterPage() {
     }
 
     try {
-<<<<<<< HEAD
       const response = await axiosInstance.post('members/join', { 
         name,
         username,
         nickname,
         password,
         imgUrl
-=======
-      const response = await axios.post('http://localhost:8080/api/members/join', { 
-        name,
-        username,
-        nickname,
-        password
->>>>>>> main
       });
 
       console.log('회원가입 성공:', response.data);
@@ -88,13 +69,10 @@ function RegisterPage() {
 
   return (
     <div className='container'>
-<<<<<<< HEAD
       <div className='memberjoin'>
         <img src='/images/join.png'></img>
         <p>회원가입</p>
       </div>
-=======
->>>>>>> main
       <form className='signup-form' onSubmit={onSubmitHandler}>
         <div className='input-forms-item'>
           <label className='input-label'>이름</label>
@@ -116,22 +94,16 @@ function RegisterPage() {
           <label className='input-label'>비밀번호 확인</label>
           <input type='password' value={confirmPassword} onChange={onConfirmPasswordHandler} />
         </div>
-<<<<<<< HEAD
         <div className='profile-image-uploading-container'>
           <label className='input-label'>프로필 사진</label>
           <Upload setImgUrl={setImgUrl}/>
         </div>
         
-=======
->>>>>>> main
         {error && <p style={{ color: 'red' }}>{error}</p>}
         <div className='button-container'>
           <button type='submit'>가입하기</button>
         </div>
-<<<<<<< HEAD
         
-=======
->>>>>>> main
       </form>
     </div>
   );

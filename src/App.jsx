@@ -17,10 +17,7 @@ import MypageList from './components/member/mypage/MypageList';
 import Profile from './components/member/mypage/profile/Profile';
 import Topbar from './components/Topbar'
 import './App.css'
-<<<<<<< HEAD
 import Upload from './components/file/Upload';
-=======
->>>>>>> main
 
 
 
@@ -63,10 +60,7 @@ function App() {
               <Route path="/recruitments/detail/:id" element={<RecruitmentDetail />} />
               {/* 다른 모든 경로에 대한 처리. 404 페이지나 메인 페이지 리다이렉트 등의 로직을 추가할 수 있습니다. */}
               <Route path='/profile' element={<UserProfile />} />
-<<<<<<< HEAD
               <Route path='/upload' element={<Upload />}/>
-=======
->>>>>>> main
             </Routes>
           </main>
           <footer className='h-16 w-full Navbar'>
