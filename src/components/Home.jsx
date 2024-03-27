@@ -146,7 +146,7 @@ function Home() {
       <ul>
       <Link to={`/recruitments/write`}>
         <div style={{display: 'flex', justifyContent : 'end', marginRight: '1rem'}}>
-            <button className="btn  btn-sm " style={{fontSize: '1rem'}}>📝 모집글 작성하기</button>
+            <button className="btn  btn-sm " style={{fontSize: '1rem'}}>📝 모집글 작성</button>
         </div>
         </Link>
         {/* 현재 페이지의 데이터만 반복하여 표시합니다. */}

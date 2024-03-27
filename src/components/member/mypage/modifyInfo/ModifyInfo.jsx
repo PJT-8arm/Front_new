@@ -121,8 +121,8 @@ function ModifyInfo(props) {
                 </div>
 
                 <div className='flex justify-center items-center'>
-                    <button className='btn btn-primary m-4' type='submit'>수정</button>
-                    <button className='btn btn-primary m-4'><Link to="/mypage/list">이전</Link></button>
+                    <button className='btn btn-sm btn-primary m-3' type='submit'>수정</button>
+                    <button className='btn btn-sm btn-outline btn-neutral '><Link to="/mypage/list">이전</Link></button>
                 </div>
             </form>
         </>
