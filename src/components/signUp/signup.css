@@ -132,13 +132,13 @@ body {
   margin-bottom: 3rem;
 }
 
-.memberjoin > img {
+.memberjoin>img {
   width: 2.5rem;
   height: 2rem;
   margin-right: 1rem;
 }
 
-.memberjoin > p {
+.memberjoin>p {
   font-size: 1.5rem;
   font-weight: bold;
 }
