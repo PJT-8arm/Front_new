@@ -6,8 +6,10 @@
  * OpenAPI spec version: 1.0.0
  */
 
-export interface MemberInfoDto {
-  imgUrl?: string;
-  name?: string;
-  nickname?: string;
+export interface ApplicationListDto {
+  canceled?: boolean;
+  id?: number;
+  partnerId?: string;
+  status?: string;
+  writerId?: string;
 }
