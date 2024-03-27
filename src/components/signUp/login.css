@@ -6,8 +6,14 @@ body {
 }
 
 .title {
+<<<<<<< HEAD
     margin-bottom: 30px;
     margin-top: -1rem;
+=======
+    font-weight: bold; /* 볼드 처리 */
+    font-size: 40px; /* 크기 키우기 */
+    margin-bottom: 30px;
+>>>>>>> main
 }
 
 .content {
@@ -15,7 +21,11 @@ body {
     flex-direction: column;
     margin-bottom: 10px;
     text-align: left;
+<<<<<<< HEAD
     font-size: 16px;
+=======
+    font-size: 13px;
+>>>>>>> main
 }
 
 .container {
@@ -32,7 +42,12 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+<<<<<<< HEAD
     padding: 30px;
+=======
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+>>>>>>> main
 }
 
 .error-message {
@@ -52,11 +67,16 @@ body {
 
 .button-container button {
     padding: 10px;
+<<<<<<< HEAD
     width: 10rem;
     height: 2.5rem;
     background-color: #282c34;
     color: #ffffff;
     font-weight: bold;
+=======
+    background-color: #282c34;
+    color: #ffffff;
+>>>>>>> main
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -103,7 +123,12 @@ body {
     flex-direction: column;
     align-items: flex-start;
     margin-bottom: 20px;
+<<<<<<< HEAD
     width: 120%;
+=======
+    margin-left: 17px;
+    width: 100%;
+>>>>>>> main
     border-bottom: 1px solid #000000; /* 아래 선 스타일 및 색상 지정 */
     padding-bottom: 8px; /* 아래 여백 추가 */
 }
@@ -111,6 +136,7 @@ body {
 .label-container label {
     margin-bottom: 4px;
 }
+<<<<<<< HEAD
 
 .signup-link {
     display: flex;
@@ -127,3 +153,5 @@ body {
     font-size: 1rem;
     color: orange;
   }
+=======
+>>>>>>> main

@@ -148,7 +148,11 @@ const ChatMessages = () => {
         inverse={true}
         hasMore={hasNext} // 더 로딩할 페이지가 있는지 여부
         loader={<h4>Loading...2</h4>}
+<<<<<<< HEAD
         endMessage={<p style={{ textAlign: 'center', color: 'darkgray', fontWeight: 'bold' }}>마지막 메세지입니다.</p>}
+=======
+        endMessage={<p style={{ textAlign: 'center' }}>마지막 메세지입니다.</p>}
+>>>>>>> main
         scrollableTarget="scrollableDiv"
       >
         {messages.map((message, index) => (
@@ -173,4 +177,8 @@ const ChatMessages = () => {
 };
 
 
+<<<<<<< HEAD
 export default ChatMessages;
+=======
+export default ChatMessages;
+>>>>>>> main

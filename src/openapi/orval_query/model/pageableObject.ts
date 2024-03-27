@@ -14,4 +14,8 @@ export interface PageableObject {
   pageSize?: number;
   sort?: SortObject[];
   unpaged?: boolean;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> main

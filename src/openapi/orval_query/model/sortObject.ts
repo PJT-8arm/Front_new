@@ -12,4 +12,8 @@ export interface SortObject {
   ignoreCase?: boolean;
   nullHandling?: string;
   property?: string;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> main
