@@ -174,7 +174,7 @@ const RecruitmentForm = () => {
                     placeholder="장소"
                     className="input input-bordered w-full"
                 />
-                <button type="button" onClick={handleAddressSearch} className="btn btn-primary">
+                <button type="button" onClick={handleAddressSearch} className="btn">
                     주소 검색
                 </button>
             </div>
@@ -224,7 +224,7 @@ const RecruitmentForm = () => {
                 className="input input-bordered w-full mb-2"
             />
 
-            <button className="btn btn-primary w-full" type="submit">모집글 작성</button>
+            <button className="btn btn-primary w-full" style={{marginBottom: '1rem'}} type="submit">모집글 작성</button>
 
         </form>
     );

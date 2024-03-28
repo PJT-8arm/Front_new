@@ -28,9 +28,17 @@ const AppointmentList = () => {
         fetchAppointments();
     }, []);
 
+    // 날짜 형식 변환 함수
     const formatDate = (dateString) => {
-        return moment(dateString).format('YYYY-MM-DD HH:mm');
-    };
+        const date = new Date(dateString);
+        const month = ('0' + (date.getMonth() + 1)).slice(-2);
+        const day = ('0' + date.getDate()).slice(-2);
+        return `${month}/${day}`;
+      };
+
+    // 오늘 날짜 가져오기
+    const today = new Date();
+
 
     if (isLoading) return <div>Loading...</div>;
     if (error) return <div>Error: {error.message}</div>;
@@ -39,21 +47,37 @@ const AppointmentList = () => {
         <div className="appointment-list">
             {appointments.map((appointment, index) => (
                 <div key={index} className="appointment-item">
-                    <Link to={`/appointments/detail/${appointment.id}`} className="link-style">
-                        <div className="card">
-                            <div className="cardbody">
-                                <div className="content">
-                                    <div className="titlebox">
-                                        <p className="title">{appointment.title}</p>
+                    <Link to={`/appointments/detail/${appointment.id}`} className="appointlink-style">
+                        <div className="appointcard">
+                                <div style={{display: 'flex', flexDirection: 'row', justifyContent:'space-evenly', alignItems:'center'}} className='appointcardbody'>
+                                    <div style={{ position: 'relative', display: 'inline-block' }}>
+                                        <img style={{ width: '3.5rem' }} src='/images/calendar.png' />
+                                        <p style={{ position: 'absolute', top: 22, left: '0.5rem' }}>{formatDate(appointment.recruit_date)}</p>
                                     </div>
-                                    <div className="tag">
-                                        <p className='tag-list'>{'#' + appointment.partnerAge + '대'}</p>
-                                        <p className='tag-list'>{'#' + appointment.partnerGender}</p>
-                                        <p className='tag-list'>{'#' + appointment.place}</p>
-                                        <p className='tag-list'>{'#' + appointment.routine}</p>
+                                    <div className="appointcontent">
+                                        <div className="appointtitlebox">
+                                            <p className="appointtitle">{appointment.title}</p>
+                                        </div>
+                                        <div className="appointtag">
+                                            <p className='appointtag-list'>{'#' + appointment.partnerAge + '대'}</p>
+                                            <p className='appointtag-list'>{'#' + appointment.partnerGender}</p>
+                                            <p className='appointtag-list'>{'#' + appointment.place}</p>
+                                            <p className='appointtag-list'>{'#' + appointment.routine}</p>
+                                        </div>
                                     </div>
+                                    {new Date(appointment.recruit_date) < today && (
+                                    <div style={{backgroundColor: 'pink', width: '50px', height: '22px', borderRadius: '10px', textAlign: 'center'}}>
+                                        <p>완료</p>
+                                    </div>
+                                    )}
+
+                                    {new Date(appointment.recruit_date) > today && (
+                                     <div style={{backgroundColor: 'skyblue', width: '50px', height: '22px', borderRadius: '10px', textAlign: 'center'}}>
+                                        <p>예정</p>
+                                     </div>
+                                    )}
+
                                 </div>
-                            </div>
                         </div>
                     </Link>
                 </div>

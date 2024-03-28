@@ -146,7 +146,7 @@ function Home() {
             </div>
       <ul>
       <Link to={`/recruitments/write`}>
-        <div style={{display: 'flex', justifyContent : 'end', marginRight: '1rem'}}>
+        <div style={{display: 'flex', justifyContent : 'end', marginRight: '1rem', marginBottom: '0.5rem'}}>
         {user ? (
                 // 로그인한 경우
                 <Link to="/recruitments/write">
@@ -168,7 +168,7 @@ function Home() {
             <Link to={`/recruitments/detail/${item.recruitmentDto.id}`}>
               <div>
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-                  <div className="card shadow-xl">
+                  <div className="card">
                     <div className="cardbody">
                       
                       <div className='avatarbox'>
