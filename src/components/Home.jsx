@@ -179,9 +179,7 @@ function Home() {
                               {item.memberInfoDto.nickname}
                             </div>
                        </div>
-
-
-
+                       
                        <div className='content'>
                           <div className='titlebox'>
                             <p className='title'>{item.recruitmentDto.title}</p>
