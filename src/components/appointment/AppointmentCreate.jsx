@@ -64,12 +64,12 @@ const AppointmentCreate = () => {
 
         mutate({ data: payload }, {
             onSuccess: () => {
-                alert('모집 글이 성공적으로 생성되었습니다!');
+                alert('약속이 성공적으로 생성되었습니다!');
                 navigate('/appointment/list');
             },
             onError: (error) => {
                 console.error('Error creating recruitment:', error);
-                alert('모집 글 생성에 실패했습니다.');
+                alert('약속 생성에 실패했습니다.');
             }
         });
     };
