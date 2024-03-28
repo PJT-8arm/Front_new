@@ -83,12 +83,12 @@ function ModifyInfo(props) {
         }
 
         await postData({ data: memberModifyDto });
+      
         setTimeout(async () => {
             await logIn();
             await navigate("/mypage/list");
         }, 100);
-        await navigate("/mypage/list");
-    }
+       
 
     if (loadingGet || loadingPost) {
         return (
