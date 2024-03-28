@@ -186,6 +186,15 @@ const AppointmentCreate = () => {
                 className="input input-bordered w-full mb-2"
             />
 
+<input
+                type="text"
+                name="duration"
+                value={formData.duration}
+                onChange={handleChange}
+                placeholder="운동 시간 (예: 14:00:00)"
+                className="input input-bordered w-full mb-2"
+            />
+
             <button type="submit" className="btn btn-primary">약속생성</button>
         </form>
     );

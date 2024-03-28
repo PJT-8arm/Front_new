@@ -12,7 +12,7 @@ const CreateAppointmentButton = ({ handleCreateAppointment }) => {
   };
 
   return (
-    <button onClick={handleClick} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+    <button onClick={handleClick} className="btn btn-primary">
       약속 생성
     </button>
   );
