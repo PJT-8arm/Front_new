@@ -106,8 +106,7 @@ const ChatMessages = () => {
 
   useEffect(() => {
     if (!data) return;
-    console.log('messages', messages);
-    console.log('data', data);
+
     if (data?.content) {
       const loadedMessages = data.content;
 

@@ -7,7 +7,6 @@ const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const { data: userInfo, refetch } = useMemberInfo();
-    console.log(user);
 
     useEffect(() => {
         if (userInfo) {

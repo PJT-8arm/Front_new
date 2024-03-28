@@ -6,7 +6,6 @@ const ChatRoomContext = createContext();
 
 // Context 데이터를 업데이트하고 자식 컴포넌트에 전달할 Provider 컴포넌트
 export const ChatRoomProvider = ({ children, initialRoomId }) => {
-    console.log(initialRoomId);
     const [roomId, setRoomId] = useState(initialRoomId);
     const [roomDetail, setRoomDetail] = useState({});
     

@@ -21,7 +21,6 @@ const Upload = ({ setImgUrl }) => {
                 params: params
               });
 
-            console.log(response);
             return response.preSignedUrl; // 사전 서명된 URL 반환
         } catch (error) {
             console.error('Error fetching pre-signed URL:', error);
@@ -32,7 +31,7 @@ const Upload = ({ setImgUrl }) => {
     const uploadOnS3 = async () => {
 
         const preSignedUrl = await getPresignedUrl(imageFile.name);
-        console.log(preSignedUrl);
+
         if (!preSignedUrl) return; // 사전 서명된 URL을 가져오는데 실패한 경우
 
         try {
@@ -44,7 +43,6 @@ const Upload = ({ setImgUrl }) => {
             });
 
             const cleanUrl = preSignedUrl.split('?')[0]; // '?'를 기준으로 분리하고 첫 번째 부분 선택
-            console.log('Clean URL:', cleanUrl);
 
             // 부모 컴포넌트에 깨끗한 URL 업데이트
             setImgUrl(cleanUrl);

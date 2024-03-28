@@ -80,7 +80,6 @@ const ChatRoomList = () => {
         return () => {
             // 컴포넌트가 언마운트되기 직전에 연결 종료
             if (stompClient && stompClient.connected) {
-                console.log('client', stompClient)
                 stompClient.disconnect(() => {
                     console.log('Disconnected');
                 });
