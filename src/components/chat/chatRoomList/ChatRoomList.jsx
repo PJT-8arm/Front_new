@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useShowList2, updateLastViewId } from '../../../openapi/orval_query/api/chat/chat';
 import './ChatRoomList.css'
 import { useNavigate } from 'react-router-dom';
@@ -16,14 +16,17 @@ const ChatRoomList = () => {
     const [dropdownPosition, setDropdownPosition] = useState({ x: 0, y: 0 });
     const { handleExitChatRoom } = useExitChatRoom();
     const [chatRooms, setChatRooms] = useState([]);
+    const stompClientRef = useRef(null);
 
     const handleNewMessage = () => {
         refetch();
     };
 
     function initializeWebSocketConnection() {
+        if (!user) return
         const socket = new SockJS('https://api.arm.genj.me/ws');
         const stompClient = Stomp.over(socket);
+        stompClientRef.current = stompClient;
         stompClient.connect({}, frame => {
             console.log('Connected: ' + frame);
 
@@ -67,12 +70,21 @@ const ChatRoomList = () => {
     // 채팅방을 클릭했을 때 호출되는 함수
     const handleRoomClick = async (roomId) => {
         updateLastViewId(roomId);
-        stompClient.disconnect()
         navigate(`/chat/room/${roomId}`); // 해당 roomId를 가진 URL로 이동
     };
 
     useEffect(() => {
         initializeWebSocketConnection();
+
+        // 클린업 함수
+        return () => {
+            // 컴포넌트가 언마운트되기 직전에 연결 종료
+            if (stompClientRef.current) {
+                stompClient.disconnect(() => {
+                    console.log('Disconnected');
+                });
+            }
+        };
     }, [])
 
     useEffect(() => {
@@ -80,6 +92,10 @@ const ChatRoomList = () => {
             setChatRooms(data);
         }
     }, [data]);
+
+    if (!user) {
+        return <h2 className='chat-list-none'>로그인 후 이용 가능합니다.</h2>;
+    }
 
     return (
         <>
