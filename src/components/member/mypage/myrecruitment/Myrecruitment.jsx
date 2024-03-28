@@ -16,6 +16,7 @@ function RecruitmentCard({ item, index }) {
 
     useEffect(() => {
         const recruite_date = item['recruitmentDto']['recruit_date']
+        console.log(recruite_date);
         const date = recruite_date.split("T")[0].split("-");
         const time = recruite_date.split("T")[1].split(".")[0].split(":");
         const duration = item['recruitmentDto']['duration'].split(":") // null인 경우 배제
