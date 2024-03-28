@@ -58,3 +58,13 @@
   font-size: 14px;
   color: #888;
 }
+
+.calendar-container {
+  display: flex;
+  align-items: center;
+}
+
+.calendar-icon {
+  margin-right: 5px; /* 아이콘과 텍스트 사이에 여백을 조정합니다. */
+}
+
