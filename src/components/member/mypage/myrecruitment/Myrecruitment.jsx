@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useMypageMyRecruitment } from '../../../../openapi/orval_query/api/mypage-controller/mypage-controller';
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
-import RecruitmentDetail from '../../../recuitment/RecruitmentDetail';
+import RecruitmentDetail from '../../../recruitment/RecruitmentDetail';
 
 function RecruitmentCard({ item, index }) {
 

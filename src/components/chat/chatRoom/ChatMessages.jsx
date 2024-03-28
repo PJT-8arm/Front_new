@@ -24,6 +24,7 @@ const ChatMessages = () => {
   const [scrollTop, setScrollTop] = useState(0);
 
   function initializeWebSocketConnection(roomId) {
+    if (!roomId) return null
     const socket = new SockJS('https://api.arm.genj.me/ws');
     const stompClient = Stomp.over(socket);
     stompClient.connect({}, frame => {
@@ -36,6 +37,8 @@ const ChatMessages = () => {
         handleNewMessage(newMessage);
       });
     });
+
+    return stompClient;
   }
 
   const loadMessage = async () => {
@@ -88,18 +91,17 @@ const ChatMessages = () => {
 
   // imgUrls의 변경을 감지하여 컴포넌트를 업데이트 합니다.
   useEffect(() => {
-    console.log('useEffect');
-    initializeWebSocketConnection(roomId);
+    const stompClient = initializeWebSocketConnection(roomId);
 
     // 클린업 함수
     return () => {
       // 컴포넌트가 언마운트되기 직전에 연결 종료
-      if (stompClient) {
-          stompClient.disconnect(() => {
-              console.log('Disconnected');
-          });
+      if (stompClient && stompClient.connected) {
+        stompClient.disconnect(() => {
+          console.log('Disconnected');
+        });
       }
-  };
+    };
   }, []);
 
   useEffect(() => {

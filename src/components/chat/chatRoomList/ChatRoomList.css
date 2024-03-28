@@ -37,6 +37,8 @@ justify-content: space-between;
 
 .chat-list-img img {
   border-radius: 30%;
+  max-height: 100%;
+  max-width: 100%;
 }
 
 .chat-room-message-date{

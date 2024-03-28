@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, useHref } from 'react-router-dom';
-import RecruitmentForm from './components/recuitment/RecruitmentForm';
-import RecruitmentDetail from './components/recuitment/RecruitmentDetail'; // 임포트한 RecruitmentDetail 컴포넌트
+import RecruitmentForm from './components/recruitment/RecruitmentForm';
+import RecruitmentDetail from './components/recruitment/RecruitmentDetail'; // 임포트한 RecruitmentDetail 컴포넌트
 import Navbar from './components/Navbar';
 import Mypage from './components/member/mypage/Mypage';
 import LoginPage from './components/signUp/LoginPage';
