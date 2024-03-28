@@ -15,6 +15,10 @@ function RegisterPage() {
   const [imgUrl, setImgUrl] = useState();
   const navigate = useNavigate();
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> d643d82 (fix : axiosinstance 수정)
   const onNameHandler = (event) => {
     setName(event.currentTarget.value);
   }
