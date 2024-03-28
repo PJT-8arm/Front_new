@@ -3,6 +3,7 @@ import './signup.css';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Upload from '../file/Upload';
+import { axiosInstance } from '../../utils/axiosInstance';
 
 function RegisterPage() {
   const [name, setName] = useState('');
@@ -14,9 +15,12 @@ function RegisterPage() {
   const [imgUrl, setImgUrl] = useState();
   const navigate = useNavigate();
 
+<<<<<<< HEAD
   const axiosInstance = axios.create({
       baseURL: 'https://api.arm.genj.me/api/'
   })
+=======
+>>>>>>> 02850e21a73c3e67e8a818d33d5d76928858afa7
 
   const onNameHandler = (event) => {
     setName(event.currentTarget.value);
@@ -48,7 +52,7 @@ function RegisterPage() {
     }
 
     try {
-      const response = await axiosInstance.post('members/join', { 
+      const response = await axiosInstance.post('/api/members/join', { 
         name,
         username,
         nickname,
