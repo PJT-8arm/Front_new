@@ -67,7 +67,7 @@ function App() {
               {/* 약속 목록 컴포넌트 */}
               <Route path="/appointment/list" element={<AppointmentList />} />
               {/* 약속 상세 컴포넌트 */}
-              <Route path="/appointment/detail/:id" element={<AppointmentDetail />} />
+              <Route path="/appointments/detail/:id" element={<AppointmentDetail />} />
             </Routes>
           </main>
           <footer className='h-16 w-full Navbar'>
