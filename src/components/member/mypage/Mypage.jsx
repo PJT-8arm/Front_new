@@ -14,8 +14,10 @@ function Mypage(props) {
     const handleLogout = async () => {
         try {
             // 서버에 로그아웃 요청 보내기
-            await axiosInstance.post('/api/members/logout'); // 실제 백엔드 API에 맞게 경로 설정
-
+            await axiosInstance({
+                url: '/api/members/logout',
+                method: 'post',
+            });
             // 로컬 상태 및 컨텍스트 상태 업데이트
             logOut(); // 컨텍스트 상태 업데이트
             setUser(null); // 로컬 상태 업데이트
