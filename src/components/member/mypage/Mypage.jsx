@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useAuth } from '../../signUp/AuthContext';
 import axios from 'axios'; // Axios 라이브러리 import
 import { mypageDetails, useMypageDetails } from '../../../openapi/orval_query/api/mypage-controller/mypage-controller';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useNavigate } from 'react-router-dom';
 import LinkSetter from '../../utils/LinkSetter';
 import { axiosInstance } from '../../../utils/axiosInstance'; // AXIOS_INSTANCE 대신에 axiosInstance를 가져옵니다.
 
@@ -10,6 +10,7 @@ import { axiosInstance } from '../../../utils/axiosInstance'; // AXIOS_INSTANCE 
 function Mypage(props) {
     const { user, logOut, setUser } = useAuth();
     const [isLoggedIn, setIsLoggedIn] = useState(!!user);
+    const navigate = useNavigate();
 
     const handleLogout = async () => {
         try {
@@ -24,6 +25,7 @@ function Mypage(props) {
             setIsLoggedIn(false); // 로그인 상태 업데이트
 
             console.log('로그아웃되었습니다.');
+            navigate('/login');
         } catch (error) {
             console.error('로그아웃 중 오류가 발생했습니다:', error);
         }
@@ -48,7 +50,7 @@ function Mypage(props) {
                 {user?.imgUrl !== null &&
                     (<img className='w-20 h-20 rounded-full' src={user?.imgUrl} alt="null" />)}
                 {user?.imgUrl === null &&
-                    (<img className='w-20 h-20 rounded-full' src={"/images/sinsegeong.png"} alt="sinsegeong2" />)}
+                    (<img className='w-20 h-20 rounded-full' src={"/images/basicuser.png"} alt="sinsegeong2" />)}
 
                 <p>{user?.nickname + "님"}</p>
                 <button className='btn btn-sm btn-outline btn-error' onClick={handleLogout}>로그아웃</button>

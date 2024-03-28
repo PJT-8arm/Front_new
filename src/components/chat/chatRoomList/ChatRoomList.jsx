@@ -80,7 +80,6 @@ const ChatRoomList = () => {
         return () => {
             // 컴포넌트가 언마운트되기 직전에 연결 종료
             if (stompClient && stompClient.connected) {
-                console.log('client',stompClient)
                 stompClient.disconnect(() => {
                     console.log('Disconnected');
                 });
@@ -110,7 +109,7 @@ const ChatRoomList = () => {
                     <div className='chat-list-item-inside'>
                         <div className='chat-list-img-count'>
                             <div className="chat-list-img">
-                                <img src={chatRoom.imgUrl} alt="채팅방 이미지" />
+                                <img src={chatRoom.imgUrl || '/images/sinsegeong.png'} alt="채팅방 이미지" />
                             </div>
                             <div>
                                 <div className='chat-list-unreadCount'>{chatRoom.unreadMessagesCount > 100 ? '100+' : chatRoom.unreadMessagesCount}</div>

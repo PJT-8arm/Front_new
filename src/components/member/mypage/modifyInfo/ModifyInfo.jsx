@@ -2,8 +2,6 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useMypageDetails, useMypageModifyDetails } from '../../../../openapi/orval_query/api/mypage-controller/mypage-controller';
 import { Form, Link } from 'react-router-dom';
 import Upload from '../../../file/Upload';
-import { useAuth } from '../../../signUp/AuthContext';
-import { useNavigate } from 'react-router-dom';
 
 function ModifyInfo(props) {
     const { data: memberDto, isLoading: loadingGet, isError: ErrorGet } = useMypageDetails();
@@ -13,9 +11,6 @@ function ModifyInfo(props) {
     // console.log("refname:", refName.current.value);
     const [imgUrl, setImgUrl] = useState();
 
-    const { logIn } = useAuth();
-
-    const navigate = useNavigate();
 
     const [formdata, setFormdata] = useState({
         username: "",
@@ -83,12 +78,13 @@ function ModifyInfo(props) {
         }
 
         await postData({ data: memberModifyDto });
-      
+
         setTimeout(async () => {
             await logIn();
             await navigate("/mypage/list");
         }, 100);
-       
+    }
+
 
     if (loadingGet || loadingPost) {
         return (
@@ -104,7 +100,7 @@ function ModifyInfo(props) {
 
     return (
         <>
-        <h1 className='font-bold text-lg m-2'>회원정보 수정</h1>
+            <h1 className='font-bold text-lg m-2'>회원정보 수정</h1>
             <form className='m-2' onSubmit={onSubmitHandler}>
                 <label className="input input-bordered flex items-center gap-2 mt-2">
                     아이디
@@ -133,7 +129,7 @@ function ModifyInfo(props) {
                     </div>
                     <button onClick={sample5_execDaumPostcode} className="btn">주소 검색</button>
                 </div>
-                <Upload setImgUrl={setImgUrl}/>
+                <Upload setImgUrl={setImgUrl} />
                 <div className='flex justify-center items-center'>
                     <button className='btn btn-sm btn-primary m-3' type='submit'>수정</button>
                     <button className='btn btn-sm btn-outline btn-neutral '><Link to="/mypage/list">이전</Link></button>
