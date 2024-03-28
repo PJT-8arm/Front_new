@@ -67,6 +67,7 @@ const ChatRoomList = () => {
     // 채팅방을 클릭했을 때 호출되는 함수
     const handleRoomClick = async (roomId) => {
         updateLastViewId(roomId);
+        stompClient.disconnect()
         navigate(`/chat/room/${roomId}`); // 해당 roomId를 가진 URL로 이동
     };
 
