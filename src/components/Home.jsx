@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './home.css';
+import { axiosInstance } from '../utils/axiosInstance'; // AXIOS_INSTANCE 대신에 axiosInstance를 가져옵니다.
 
 function Home() {
     const [recruitmentData, setRecruitmentData] = useState([]);
@@ -9,15 +10,11 @@ function Home() {
     const [itemsPerPage] = useState(4); // 페이지당 표시할 항목 수
     const [searchTerm, setSearchTerm] = useState(''); // 검색어 상태
 
-
-    const axiosInstance = axios.create({
-        baseURL: 'https://api.arm.genj.me/api/'
-    })
   
     useEffect(() => {
       const fetchRecruitmentData = async () => {
         try {
-          const response = await axiosInstance.get('recruitments/list');
+          const response = await axiosInstance.get('/api/recruitments/list');
           // 등록 시간이 늦은 순으로 정렬
           const sortedData = response.data.sort((a, b) => new Date(b.recruitmentDto.recruit_date) - new Date(a.recruitmentDto.recruit_date));
           setRecruitmentData(sortedData);
@@ -114,7 +111,7 @@ function Home() {
       
   return (
     <div>
-           <div style={{marginTop: '4rem'}}> {/* 상단에 고정된 Topbar 높이 만큼 공간 확보 */}
+           <div style={{marginTop: '3rem'}}> {/* 상단에 고정된 Topbar 높이 만큼 공간 확보 */}
             {/* 이하 내용은 그대로 유지 */}
            </div>
             <div className='Topbar' style={{position: 'fixed', top: 0, left: 0, right: 0, zIndex: 999, display: 'flex', backgroundColor: 'white' }}>
@@ -144,7 +141,7 @@ function Home() {
       <ul>
       <Link to={`/recruitments/write`}>
         <div style={{display: 'flex', justifyContent : 'end', marginRight: '1rem'}}>
-            <button className="btn  btn-sm " style={{fontSize: '1rem'}}>📝 모집글 작성하기</button>
+            <button className="btn  btn-sm " style={{fontSize: '1rem'}}>📝 모집글 작성</button>
         </div>
         </Link>
         {/* 현재 페이지의 데이터만 반복하여 표시합니다. */}

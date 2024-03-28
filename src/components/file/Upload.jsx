@@ -15,7 +15,9 @@ const Upload = ({ setImgUrl }) => {
         });
 
         try {
-            const response = await axios.get(`/api/file/upload/url?${params.toString()}`);
+            const response = await axiosInstance.get(`/api/file/upload/url?${params.toString()}`);
+          
+            
             console.log(response);
             return response.data.preSignedUrl; // 사전 서명된 URL 반환
         } catch (error) {
