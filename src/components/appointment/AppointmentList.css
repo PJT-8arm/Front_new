@@ -1,0 +1,60 @@
+.appointment-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.appointment-item {
+  flex: 1 1 300px;
+}
+
+.link-style {
+  text-decoration: none;
+  color: inherit;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+}
+
+.cardbody {
+  padding: 20px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.badge {
+  margin-bottom: 10px;
+}
+
+.titlebox {
+  margin-bottom: 10px;
+}
+
+.tag {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.tag-list {
+  margin-right: 10px;
+  font-size: 14px;
+  color: #555;
+}
+
+.date {
+  font-size: 14px;
+  color: #888;
+}

@@ -11,7 +11,7 @@
     "start": "npx vite --port 3000"
   },
   "dependencies": {
-    "@tanstack/react-query": "^5.28.4",
+    "@tanstack/react-query": "^5.28.9",
     "@tanstack/react-query-devtools": "^5.28.4",
     "axios": "^1.6.7",
     "daisyui": "^4.7.3",
