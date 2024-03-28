@@ -66,7 +66,6 @@ function ModifyInfo(props) {
     const onSubmitHandler = async (event) => {
         event.preventDefault();
 
-        console.log('modify',imgUrl);
         const memberModifyDto = {
             imgUrl: imgUrl,
             name: formdata.name,

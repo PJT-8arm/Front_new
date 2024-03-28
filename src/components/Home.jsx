@@ -11,7 +11,7 @@ function Home() {
 
 
     const axiosInstance = axios.create({
-        baseURL: 'http://localhost:8080/api/'
+        baseURL: 'https://api.arm.genj.me/api/'
     })
   
     useEffect(() => {
@@ -110,8 +110,6 @@ function Home() {
 
         return paginationButtons;
     };
-
-    
   
       
   return (
