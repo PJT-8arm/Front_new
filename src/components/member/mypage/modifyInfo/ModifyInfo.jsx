@@ -85,6 +85,7 @@ function ModifyInfo(props) {
         }, 100);
     }
 
+
     if (loadingGet || loadingPost) {
         return (
             <div>Loading...</div>
