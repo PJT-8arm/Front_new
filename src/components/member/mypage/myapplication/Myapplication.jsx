@@ -2,45 +2,64 @@ import React, { useState } from 'react';
 import { useMypageMyApplication } from '../../../../openapi/orval_query/api/mypage-controller/mypage-controller';
 import { useLocation, useSearchParams } from 'react-router-dom';
 
-// function RecruitmentCard({ item, index }) {
+function RecruitmentCard({ item, index }) {
 
-//     const [card, setCard] = useState({
-//         canceled: false,
-//         id: 0,
-//         partnerId: 0,
-//         status: "",
-//         writerId: 0,
-//     })
+    const [card, setCard] = useState({
+        isCanceled: false,
+        id: 0,
+        partnerId: 0,
+        status: "",
+        writerId: 0,
+        title: "",
+        content: "",
+        place: "",
+        partnerGender: "",
+        partnerAge: "",
+        routine: "",
+        duration: "",
+    })
 
-//     useEffect(() => {
-//         const recruite_date = item['recruitmentDto']['recruit_date']
-//         const date = recruite_date.split("T")[0].split("-");
-//         const time = recruite_date.split("T")[1].split(".")[0].split(":");
-//         const duration = item['recruitmentDto']['duration'].split(":") // null인 경우 배제
+    useEffect(() => {
+        const recruite_date = item['recruit_date']
+        // 변수 초기화
+        let date = ["0000", "00", "00"];
+        let time = ["00", "00"];
+        if (recruite_date) {
+            date = recruite_date.split("T")[0].split("-");
+            time = recruite_date.split("T")[1].split(".")[0].split(":");
+        }
 
-//         setCard({
-//             ...item['recruitmentDto'],
-//             recruit_date: date[0].slice(-2) + "년 " + date[1] + "월 " + date[2] + "일 " + time[0] + ":" + time[1],
-//             duration: duration[0] + "시간 " + duration[1] + "분",
-//         })
-//     }, [item])
+        //변수 초기화
+        const duration = item['duration']
+        let durationList = ["00", "00"];
+        if(duration){
+            durationList = duration.split(":") // null인 경우 배제
+        }
 
-//     return (
-//         <>
-//             <Link className="card w-3/4 bg-base-100 shadow-sm hover:shadow-2xl m-2"
-//                 to={`/recruitments/detail/${card.id}`} element={<RecruitmentDetail />}>
-//                 <div className="card-body">
-//                     <h2 className="card-title">{card.title}</h2>
-//                     <div className='text-sm'>
-//                         <p>- 운동일자 : {card.recruit_date}</p>
-//                         <p>- 운동시간 : {card.duration}</p>
-//                         <p>- 운동루틴 : {card.routine}</p>
-//                     </div>
-//                 </div>
-//             </Link>
-//         </>
-//     )
-// }
+        setCard({
+            ...item,
+            recruit_date: date[0].slice(-2) + "년 " + date[1] + "월 " + date[2] + "일 " + time[0] + ":" + time[1],
+            duration: duration[0] + "시간 " + duration[1] + "분",
+        })
+
+    }, [item])
+
+    return (
+        <>
+            <Link className="card w-3/4 bg-base-100 shadow-sm hover:shadow-2xl m-2"
+                to={`/recruitments/detail/${card.id}`} element={<RecruitmentDetail />}>
+                <div className="card-body">
+                    <h2 className="card-title">{card.title}</h2>
+                    <div className='text-sm'>
+                        <p>- 운동일자 : {card.recruit_date}</p>
+                        <p>- 운동시간 : {card.duration}</p>
+                        <p>- 운동루틴 : {card.routine}</p>
+                    </div>
+                </div>
+            </Link>
+        </>
+    )
+}
 
 function Myapplication() {
     const location = useLocation();
