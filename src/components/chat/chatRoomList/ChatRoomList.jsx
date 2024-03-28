@@ -25,7 +25,6 @@ const ChatRoomList = () => {
         if (!user) return null
         const socket = new SockJS('https://api.arm.genj.me/ws');
         const stompClient = Stomp.over(socket);
-        stompClientRef.current = stompClient;
         stompClient.connect({}, frame => {
             console.log('Connected: ' + frame);
             console.log(user.id);
