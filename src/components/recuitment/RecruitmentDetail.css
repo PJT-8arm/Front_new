@@ -1,0 +1,13 @@
+.contain-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    flex-grow: 1;
+}
+
+.flex-grow-div {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+}
