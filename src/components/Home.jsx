@@ -14,9 +14,12 @@ function Home() {
     useEffect(() => {
       const fetchRecruitmentData = async () => {
         try {
-          const response = await axiosInstance.get('/api/recruitments/list');
+          const response = await axiosInstance({
+            url: '/api/recruitments/list',
+            method: 'get',
+          });
           // 등록 시간이 늦은 순으로 정렬
-          const sortedData = response.data.sort((a, b) => new Date(b.recruitmentDto.recruit_date) - new Date(a.recruitmentDto.recruit_date));
+          const sortedData = response.sort((a, b) => new Date(b.recruitmentDto.recruit_date) - new Date(a.recruitmentDto.recruit_date));
           setRecruitmentData(sortedData);
         } catch (error) {
           console.error('Error fetching recruitment data:', error);

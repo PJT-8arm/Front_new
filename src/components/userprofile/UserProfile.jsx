@@ -11,8 +11,10 @@ const UserProfile = () => {
     const handleLogout = async () => {
         try {
             // 서버에 로그아웃 요청 보내기
-            await axiosInstance.post('/api/members/logout'); // 예시: '/logout'는 실제로 사용하는 로그아웃 엔드포인트 URL로 변경해야 합니다.
-
+            await axiosInstance({
+                method: 'post',
+                url: '/api/members/logout'
+            });
             // 로컬 상태 및 컨텍스트 상태 업데이트
             logOut(); // 컨텍스트 상태 업데이트
             setUser(null); // 로컬 상태 업데이트
