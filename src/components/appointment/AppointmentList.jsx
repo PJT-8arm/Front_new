@@ -45,10 +45,10 @@ const AppointmentList = () => {
                         <div className="card">
                             <div className="cardbody">
                                 <div className="content">
-                                <div className="calendar-container">
-                                    <FontAwesomeIcon icon={faCalendarAlt} size="1x" className="calendar-icon" />
-                                    <p className="date-text">{formatDate(appointment.date)}</p>
-                                </div>
+                                    <div className="calendar-container">
+                                        <FontAwesomeIcon icon={faCalendarAlt} size="1x" className="calendar-icon" />
+                                        <p className="date-text">{formatDate(appointment.date)}</p>
+                                    </div>
                                     <div className="titlebox">
                                         {/* 달력 모양의 아이콘과 'DD' 텍스트를 함께 표시 */}
                                         <p className="title">{appointment.title}</p>
