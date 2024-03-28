@@ -213,24 +213,6 @@ const RecruitmentForm = () => {
                 placeholder="운동 루틴"
                 className="input input-bordered w-full mb-2"
             />
-            <input
-                type="text"
-                name="duration"
-                value={formData.duration}
-                onChange={handleChange}
-                placeholder="운동 시간 (예: 14:00:00)"
-                className="input input-bordered w-full mb-2"
-            />
-
-            <input
-                type="text"
-                name="duration"
-                value={formData.duration}
-                onChange={handleChange}
-                pattern="(0[0-4]):[0-5]0"
-                placeholder="운동시간 - 00:00 (0 ~ 4시간, 10분간격)"
-                className="input input-bordered w-full mb-2"
-            />
 
             <input
                 type="text"
