@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import moment from 'moment-timezone';
+import { useAuth } from '../signUp/AuthContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; // Font Awesome 아이콘 라이브러리에서 FontAwesomeIcon을 가져옴
 import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons'; // 달력 모양의 아이콘을 가져옴
 import './AppointmentList.css';
@@ -11,6 +12,7 @@ const AppointmentList = () => {
     const [appointments, setAppointments] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
+    const { user } = useAuth();
 
     useEffect(() => {
         const fetchAppointments = async () => {
@@ -29,6 +31,10 @@ const AppointmentList = () => {
 
         fetchAppointments();
     }, []);
+
+    if (!user) {
+        return <h2 className='chat-list-none'>로그인 후 이용 가능합니다.</h2>;
+    }
 
     // 날짜 형식 변환 함수
     const formatDate = (dateString) => {
