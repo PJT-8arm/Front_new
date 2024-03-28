@@ -9,6 +9,7 @@ function Home() {
     const [currentPage, setCurrentPage] = useState(1); // 현재 페이지 번호
     const [itemsPerPage] = useState(4); // 페이지당 표시할 항목 수
     const [searchTerm, setSearchTerm] = useState(''); // 검색어 상태
+
   
     useEffect(() => {
       const fetchRecruitmentData = async () => {
