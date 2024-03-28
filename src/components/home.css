@@ -1,15 +1,19 @@
 .card{
     margin-bottom: 10px;
     width: 350px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
 }
 
 .cardbody {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     /* height: 170px; */
-    width: 100%;
-    min-height: 170px; /* 변경된 부분 */
-    margin-bottom: -1rem;
+    width: 90%;
+    min-height: 150px; /* 변경된 부분 */
+    margin-left: 1rem;
+    margin-top: 1rem;
 }
 
 
@@ -43,24 +47,25 @@
 .titlebox{
     height: 25px;
     padding-top: 1.5rem;
-    padding-bottom: 0.5rem;
+    padding-bottom: 1.3rem;
 }
 
 .content{
     display: flex;
     flex-direction: column;
-
 }
 
 .tag{
     display: flex;
     flex-wrap: wrap;
+    padding-bottom: 1rem;
 }
 
 .tag > p {
     margin-right: 5px;
     color: lightgray;
     font-weight: lighter;
+    font-size: small;
 }
 
 .content .date{

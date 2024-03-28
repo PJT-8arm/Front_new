@@ -58,7 +58,10 @@ const RecruitmentDetail = () => {
           <div className='flex-grow-div'>
             <div className='contain-button'>
               <p className="flex items-center"><FaUserAlt className="mr-2" />이름: <span className="font-semibold ml-1">{detail?.memberInfoDto?.name}</span></p>
-              <button className='btn' onClick={() => handleMakeChatRoom(detail.memberInfoDto.name)}> 대화신청 </button>
+              <button className='btn btn-sm btn-outline' onClick={() => handleMakeChatRoom(detail.memberInfoDto.name)}> 
+              <img style={{width: '1.5rem'}} src='/images/chatting.png'/>
+              대화신청 
+              </button>
             </div>
             <p className="flex items-center"><FaUserAlt className="mr-2" />장소: <span className="font-semibold ml-1">{detail?.memberInfoDto?.address}</span></p>
           </div>

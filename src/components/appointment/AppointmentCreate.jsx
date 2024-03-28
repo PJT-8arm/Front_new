@@ -203,7 +203,7 @@ const AppointmentCreate = () => {
                 className="input input-bordered w-full mb-2"
             />
 
-            <button type="submit" className="btn btn-primary">약속생성</button>
+            <button type="submit" className="btn btn-primary w-full" style={{fontSize: '16px', marginBottom: '0.5rem', color: 'white'}}>약속 생성 완료</button>
         </form>
     );
 };
