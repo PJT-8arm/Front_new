@@ -16,7 +16,6 @@ const ChatRoomList = () => {
     const [dropdownPosition, setDropdownPosition] = useState({ x: 0, y: 0 });
     const { handleExitChatRoom } = useExitChatRoom();
     const [chatRooms, setChatRooms] = useState([]);
-    const stompClientRef = useRef(null);
 
     const handleNewMessage = () => {
         refetch();
