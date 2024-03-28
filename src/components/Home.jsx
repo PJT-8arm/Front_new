@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { useAuth } from  './signUp/AuthContext';
 import './home.css';
 import { axiosInstance } from '../utils/axiosInstance'; // AXIOS_INSTANCE 대신에 axiosInstance를 가져옵니다.
 
 function Home() {
+
+    const { user } = useAuth();
+
     const [recruitmentData, setRecruitmentData] = useState([]);
     const [currentPage, setCurrentPage] = useState(1); // 현재 페이지 번호
     const [itemsPerPage] = useState(4); // 페이지당 표시할 항목 수
@@ -143,7 +147,19 @@ function Home() {
       <ul>
       <Link to={`/recruitments/write`}>
         <div style={{display: 'flex', justifyContent : 'end', marginRight: '1rem'}}>
-            <button className="btn  btn-sm " style={{fontSize: '1rem'}}>📝 모집글 작성</button>
+        {user ? (
+                // 로그인한 경우
+                <Link to="/recruitments/write">
+                    <button className="btn btn-sm" style={{ fontSize: '1rem' }}>📝 모집글 작성</button>
+                </Link>
+            ) : (
+                // 로그인하지 않은 경우
+                <Link to="/login">
+                    <button className="btn btn-sm" style={{ fontSize: '1rem' }}>📝 모집글 작성</button>
+                </Link>
+            )}
+            
+            {/* <button className="btn  btn-sm " style={{fontSize: '1rem'}}>📝 모집글 작성</button> */}
         </div>
         </Link>
         {/* 현재 페이지의 데이터만 반복하여 표시합니다. */}
