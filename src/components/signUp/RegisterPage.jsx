@@ -15,7 +15,7 @@ function RegisterPage() {
   const navigate = useNavigate();
 
   const axiosInstance = axios.create({
-      baseURL: 'http://api.arm.genj.me/api/'
+      baseURL: 'https://api.arm.genj.me/api/'
   })
 
   const onNameHandler = (event) => {

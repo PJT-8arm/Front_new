@@ -24,7 +24,9 @@ import type {
 import type {
   MemberModifyDto,
   MypageDetails200,
+  MypageMyApplicationParams,
   MypageMyRecruitmentParams,
+  PageApplicationListDto,
   PageRecruitmentListResponseDto,
   ProfileDto,
   SignUpDto
@@ -405,3 +407,99 @@ export const useMypageMyRecruitment = <TData = Awaited<ReturnType<typeof mypageM
 
   return query;
 }
+
+
+
+export const mypageMyApplication = (
+    params: MypageMyApplicationParams,
+ options?: SecondParameter<typeof axiosInstance>,signal?: AbortSignal
+) => {
+      
+      
+      return axiosInstance<PageApplicationListDto>(
+      {url: `/api/mypage/myApplication`, method: 'GET',
+        params, signal
+    },
+      options);
+    }
+  
+
+export const getMypageMyApplicationQueryKey = (params: MypageMyApplicationParams,) => {
+    return [`/api/mypage/myApplication`, ...(params ? [params]: [])] as const;
+    }
+
+    
+export const getMypageMyApplicationInfiniteQueryOptions = <TData = InfiniteData<Awaited<ReturnType<typeof mypageMyApplication>>, MypageMyApplicationParams['page']>, TError = unknown>(params: MypageMyApplicationParams, options?: { query?:Partial<UseInfiniteQueryOptions<Awaited<ReturnType<typeof mypageMyApplication>>, TError, TData, Awaited<ReturnType<typeof mypageMyApplication>>, QueryKey, MypageMyApplicationParams['page']>>, request?: SecondParameter<typeof axiosInstance>}
+) => {
+
+const {query: queryOptions, request: requestOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getMypageMyApplicationQueryKey(params);
+
+  
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof mypageMyApplication>>, QueryKey, MypageMyApplicationParams['page']> = ({ signal, pageParam }) => mypageMyApplication({...params, page: pageParam || params?.['page']}, requestOptions, signal);
+
+      
+
+      
+
+   return  { queryKey, queryFn,   staleTime: 10000,  ...queryOptions} as UseInfiniteQueryOptions<Awaited<ReturnType<typeof mypageMyApplication>>, TError, TData, Awaited<ReturnType<typeof mypageMyApplication>>, QueryKey, MypageMyApplicationParams['page']> & { queryKey: QueryKey }
+}
+
+export type MypageMyApplicationInfiniteQueryResult = NonNullable<Awaited<ReturnType<typeof mypageMyApplication>>>
+export type MypageMyApplicationInfiniteQueryError = unknown
+
+export const useMypageMyApplicationInfinite = <TData = InfiniteData<Awaited<ReturnType<typeof mypageMyApplication>>, MypageMyApplicationParams['page']>, TError = unknown>(
+ params: MypageMyApplicationParams, options?: { query?:Partial<UseInfiniteQueryOptions<Awaited<ReturnType<typeof mypageMyApplication>>, TError, TData, Awaited<ReturnType<typeof mypageMyApplication>>, QueryKey, MypageMyApplicationParams['page']>>, request?: SecondParameter<typeof axiosInstance>}
+
+  ):  UseInfiniteQueryResult<TData, TError> & { queryKey: QueryKey } => {
+
+  const queryOptions = getMypageMyApplicationInfiniteQueryOptions(params,options)
+
+  const query = useInfiniteQuery(queryOptions) as  UseInfiniteQueryResult<TData, TError> & { queryKey: QueryKey };
+
+  query.queryKey = queryOptions.queryKey ;
+
+  return query;
+}
+
+
+
+export const getMypageMyApplicationQueryOptions = <TData = Awaited<ReturnType<typeof mypageMyApplication>>, TError = unknown>(params: MypageMyApplicationParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof mypageMyApplication>>, TError, TData>>, request?: SecondParameter<typeof axiosInstance>}
+) => {
+
+const {query: queryOptions, request: requestOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getMypageMyApplicationQueryKey(params);
+
+  
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof mypageMyApplication>>> = ({ signal }) => mypageMyApplication(params, requestOptions, signal);
+
+      
+
+      
+
+   return  { queryKey, queryFn,   staleTime: 10000,  ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof mypageMyApplication>>, TError, TData> & { queryKey: QueryKey }
+}
+
+export type MypageMyApplicationQueryResult = NonNullable<Awaited<ReturnType<typeof mypageMyApplication>>>
+export type MypageMyApplicationQueryError = unknown
+
+export const useMypageMyApplication = <TData = Awaited<ReturnType<typeof mypageMyApplication>>, TError = unknown>(
+ params: MypageMyApplicationParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof mypageMyApplication>>, TError, TData>>, request?: SecondParameter<typeof axiosInstance>}
+
+  ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } => {
+
+  const queryOptions = getMypageMyApplicationQueryOptions(params,options)
+
+  const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
+
+  query.queryKey = queryOptions.queryKey ;
+
+  return query;
+}
+
+
+
