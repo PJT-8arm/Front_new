@@ -34,8 +34,15 @@ const ChatRoomDetail = () => {
 
     useEffect(() => {
         if (chatRoomDetail) {
-            console.log("ChatRoomDetail:", chatRoomDetail);
-            if (chatRoomDetail) setRoomDetail(chatRoomDetail);
+           
+            if(chatRoomDetail.imgUrl==null) {
+                const updatedRoomDetail = {
+                    ...chatRoomDetail,
+                    imgUrl: '/images/sinsegeong.png'
+                };
+                setRoomDetail(updatedRoomDetail);
+            }
+            else setRoomDetail(chatRoomDetail);
         }
     }, [chatRoomDetail]);
 
@@ -62,7 +69,7 @@ const ChatRoomDetail = () => {
     return (
         <div className="chat-room-header">
             <div className="chat-room-header-img">
-                <img src={chatRoomDetail.imgUrl} alt="Chat Room Avatar" />
+                <img src={roomDetail.imgUrl} alt="Chat Room Avatar" />
             </div>
             <div className='chat-room-box1'>
                 <div className="chat-room-info">

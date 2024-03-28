@@ -8,7 +8,6 @@ import './ChatRoom.css';
 
 const ChatRoom = () => {
     const { roomId } = useParams();
-    console.log({ roomId });
 
     return (
         <div className="chatRoomContainer">
