@@ -15,6 +15,12 @@ function RegisterPage() {
   const [imgUrl, setImgUrl] = useState();
   const navigate = useNavigate();
 
+<<<<<<< HEAD
+  const axiosInstance = axios.create({
+      baseURL: 'https://api.arm.genj.me/api/'
+  })
+=======
+>>>>>>> 02850e21a73c3e67e8a818d33d5d76928858afa7
 
   const onNameHandler = (event) => {
     setName(event.currentTarget.value);

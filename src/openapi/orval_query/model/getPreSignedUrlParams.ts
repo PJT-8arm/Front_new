@@ -5,8 +5,8 @@
  * COMMERCE REST API DOC
  * OpenAPI spec version: 1.0.0
  */
-import type { PreSignedUrlRequestBody } from './preSignedUrlRequestBody';
 
 export type GetPreSignedUrlParams = {
-requestBody: PreSignedUrlRequestBody;
+prefix: string;
+fileName?: string;
 };
