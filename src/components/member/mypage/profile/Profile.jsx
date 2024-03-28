@@ -121,13 +121,13 @@ function Profile(props) {
                             <div>성별</div>
                             <div className='flex justify-between w-1/2'>
                                 <label className="label cursor-pointer">
-                                    <span className="label-text">남성</span>
+                                    <span className="label-text mr-2">남성</span>
                                     <input id='gender' type="radio" name="gender"
                                         className="radio checked:bg-blue-500" value='Male' checked={profileData.gender === 'Male'}
                                         onChange={handleChange} />
                                 </label>
                                 <label className="label cursor-pointer">
-                                    <span className="label-text">여성</span>
+                                    <span className="label-text mr-2">여성</span>
                                     <input id='gender' type="radio" name="gender"
                                         className="radio checked:bg-red-500" value='Female' checked={profileData.gender === 'Female'}
                                         onChange={handleChange} />
@@ -145,8 +145,8 @@ function Profile(props) {
                     </div>
                 </section>
                 <div className='flex justify-center items-center'>
-                    <button className='btn btn-primary m-4' type='submit'>수정</button>
-                    <button className='btn btn-primary m-4'><Link to="/mypage/list">이전</Link></button>
+                    <button className='btn btn-sm btn-primary m-3' type='submit'>수정</button>
+                    <button className='btn btn-sm btn-outline btn-neutral '><Link to="/mypage/list">이전</Link></button>
                 </div>
             </form>
         </>

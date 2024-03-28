@@ -22,7 +22,7 @@ const ChatRoomList = () => {
     };
 
     function initializeWebSocketConnection() {
-        const socket = new SockJS('http://api.arm.genj.me/ws');
+        const socket = new SockJS('https://api.arm.genj.me/ws');
         const stompClient = Stomp.over(socket);
         stompClient.connect({}, frame => {
             console.log('Connected: ' + frame);

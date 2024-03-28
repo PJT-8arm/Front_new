@@ -9,7 +9,7 @@ export default defineConfig({
       port: 3000,
       proxy: {
         '/api': {
-          target: 'http://api.arm.genj.me',
+          target: 'https://api.arm.genj.me',
           changeOrigin: true,
           secure: false,
           ws: true,
