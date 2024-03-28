@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, useHref } from 'react-router-dom';
 import RecruitmentForm from './components/recruitment/RecruitmentForm';
 import RecruitmentDetail from './components/recruitment/RecruitmentDetail'; // 임포트한 RecruitmentDetail 컴포넌트
+import RecruitmentUpdate from './components/recruitment/RecruitmentUpdate';
 import Navbar from './components/Navbar';
 import Mypage from './components/member/mypage/Mypage';
 import LoginPage from './components/signUp/LoginPage';
@@ -56,6 +57,8 @@ function App() {
               <Route path="/recruitments/write" element={<RecruitmentForm />} />
               {/* 상세 페이지의 경로와 매칭될 컴포넌트 */}
               <Route path="/recruitments/detail/:id" element={<RecruitmentDetail />} />
+              {/* 모집 글 수정 컴포넌트 */}
+              <Route path="/recruitments/update/:id" element={<RecruitmentUpdate />} />
               {/* 다른 모든 경로에 대한 처리. 404 페이지나 메인 페이지 리다이렉트 등의 로직을 추가할 수 있습니다. */}
               <Route path='/profile' element={<UserProfile />} />
               <Route path='/upload' element={<Upload />}/>
