@@ -2,6 +2,8 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useMypageDetails, useMypageModifyDetails } from '../../../../openapi/orval_query/api/mypage-controller/mypage-controller';
 import { Form, Link } from 'react-router-dom';
 import Upload from '../../../file/Upload';
+import { useAuth } from '../../../signUp/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 function ModifyInfo(props) {
     const { data: memberDto, isLoading: loadingGet, isError: ErrorGet } = useMypageDetails();
@@ -11,6 +13,9 @@ function ModifyInfo(props) {
     // console.log("refname:", refName.current.value);
     const [imgUrl, setImgUrl] = useState();
 
+    const { logIn } = useAuth();
+
+    const navigate = useNavigate();
 
     const [formdata, setFormdata] = useState({
         username: "",
@@ -78,6 +83,8 @@ function ModifyInfo(props) {
         }
 
         await postData({ data: memberModifyDto });
+        await logIn();
+        await navigate("/mypage/list");
     }
 
     if (loadingGet || loadingPost) {
