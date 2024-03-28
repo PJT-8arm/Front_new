@@ -232,6 +232,16 @@ const RecruitmentForm = () => {
                 className="input input-bordered w-full mb-2"
             />
 
+            <input
+                type="text"
+                name="duration"
+                value={formData.duration}
+                onChange={handleChange}
+                pattern="(0[0-4]):[0-5]0"
+                placeholder="운동시간 - 00:00 (0 ~ 4시간, 10분간격)"
+                className="input input-bordered w-full mb-2"
+            />
+
             <button className="btn btn-primary w-full" type="submit">모집글 작성</button>
 
         </form>
