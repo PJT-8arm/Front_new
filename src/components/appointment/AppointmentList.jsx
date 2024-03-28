@@ -17,7 +17,6 @@ const AppointmentList = () => {
                     url: '/api/applications/list',
                     method: 'get'
                 });
-                
                 setAppointments(response);
                 setIsLoading(false);
             } catch (error) {
