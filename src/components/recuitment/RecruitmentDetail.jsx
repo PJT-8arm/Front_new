@@ -6,6 +6,7 @@ import { FaUserAlt, FaBirthdayCake, FaVenusMars, FaWeightHanging } from 'react-i
 import { MdPlace, MdSchedule } from 'react-icons/md';
 import './RecruitmentDetail.css';
 import { axiosInstance } from '../../utils/axiosInstance';
+import CreateAppointmentButton from '../appointment/CreateAppointmentButton';
 
 const RecruitmentDetail = () => {
   const { id } = useParams();
@@ -23,6 +24,12 @@ const RecruitmentDetail = () => {
     console.log(roomId);
     navigate(`/chat/room/${roomId}`); // 해당 roomId를 가진 URL로 이동
   }
+  // 약속 생성을 위한 함수
+  const handleCreateAppointment = async () => {
+    if (!detail) return; // 데이터가 없을 때 함수 종료
+    // 약속 생성 로직 추가
+    console.log('약속을 생성합니다.');
+  };
 
   if (isLoading) return <div className="flex justify-center items-center p-4">로딩중...</div>;
   if (error) return <div className="alert alert-error shadow-lg text-center p-4"><div>{error.message}</div></div>;
@@ -67,6 +74,8 @@ const RecruitmentDetail = () => {
         <p className="flex items-center"><FaWeightHanging className="mr-2" />데드리프트: <span className="font-semibold ml-1">{detail?.profileDto?.deadLift}</span></p>
         <p className="flex items-center"><FaWeightHanging className="mr-2" />스쿼트: <span className="font-semibold ml-1">{detail?.profileDto?.squat}</span></p>
       </div>
+      {/* 약속 생성 버튼 */}
+      <CreateAppointmentButton handleCreateAppointment={handleCreateAppointment} />
     </div>
   );
 };
