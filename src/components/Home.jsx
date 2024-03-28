@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { useAuth } from  './signUp/AuthContext';
 import './home.css';
 import { axiosInstance } from '../utils/axiosInstance'; // AXIOS_INSTANCE 대신에 axiosInstance를 가져옵니다.
 
 function Home() {
+
+    const { user } = useAuth();
+
     const [recruitmentData, setRecruitmentData] = useState([]);
     const [currentPage, setCurrentPage] = useState(1); // 현재 페이지 번호
     const [itemsPerPage] = useState(4); // 페이지당 표시할 항목 수
     const [searchTerm, setSearchTerm] = useState(''); // 검색어 상태
-
   
     useEffect(() => {
       const fetchRecruitmentData = async () => {
@@ -144,7 +147,19 @@ function Home() {
       <ul>
       <Link to={`/recruitments/write`}>
         <div style={{display: 'flex', justifyContent : 'end', marginRight: '1rem'}}>
-            <button className="btn  btn-sm " style={{fontSize: '1rem'}}>📝 모집글 작성</button>
+        {user ? (
+                // 로그인한 경우
+                <Link to="/recruitments/write">
+                    <button className="btn btn-sm" style={{ fontSize: '1rem' }}>📝 모집글 작성</button>
+                </Link>
+            ) : (
+                // 로그인하지 않은 경우
+                <Link to="/login">
+                    <button className="btn btn-sm" style={{ fontSize: '1rem' }}>📝 모집글 작성</button>
+                </Link>
+            )}
+            
+            {/* <button className="btn  btn-sm " style={{fontSize: '1rem'}}>📝 모집글 작성</button> */}
         </div>
         </Link>
         {/* 현재 페이지의 데이터만 반복하여 표시합니다. */}
@@ -152,27 +167,34 @@ function Home() {
           <li key={index}>
             <Link to={`/recruitments/detail/${item.recruitmentDto.id}`}>
               <div>
-                <div style={{ display: 'flex', justifyContent: 'center' }}>
-                  <div className="card w-90 bg-base-100 shadow-xl">
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+                  <div className="card shadow-xl">
                     <div className="cardbody">
-                      <div className="avatar2">
-                        <img src={item.memberInfoDto.imgUrl} className="rounded-full" alt="avatar" />
-                      </div>
-                      <div className='content'>
-                        <div className="badge badge-primary">
-                          <p className='nickname'>{item.memberInfoDto.nickname}</p>
-                        </div>
-                        <div className='titlebox'>
-                          <p className='title'>{item.recruitmentDto.title}</p>
-                        </div>
-                        <div className='tag'>
-                          <p className='tag-list'>{'#' + item.recruitmentDto.partnerAge + '대'}</p>
-                          <p className='tag-list'>{'#' + item.recruitmentDto.partnerGender}</p>
-                          <p className='tag-list'>{'#' + item.recruitmentDto.place}</p>
-                          <p className='tag-list'>{'#' + item.recruitmentDto.routine}</p>
-                        </div>
-                        <p className='date'>{formatDate(item.recruitmentDto.recruit_date)}</p>
-                      </div>
+                      
+                      <div className='avatarbox'>
+                            <div className='avatar2'>
+                              <img src={item.memberInfoDto.imgUrl}/>
+                            </div>
+                            <div className="badge badge-lg badge-primary ">
+                              {item.memberInfoDto.nickname}
+                            </div>
+                       </div>
+                       
+                       <div className='content'>
+                          <div className='titlebox'>
+                            <p className='title'>{item.recruitmentDto.title}</p>
+                          </div>
+                          <div className='tag'>
+                            <p className='tag-list'>{'# ' + item.recruitmentDto.partnerAge + '대'}</p>
+                            <p className='tag-list'>{'# ' + item.recruitmentDto.partnerGender}</p>
+                            <p className='tag-list'>{'# ' + item.recruitmentDto.place}</p>
+                            <p className='tag-list'>{'# ' + item.recruitmentDto.routine}</p>
+                          </div>
+                          <div>
+                            <p className='date'>{formatDate(item.recruitmentDto.recruit_date)}</p>
+                          </div>
+                       </div>
+                  
                     </div>
                   </div>
                 </div>
