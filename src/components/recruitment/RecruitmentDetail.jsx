@@ -35,6 +35,7 @@ const RecruitmentDetail = () => {
   const handleEditRecruitment = () => {
     // 모집 글 수정 로직
     console.log('모집 글 수정');
+    navigate(`/recruitments/update/${recruitmentId}`);
     // 여기에 모집 글을 수정하는 로직을 추가하세요.
   };
 
