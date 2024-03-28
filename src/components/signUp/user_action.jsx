@@ -1,4 +1,6 @@
 import axios from 'axios';
+import { axiosInstance } from '../../utils/axiosInstance'; // AXIOS_INSTANCE 대신에 axiosInstance를 가져옵니다.
+
 import {
     LOGIN_USER,
     REGISTER_USER,
@@ -6,7 +8,7 @@ import {
 
 export function loginUser(dataToSubmit) {
 
-    const request = axios.post('/api/users/login', dataToSubmit)
+    const request = axiosInstance.post('/api/users/login', dataToSubmit)
         .then(response => response.data)
 
     return {
@@ -17,7 +19,7 @@ export function loginUser(dataToSubmit) {
 
 export function registerUser(dataToSubmit) {
 
-    const request = axios.post('/api/members/join', dataToSubmit)
+    const request = axiosInstance.post('/api/members/join', dataToSubmit)
         .then(response => response.data)
 
     return {

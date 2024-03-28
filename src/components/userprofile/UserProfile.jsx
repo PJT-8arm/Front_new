@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useAuth } from '../signUp/AuthContext';
 import axios from 'axios'; // Axios 라이브러리 import
+import { axiosInstance } from '../../utils/axiosInstance'; // AXIOS_INSTANCE 대신에 axiosInstance를 가져옵니다.
+
 
 const UserProfile = () => {
     const { user, logOut, setUser } = useAuth(); // 로그인 정보 및 로그아웃 함수 가져오기
@@ -9,7 +11,7 @@ const UserProfile = () => {
     const handleLogout = async () => {
         try {
             // 서버에 로그아웃 요청 보내기
-            await axios.post('/api/members/logout'); // 예시: '/logout'는 실제로 사용하는 로그아웃 엔드포인트 URL로 변경해야 합니다.
+            await axiosInstance.post('/api/members/logout'); // 예시: '/logout'는 실제로 사용하는 로그아웃 엔드포인트 URL로 변경해야 합니다.
 
             // 로컬 상태 및 컨텍스트 상태 업데이트
             logOut(); // 컨텍스트 상태 업데이트
