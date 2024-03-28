@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import moment from 'moment-timezone';
 import './AppointmentList.css';
+import { axiosInstance } from '../../utils/axiosInstance';
 
 const AppointmentList = () => {
     const [appointments, setAppointments] = useState([]);
@@ -12,8 +13,11 @@ const AppointmentList = () => {
     useEffect(() => {
         const fetchAppointments = async () => {
             try {
-                const response = await axios.get('http://localhost:8080/api/applications/list');
-                setAppointments(response.data);
+                const response = await axiosInstance({
+                    url: '/api/applications/list',
+                    method: 'get'
+                });
+                setAppointments(response);
                 setIsLoading(false);
             } catch (error) {
                 setError(error);

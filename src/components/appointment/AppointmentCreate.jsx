@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate,useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useCreateApplication } from '../../openapi/orval_query/api/application/application'; // OpenAPI에서 생성된 API 함수 import
 import DatePicker from 'react-datepicker';
 import Select from 'react-select';
@@ -37,10 +37,17 @@ const AppointmentCreate = () => {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormData(prevState => ({
-            ...prevState,
-            [name]: value
-        }));
+        if (name === "duration") {
+            setFormData(prevState => ({
+                ...prevState,
+                [name]: value + ":00",
+            }));
+        } else {
+            setFormData(prevState => ({
+                ...prevState,
+                [name]: value
+            }));
+        }
     };
 
     const handleDateChange = (date) => {
@@ -191,7 +198,8 @@ const AppointmentCreate = () => {
                 name="duration"
                 value={formData.duration}
                 onChange={handleChange}
-                placeholder="운동 시간 (예: 14:00:00)"
+                pattern="(0[0-4]):[0-5]0"
+                placeholder="운동시간 - 00:00 (0 ~ 4시간, 10분간격)"
                 className="input input-bordered w-full mb-2"
             />
 
