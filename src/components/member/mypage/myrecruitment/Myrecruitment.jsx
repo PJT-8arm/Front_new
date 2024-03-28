@@ -41,7 +41,7 @@ function RecruitmentCard({ item, index }) {
 
     return (
         <>
-            <Link className="card w-3/4 bg-base-100 shadow-sm hover:shadow-2xl m-2"
+            <Link className="card "
                 to={`/recruitments/detail/${card.id}`} element={<RecruitmentDetail />}>
                 <div className="card-body">
                     <h2 className="card-title">{card.title}</h2>
@@ -55,6 +55,7 @@ function RecruitmentCard({ item, index }) {
         </>
     )
 }
+
 
 
 function Myrecruitment() {
@@ -95,8 +96,14 @@ function Myrecruitment() {
     }
 
     return (
-        <>
-            <h2 className='mx-2 font-bold text-lg'>나의 모집글</h2>
+        <> <div style={{display: 'flex', justifyContent:'space-between'}}>
+                <h2 className='mx-2 font-bold text-lg'>나의 모집글</h2>
+                <div className='flex justify-end items-center mr-4' >
+                        <Link to="/mypage/list">
+                            <img style={{width: '1.5rem'}} src='/images/close.png'/>
+                        </Link>
+                </div>
+            </div>
             <section className='flex flex-col w-full items-center'>
                 {myRecruitmentPageData.content.map((item, index) => (
                     <RecruitmentCard item={item} index={index} />
@@ -105,13 +112,11 @@ function Myrecruitment() {
             <section className='flex justify-center'>
                 <div className="join">
                     {!myRecruitmentPageData.first && <button onClick={clickPre} className="join-item btn">«</button>}
-                    <button className="join-item btn">Page {myRecruitmentPageData.number + 1}</button>
+                    <button className="join-item btn">{myRecruitmentPageData.number + 1}</button>
                     {!myRecruitmentPageData.last && <button onClick={clickNext} className="join-item btn">»</button>}
                 </div>
             </section>
-            <div className='flex justify-center items-center'>
-                <button className='btn btn-primary m-4'><Link to="/mypage/list">이전 페이지</Link></button>
-            </div>
+
         </>
     );
 }
