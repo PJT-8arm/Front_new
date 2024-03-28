@@ -4,14 +4,11 @@ import { Link } from 'react-router-dom';
 import './home.css';
 import { axiosInstance } from '../utils/axiosInstance'; // AXIOS_INSTANCE 대신에 axiosInstance를 가져옵니다.
 
-
-
 function Home() {
     const [recruitmentData, setRecruitmentData] = useState([]);
     const [currentPage, setCurrentPage] = useState(1); // 현재 페이지 번호
     const [itemsPerPage] = useState(4); // 페이지당 표시할 항목 수
     const [searchTerm, setSearchTerm] = useState(''); // 검색어 상태
-
   
     useEffect(() => {
       const fetchRecruitmentData = async () => {
