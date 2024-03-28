@@ -5,13 +5,22 @@
  * COMMERCE REST API DOC
  * OpenAPI spec version: 1.0.0
  */
+import type { LocalTime } from './localTime';
 
 export interface ApplicationCreateResponseDto {
   canceled?: boolean;
+  content?: string;
+  duration?: LocalTime;
   id?: number;
+  partnerAge?: number;
+  partnerGender?: string;
   partnerId?: string;
   partnerIdAsLong?: number;
+  place?: string;
+  recruit_date?: string;
+  routine?: string;
   status?: string;
+  title?: string;
   writerId?: string;
   writerIdAsLong?: number;
 }
