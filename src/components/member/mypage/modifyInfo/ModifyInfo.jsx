@@ -2,8 +2,6 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useMypageDetails, useMypageModifyDetails } from '../../../../openapi/orval_query/api/mypage-controller/mypage-controller';
 import { Form, Link } from 'react-router-dom';
 import Upload from '../../../file/Upload';
-import { useAuth } from '../../../signUp/AuthContext';
-import { useNavigate } from 'react-router-dom';
 
 function ModifyInfo(props) {
     const { data: memberDto, isLoading: loadingGet, isError: ErrorGet } = useMypageDetails();
@@ -13,9 +11,6 @@ function ModifyInfo(props) {
     // console.log("refname:", refName.current.value);
     const [imgUrl, setImgUrl] = useState();
 
-    const { logIn } = useAuth();
-
-    const navigate = useNavigate();
 
     const [formdata, setFormdata] = useState({
         username: "",
@@ -33,15 +28,15 @@ function ModifyInfo(props) {
         script.src = "//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js";
         document.body.appendChild(script);
     }, []);
-
+    
     // Daum 우편번호 서비스를 실행하는 함수
     const sample5_execDaumPostcode = () => {
         new window.daum.Postcode({
-            oncomplete: function (data) {
+            oncomplete: function(data) {
                 // 최종 주소 변수
                 var addr = data.address;
                 // 주소 정보를 formdata에 설정
-                setFormdata({ ...formdata, address: addr });
+                setFormdata({...formdata, address: addr});
             }
         }).open();
     };
@@ -71,7 +66,7 @@ function ModifyInfo(props) {
     const onSubmitHandler = async (event) => {
         event.preventDefault();
 
-        console.log('modify', imgUrl);
+        console.log('modify',imgUrl);
         const memberModifyDto = {
             imgUrl: imgUrl,
             name: formdata.name,

@@ -1,60 +1,57 @@
 .appointment-list {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1.5rem;
 }
 
-.appointment-item {
-  flex: 1 1 300px;
-}
-
-.link-style {
+.appointlink-style {
   text-decoration: none;
   color: inherit;
 }
 
-.card {
+.appointcard {
+  height: auto;
+  min-height: 90px;
+  width: 350px;
+  margin-bottom: 0.3rem;
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease;
 }
-
-.card:hover {
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+.appointcardbody {
+  height: auto;
+  min-height: 90px;
 }
 
-.cardbody {
-  padding: 20px;
-}
-
-.content {
+.appointcontent {
   display: flex;
+  width: 13rem;
   flex-direction: column;
 }
 
-.badge {
+.appointbadge {
   margin-bottom: 10px;
 }
 
-.titlebox {
-  margin-bottom: 10px;
+.appointtitle{
+  font-size: 18px;
+  font-weight: bold;
 }
 
-.tag {
+.appointtag {
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: 10px;
 }
 
-.tag-list {
+.appointtag-list {
   margin-right: 10px;
   font-size: 14px;
-  color: #555;
+  color: gray;
 }
 
-.date {
+.appointdate {
   font-size: 14px;
   color: #888;
 }
