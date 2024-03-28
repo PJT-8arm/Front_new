@@ -88,60 +88,59 @@ function ModifyInfo(props) {
             await logIn();
             await navigate("/mypage/list");
         }, 100);
-
-
-        if (loadingGet || loadingPost) {
-            return (
-                <div>Loading...</div>
-            )
-        }
-
-        if (ErrorGet || ErrorPost) {
-            return (
-                <div>Error...</div>
-            )
-        }
-
-        return (
-            <>
-                <h1 className='font-bold text-lg m-2'>회원정보 수정</h1>
-                <form className='m-2' onSubmit={onSubmitHandler}>
-                    <label className="input input-bordered flex items-center gap-2 mt-2">
-                        아이디
-                        <div className="grow">{formdata.username}</div>
-                    </label>
-                    <label className="input input-bordered flex items-center gap-2 mt-2">
-                        변경전 비밀번호
-                        <input type="password" className="grow" placeholder="******" id='prePassword' value={formdata.prePassword} onChange={handleChange} />
-                    </label>
-                    <label className="input input-bordered flex items-center gap-2 mt-2">
-                        변경후 비밀번호
-                        <input type="password" className="grow" placeholder="******" id='postPassword' value={formdata.postPassword} onChange={handleChange} />
-                    </label>
-                    <label className="input input-bordered flex items-center gap-2 mt-2">
-                        이름
-                        <input type="text" className="grow" placeholder="이름을 적어주세요." id='name' value={formdata.name} onChange={handleChange} />
-                    </label>
-                    <label className="input input-bordered flex items-center gap-2 mt-2">
-                        닉네임
-                        <input type="text" className="grow" placeholder="닉네임을 적어주세요" id='nickname' value={formdata.nickname} onChange={handleChange} />
-                    </label>
-                    <div className="flex items-center gap-2 mt-2">
-                        <div className="flex flex-row flex-grow items-center gap-2 input input-bordered">
-                            <span className="whitespace-nowrap">주소</span>
-                            <input type="text" placeholder="주소를 적어주세요" id='address' className="w-full" value={formdata.address} onChange={handleChange} />
-                        </div>
-                        <button onClick={sample5_execDaumPostcode} className="btn">주소 검색</button>
-                    </div>
-                    <Upload setImgUrl={setImgUrl} />
-                    <div className='flex justify-center items-center'>
-                        <button className='btn btn-sm btn-primary m-3' type='submit'>수정</button>
-                        <button className='btn btn-sm btn-outline btn-neutral '><Link to="/mypage/list">이전</Link></button>
-                    </div>
-                </form>
-            </>
-        );
     }
+
+    if (loadingGet || loadingPost) {
+        return (
+            <div>Loading...</div>
+        )
+    }
+
+    if (ErrorGet || ErrorPost) {
+        return (
+            <div>Error...</div>
+        )
+    }
+
+    return (
+        <>
+            <h1 className='font-bold text-lg m-2'>회원정보 수정</h1>
+            <form className='m-2' onSubmit={onSubmitHandler}>
+                <label className="input input-bordered flex items-center gap-2 mt-2">
+                    아이디
+                    <div className="grow">{formdata.username}</div>
+                </label>
+                <label className="input input-bordered flex items-center gap-2 mt-2">
+                    변경전 비밀번호
+                    <input type="password" className="grow" placeholder="******" id='prePassword' value={formdata.prePassword} onChange={handleChange} />
+                </label>
+                <label className="input input-bordered flex items-center gap-2 mt-2">
+                    변경후 비밀번호
+                    <input type="password" className="grow" placeholder="******" id='postPassword' value={formdata.postPassword} onChange={handleChange} />
+                </label>
+                <label className="input input-bordered flex items-center gap-2 mt-2">
+                    이름
+                    <input type="text" className="grow" placeholder="이름을 적어주세요." id='name' value={formdata.name} onChange={handleChange} />
+                </label>
+                <label className="input input-bordered flex items-center gap-2 mt-2">
+                    닉네임
+                    <input type="text" className="grow" placeholder="닉네임을 적어주세요" id='nickname' value={formdata.nickname} onChange={handleChange} />
+                </label>
+                <div className="flex items-center gap-2 mt-2">
+                    <div className="flex flex-row flex-grow items-center gap-2 input input-bordered">
+                        <span className="whitespace-nowrap">주소</span>
+                        <input type="text" placeholder="주소를 적어주세요" id='address' className="w-full" value={formdata.address} onChange={handleChange} />
+                    </div>
+                    <button onClick={sample5_execDaumPostcode} className="btn">주소 검색</button>
+                </div>
+                <Upload setImgUrl={setImgUrl} />
+                <div className='flex justify-center items-center'>
+                    <button className='btn btn-sm btn-primary m-3' type='submit'>수정</button>
+                    <button className='btn btn-sm btn-outline btn-neutral '><Link to="/mypage/list">이전</Link></button>
+                </div>
+            </form>
+        </>
+    );
 }
 
 export default ModifyInfo;

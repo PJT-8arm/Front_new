@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { useShowMessages } from '../../../openapi/orval_query/api/chat/chat';
+import { updateLastViewId, useShowMessages } from '../../../openapi/orval_query/api/chat/chat';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { useChatRoomContext } from './ChatRoomContext';
 import { formatDistanceToNow } from 'date-fns';
@@ -101,6 +101,7 @@ const ChatMessages = () => {
           console.log('Disconnected');
         });
       }
+      updateLastViewId(roomId);
     };
   }, []);
 
@@ -155,7 +156,7 @@ const ChatMessages = () => {
       <InfiniteScroll
         dataLength={messages.length} // content 배열의 길이를 사용
         next={loadMessage} // 다음 페이지 로딩 함수
-        style={{ display: 'flex', flexDirection: 'column-reverse', flexGrow: 1}}
+        style={{ display: 'flex', flexDirection: 'column-reverse', flexGrow: 1 }}
         inverse={true}
         hasMore={hasNext} // 더 로딩할 페이지가 있는지 여부
         loader={<h4>Loading...2</h4>}
