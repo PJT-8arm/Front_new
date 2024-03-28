@@ -4,6 +4,8 @@ import axios from 'axios'; // Axios 라이브러리 import
 import { mypageDetails, useMypageDetails } from '../../../openapi/orval_query/api/mypage-controller/mypage-controller';
 import { Link, Outlet } from 'react-router-dom';
 import LinkSetter from '../../utils/LinkSetter';
+import { axiosInstance } from '../../../utils/axiosInstance'; // AXIOS_INSTANCE 대신에 axiosInstance를 가져옵니다.
+
 
 function Mypage(props) {
     const { user, logOut, setUser } = useAuth();
@@ -12,8 +14,10 @@ function Mypage(props) {
     const handleLogout = async () => {
         try {
             // 서버에 로그아웃 요청 보내기
-            await axios.post('/api/members/logout'); // 실제 백엔드 API에 맞게 경로 설정
-
+            await axiosInstance({
+                url: '/api/members/logout',
+                method: 'post',
+            });
             // 로컬 상태 및 컨텍스트 상태 업데이트
             logOut(); // 컨텍스트 상태 업데이트
             setUser(null); // 로컬 상태 업데이트
@@ -47,7 +51,7 @@ function Mypage(props) {
                     (<img className='w-20 h-20 rounded-full' src={"/images/sinsegeong.png"} alt="sinsegeong2" />)}
 
                 <p>{user?.nickname + "님"}</p>
-                <button className='btn btn-primary' onClick={handleLogout}>로그아웃</button>
+                <button className='btn btn-sm btn-outline btn-error' onClick={handleLogout}>로그아웃</button>
             </section>
             <div className='p-2 divider' />
             <main>

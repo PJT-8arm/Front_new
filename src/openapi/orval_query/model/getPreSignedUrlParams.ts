@@ -7,6 +7,6 @@
  */
 
 export type GetPreSignedUrlParams = {
-arg0: string;
-arg1?: string;
+prefix: string;
+fileName?: string;
 };

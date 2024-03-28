@@ -16,15 +16,26 @@ function RecruitmentCard({ item, index }) {
 
     useEffect(() => {
         const recruite_date = item['recruitmentDto']['recruit_date']
-        console.log(recruite_date);
-        const date = recruite_date.split("T")[0].split("-");
-        const time = recruite_date.split("T")[1].split(".")[0].split(":");
-        const duration = item['recruitmentDto']['duration'].split(":") // null인 경우 배제
+        
+        let date = ["0000","00","00"];
+        let time = ["00","00"];
+        if (recruite_date) {
+            // null인 경우 배제
+            date = recruite_date.split("T")[0].split("-");
+            time = recruite_date.split("T")[1].split(".")[0].split(":");
+        }
+
+        const duration = item['recruitmentDto']['duration'] 
+        let durationList = ["00","00"];
+        if (duration) {
+            // null인 경우 배제
+            durationList = duration.split(":")
+        }
 
         setCard({
             ...item['recruitmentDto'],
             recruit_date: date[0].slice(-2) + "년 " + date[1] + "월 " + date[2] + "일 " + time[0] + ":" + time[1],
-            duration: duration[0] + "시간 " + duration[1] + "분",
+            duration: durationList[0] + "시간 " + durationList[1] + "분",
         })
     }, [item])
 
@@ -53,8 +64,8 @@ function Myrecruitment() {
     const page = searchParams.get('page');
     // 현재 페이지를 0으로 초기화
     let pageNum = page || 0;
-    const [searchParam, setSearchParam] = useSearchParams({page : pageNum});
-    
+    const [searchParam, setSearchParam] = useSearchParams({ page: pageNum });
+
     const { data: myRecruitmentPageData, isLoading, isError } = useMypageMyRecruitment({ page: pageNum });
 
     console.log(myRecruitmentPageData, page);
@@ -62,13 +73,13 @@ function Myrecruitment() {
     const clickPre = () => {
         pageNum = parseInt(pageNum) - 1
         console.log(pageNum);
-        setSearchParam({page:pageNum});
+        setSearchParam({ page: pageNum });
     }
 
     const clickNext = () => {
         pageNum = parseInt(pageNum) + 1
         console.log(pageNum);
-        setSearchParam({page:pageNum});
+        setSearchParam({ page: pageNum });
     }
 
     if (isLoading) {
@@ -92,11 +103,11 @@ function Myrecruitment() {
                 ))}
             </section>
             <section className='flex justify-center'>
-            <div className="join">
-                {!myRecruitmentPageData.first && <button onClick={clickPre} className="join-item btn">«</button>}
-                <button className="join-item btn">Page {myRecruitmentPageData.number + 1}</button>
-                {!myRecruitmentPageData.last && <button onClick={clickNext} className="join-item btn">»</button>}
-            </div>
+                <div className="join">
+                    {!myRecruitmentPageData.first && <button onClick={clickPre} className="join-item btn">«</button>}
+                    <button className="join-item btn">Page {myRecruitmentPageData.number + 1}</button>
+                    {!myRecruitmentPageData.last && <button onClick={clickNext} className="join-item btn">»</button>}
+                </div>
             </section>
             <div className='flex justify-center items-center'>
                 <button className='btn btn-primary m-4'><Link to="/mypage/list">이전 페이지</Link></button>
