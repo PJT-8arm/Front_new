@@ -40,7 +40,7 @@ const AppointmentCreate = () => {
         if (name === "duration") {
             setFormData(prevState => ({
                 ...prevState,
-                [name]: value + ":00",
+                [name]: value,
             }));
         } else {
             setFormData(prevState => ({
