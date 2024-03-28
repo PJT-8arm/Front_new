@@ -3,7 +3,8 @@ import './signup.css';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Upload from '../file/Upload';
-import { axiosInstance } from '../../utils/axiosInstance';
+import { axiosInstance } from '../utils/axiosInstance'; // AXIOS_INSTANCE 대신에 axiosInstance를 가져옵니다.
+
 
 function RegisterPage() {
   const [name, setName] = useState('');
@@ -15,10 +16,6 @@ function RegisterPage() {
   const [imgUrl, setImgUrl] = useState();
   const navigate = useNavigate();
 
-<<<<<<< HEAD
-=======
-
->>>>>>> d643d82 (fix : axiosinstance 수정)
   const onNameHandler = (event) => {
     setName(event.currentTarget.value);
   }
