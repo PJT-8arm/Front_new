@@ -38,6 +38,7 @@ const RecruitmentDetail = () => {
     // 여기에 모집 글을 수정하는 로직을 추가하세요.
   };
 
+<<<<<<< HEAD
   const handleDeleteRecruitment = async (recruitmentId) => {
     // "진짜로 삭제하시겠습니까?" 확인 창 띄우기
     const isConfirmed = window.confirm("진짜로 삭제하시겠습니까?");
@@ -62,6 +63,13 @@ const RecruitmentDetail = () => {
   };
   
 
+=======
+  const handleDeleteRecruitment = () => {
+    // 모집 글 삭제 로직
+    console.log('모집 글 삭제');
+    // 여기에 모집 글을 삭제하는 로직을 추가하세요.
+  };
+>>>>>>> a8cb66b16c2ff3a83deb80b57756e7a1a13b6dc8
 
   if (isLoading) return <div className="flex justify-center items-center p-4">로딩중...</div>;
   if (error) return <div className="alert alert-error shadow-lg text-center p-4"><div>{error.message}</div></div>;
@@ -83,7 +91,11 @@ const RecruitmentDetail = () => {
     <div className="more-menu absolute right-0 mt-2 w-48 bg-white rounded-md overflow-hidden shadow-xl z-10">
       <ul>
         <li className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={handleEditRecruitment}>모집 글 수정</li>
+<<<<<<< HEAD
         <li className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => handleDeleteRecruitment(recruitmentId)}>모집 글 삭제</li>
+=======
+        <li className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={handleDeleteRecruitment}>모집 글 삭제</li>
+>>>>>>> a8cb66b16c2ff3a83deb80b57756e7a1a13b6dc8
       </ul>
     </div>
   )}
