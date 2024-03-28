@@ -3,6 +3,7 @@ import './signup.css';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Upload from '../file/Upload';
+import { axiosInstance } from '../../utils/axiosInstance';
 
 function RegisterPage() {
   const [name, setName] = useState('');
@@ -13,10 +14,6 @@ function RegisterPage() {
   const [error, setError] = useState('');
   const [imgUrl, setImgUrl] = useState();
   const navigate = useNavigate();
-
-  const axiosInstance = axios.create({
-      baseURL: 'http://api.arm.genj.me/api/'
-  })
 
   const onNameHandler = (event) => {
     setName(event.currentTarget.value);
@@ -38,7 +35,7 @@ function RegisterPage() {
     setConfirmPassword(event.currentTarget.value);
   }
 
-  
+
   const onSubmitHandler = async (event) => {
     event.preventDefault();
 
@@ -48,15 +45,19 @@ function RegisterPage() {
     }
 
     try {
-      const response = await axiosInstance.post('members/join', { 
-        name,
-        username,
-        nickname,
-        password,
-        imgUrl
+      const response = await axiosInstance({
+        url: '/api/members/join',
+        method: 'post',
+        data: {
+          name,
+          username,
+          nickname,
+          password,
+          imgUrl
+        }
       });
 
-      console.log('회원가입 성공:', response.data);
+      console.log('회원가입 성공:', response);
 
       // 회원가입 성공 시 필요한 처리를 추가할 수 있습니다.
       navigate('/login');
@@ -96,14 +97,14 @@ function RegisterPage() {
         </div>
         <div className='profile-image-uploading-container'>
           <label className='input-label'>프로필 사진</label>
-          <Upload setImgUrl={setImgUrl}/>
+          <Upload setImgUrl={setImgUrl} />
         </div>
-        
+
         {error && <p style={{ color: 'red' }}>{error}</p>}
         <div className='button-container'>
           <button type='submit'>가입하기</button>
         </div>
-        
+
       </form>
     </div>
   );

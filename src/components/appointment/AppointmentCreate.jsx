@@ -186,7 +186,7 @@ const AppointmentCreate = () => {
                 className="input input-bordered w-full mb-2"
             />
 
-<input
+            <input
                 type="text"
                 name="duration"
                 value={formData.duration}
