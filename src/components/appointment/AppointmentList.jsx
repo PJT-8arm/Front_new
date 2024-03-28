@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import moment from 'moment-timezone';
 import { useAuth } from '../signUp/AuthContext';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; // Font Awesome 아이콘 라이브러리에서 FontAwesomeIcon을 가져옴
-import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons'; // 달력 모양의 아이콘을 가져옴
+import moment from 'moment-timezone';
 import './AppointmentList.css';
 import { axiosInstance } from '../../utils/axiosInstance';
 
@@ -13,6 +11,7 @@ const AppointmentList = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
     const { user } = useAuth();
+
 
     useEffect(() => {
         const fetchAppointments = async () => {
@@ -32,14 +31,21 @@ const AppointmentList = () => {
         fetchAppointments();
     }, []);
 
+    // 날짜 형식 변환 함수
+    const formatDate = (dateString) => {
+        const date = new Date(dateString);
+        const month = ('0' + (date.getMonth() + 1)).slice(-2);
+        const day = ('0' + date.getDate()).slice(-2);
+        return `${month}/${day}`;
+      };
+
+    // 오늘 날짜 가져오기
+    const today = new Date();
+
     if (!user) {
         return <h2 className='chat-list-none'>로그인 후 이용 가능합니다.</h2>;
     }
 
-    // 날짜 형식 변환 함수
-    const formatDate = (dateString) => {
-        return moment(dateString).format('MM-DD');
-    };
 
     if (isLoading) return <div>Loading...</div>;
     if (error) return <div>Error: {error.message}</div>;

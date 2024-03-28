@@ -112,7 +112,7 @@ function Myrecruitment() {
             <section className='flex justify-center'>
                 <div className="join">
                     {!myRecruitmentPageData.first && <button onClick={clickPre} className="join-item btn">«</button>}
-                    <button className="join-item btn">Page {myRecruitmentPageData.number + 1}</button>
+                    <button className="join-item btn">{myRecruitmentPageData.number + 1}</button>
                     {!myRecruitmentPageData.last && <button onClick={clickNext} className="join-item btn">»</button>}
                 </div>
             </section>
