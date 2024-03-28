@@ -51,6 +51,7 @@ const AppointmentList = () => {
                                     </div>
                                     <div className="titlebox">
                                         {/* 달력 모양의 아이콘과 'DD' 텍스트를 함께 표시 */}
+                                    <div className="titlebox">
                                         <p className="title">{appointment.title}</p>
                                     </div>
                                     <div className="tag">
@@ -60,6 +61,7 @@ const AppointmentList = () => {
                                         <p className='tag-list'>{'#' + appointment.routine}</p>
                                     </div>
                                 </div>
+                            </div>
                             </div>
                         </div>
                     </Link>
