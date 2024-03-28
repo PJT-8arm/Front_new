@@ -121,7 +121,7 @@ function ModifyInfo(props) {
                         <span className="whitespace-nowrap">주소</span>
                         <input type="text" placeholder="주소를 적어주세요" id='address' className="w-full" value={formdata.address} onChange={handleChange} />
                     </div>
-                    <button onClick={sample5_execDaumPostcode} className="btn btn-primary">주소 검색</button>
+                    <button onClick={sample5_execDaumPostcode} className="btn">주소 검색</button>
                 </div>
                 <Upload setImgUrl={setImgUrl}/>
                 <div className='flex justify-center items-center'>
