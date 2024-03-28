@@ -167,27 +167,36 @@ function Home() {
           <li key={index}>
             <Link to={`/recruitments/detail/${item.recruitmentDto.id}`}>
               <div>
-                <div style={{ display: 'flex', justifyContent: 'center' }}>
-                  <div className="card w-90 bg-base-100 shadow-xl">
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+                  <div className="card shadow-xl">
                     <div className="cardbody">
-                      <div className="avatar2">
-                        <img src={item.memberInfoDto.imgUrl} className="rounded-full" alt="avatar" />
-                      </div>
-                      <div className='content'>
-                        <div className="badge badge-primary">
-                          <p className='nickname'>{item.memberInfoDto.nickname}</p>
-                        </div>
-                        <div className='titlebox'>
-                          <p className='title'>{item.recruitmentDto.title}</p>
-                        </div>
-                        <div className='tag'>
-                          <p className='tag-list'>{'#' + item.recruitmentDto.partnerAge + '대'}</p>
-                          <p className='tag-list'>{'#' + item.recruitmentDto.partnerGender}</p>
-                          <p className='tag-list'>{'#' + item.recruitmentDto.place}</p>
-                          <p className='tag-list'>{'#' + item.recruitmentDto.routine}</p>
-                        </div>
-                        <p className='date'>{formatDate(item.recruitmentDto.recruit_date)}</p>
-                      </div>
+                      
+                      <div className='avatarbox'>
+                            <div className='avatar2'>
+                              <img src={item.memberInfoDto.imgUrl}/>
+                            </div>
+                            <div className="badge badge-lg badge-primary ">
+                              {item.memberInfoDto.nickname}
+                            </div>
+                       </div>
+
+
+
+                       <div className='content'>
+                          <div className='titlebox'>
+                            <p className='title'>{item.recruitmentDto.title}</p>
+                          </div>
+                          <div className='tag'>
+                            <p className='tag-list'>{'# ' + item.recruitmentDto.partnerAge + '대'}</p>
+                            <p className='tag-list'>{'# ' + item.recruitmentDto.partnerGender}</p>
+                            <p className='tag-list'>{'# ' + item.recruitmentDto.place}</p>
+                            <p className='tag-list'>{'# ' + item.recruitmentDto.routine}</p>
+                          </div>
+                          <div>
+                            <p className='date'>{formatDate(item.recruitmentDto.recruit_date)}</p>
+                          </div>
+                       </div>
+                  
                     </div>
                   </div>
                 </div>
