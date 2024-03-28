@@ -92,14 +92,14 @@ const ChatMessages = () => {
     initializeWebSocketConnection(roomId);
 
     // 클린업 함수
-    return () => {
-      // 컴포넌트가 언마운트되기 직전에 연결 종료
-      if (stompClient) {
-          stompClient.disconnect(() => {
-              console.log('Disconnected');
-          });
-      }
-  };
+  //   return () => {
+  //     // 컴포넌트가 언마운트되기 직전에 연결 종료
+  //     if (stompClient) {
+  //         stompClient.disconnect(() => {
+  //             console.log('Disconnected');
+  //         });
+  //     }
+  // };
   }, []);
 
   useEffect(() => {

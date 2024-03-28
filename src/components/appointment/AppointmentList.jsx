@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import moment from 'moment-timezone';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; // Font Awesome 아이콘 라이브러리에서 FontAwesomeIcon을 가져옴
+import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons'; // 달력 모양의 아이콘을 가져옴
 import './AppointmentList.css';
 import { axiosInstance } from '../../utils/axiosInstance';
 
@@ -17,7 +19,6 @@ const AppointmentList = () => {
                     url: '/api/applications/list',
                     method: 'get'
                 });
-                
                 setAppointments(response);
                 setIsLoading(false);
             } catch (error) {
@@ -30,7 +31,7 @@ const AppointmentList = () => {
     }, []);
 
     const formatDate = (dateString) => {
-        return moment(dateString).format('YYYY-MM-DD HH:mm');
+        return moment(dateString).format('MM-DD');
     };
 
     if (isLoading) return <div>Loading...</div>;
@@ -44,7 +45,12 @@ const AppointmentList = () => {
                         <div className="card">
                             <div className="cardbody">
                                 <div className="content">
+                                    <div className="calendar-container">
+                                        <FontAwesomeIcon icon={faCalendarAlt} size="1x" className="calendar-icon" />
+                                        <p className="date-text">{formatDate(appointment.date)}</p>
+                                    </div>
                                     <div className="titlebox">
+                                        {/* 달력 모양의 아이콘과 'DD' 텍스트를 함께 표시 */}
                                         <p className="title">{appointment.title}</p>
                                     </div>
                                     <div className="tag">

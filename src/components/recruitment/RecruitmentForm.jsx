@@ -35,7 +35,7 @@ const RecruitmentForm = () => {
 
     const handleAddressSearch = () => {
         new window.daum.Postcode({
-            oncomplete: function(data) {
+            oncomplete: function (data) {
                 // 사용자가 검색한 주소를 state에 저장
                 setAddress(data.address);
                 // 폼 데이터에도 주소 반영
@@ -49,10 +49,17 @@ const RecruitmentForm = () => {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormData(prevState => ({
-            ...prevState,
-            [name]: value
-        }));
+        if (name === "duration") {
+            setFormData(prevState => ({
+                ...prevState,
+                [name]: value + ":00",
+            }));
+        } else {
+            setFormData(prevState => ({
+                ...prevState,
+                [name]: value
+            }));
+        }
     };
 
     const handleDateChange = (date) => {
@@ -63,7 +70,7 @@ const RecruitmentForm = () => {
     };
 
     // 시간과 오전/오후 선택에 대한 Select 컴포넌트의 options
-    const timeOptions = Array.from({ length: 12 }, (v, i) => ({ value: `${i+1}:00`, label: `${i+1}:00` }));
+    const timeOptions = Array.from({ length: 12 }, (v, i) => ({ value: `${i + 1}:00`, label: `${i + 1}:00` }));
     const meridiemOptions = [
         { value: 'AM', label: '오전' },
         { value: 'PM', label: '오후' }
@@ -88,7 +95,7 @@ const RecruitmentForm = () => {
 
         const [hour, minute] = formData.time.split(':');
         const hours = formData.meridiem === 'PM' ? parseInt(hour, 10) % 12 + 12 : parseInt(hour, 10) % 12;
-        console.log(moment.tz(formData.recruitDate.toISOString() , "Asia/Seoul"));
+        console.log(moment.tz(formData.recruitDate.toISOString(), "Asia/Seoul"));
         const year = formData.recruitDate.getFullYear();
         const month = String(formData.recruitDate.getMonth() + 1).padStart(2, "0"); // 월은 0부터 시작하므로 +1
         const day = String(formData.recruitDate.getDate()).padStart(2, "0");
@@ -101,7 +108,7 @@ const RecruitmentForm = () => {
             recruitDate: recruitDate,
         };
 
-        mutate({data: payload}, {
+        mutate({ data: payload }, {
             onSuccess: () => {
                 alert('모집 글이 성공적으로 생성되었습니다!');
                 navigate('/');
@@ -204,6 +211,24 @@ const RecruitmentForm = () => {
                 value={formData.routine}
                 onChange={handleChange}
                 placeholder="운동 루틴"
+                className="input input-bordered w-full mb-2"
+            />
+            <input
+                type="text"
+                name="duration"
+                value={formData.duration}
+                onChange={handleChange}
+                placeholder="운동 시간 (예: 14:00:00)"
+                className="input input-bordered w-full mb-2"
+            />
+
+            <input
+                type="text"
+                name="duration"
+                value={formData.duration}
+                onChange={handleChange}
+                pattern="(0[0-4]):[0-5]0"
+                placeholder="운동시간 - 00:00 (0 ~ 4시간, 10분간격)"
                 className="input input-bordered w-full mb-2"
             />
 

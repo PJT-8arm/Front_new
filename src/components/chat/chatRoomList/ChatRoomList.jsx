@@ -16,17 +16,15 @@ const ChatRoomList = () => {
     const [dropdownPosition, setDropdownPosition] = useState({ x: 0, y: 0 });
     const { handleExitChatRoom } = useExitChatRoom();
     const [chatRooms, setChatRooms] = useState([]);
-    const stompClientRef = useRef(null);
 
     const handleNewMessage = () => {
         refetch();
     };
 
     function initializeWebSocketConnection() {
-        if (!user) return
+        if (!user) return null
         const socket = new SockJS('https://api.arm.genj.me/ws');
         const stompClient = Stomp.over(socket);
-        stompClientRef.current = stompClient;
         stompClient.connect({}, frame => {
             console.log('Connected: ' + frame);
 
@@ -34,6 +32,8 @@ const ChatRoomList = () => {
                 handleNewMessage();
             });
         });
+
+        return stompClient;
     }
 
     // 우클릭 이벤트 핸들러
@@ -74,12 +74,13 @@ const ChatRoomList = () => {
     };
 
     useEffect(() => {
-        initializeWebSocketConnection();
+        const stompClient = initializeWebSocketConnection();
 
         // 클린업 함수
         return () => {
             // 컴포넌트가 언마운트되기 직전에 연결 종료
-            if (stompClientRef.current) {
+            if (stompClient.connected) {
+                console.log('client',stompClient)
                 stompClient.disconnect(() => {
                     console.log('Disconnected');
                 });

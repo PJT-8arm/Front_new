@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { useRecruitmentDetails } from '../../openapi/orval_query/api/recruitments/recruitments';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
-import { FaUserAlt, FaBirthdayCake, FaVenusMars, FaWeightHanging } from 'react-icons/fa';
+import { FaUserAlt, FaBirthdayCake, FaVenusMars, FaWeightHanging, FaEllipsisV } from 'react-icons/fa';
 import { MdPlace, MdSchedule } from 'react-icons/md';
 import './RecruitmentDetail.css';
 import { axiosInstance } from '../../utils/axiosInstance';
@@ -12,6 +12,7 @@ const RecruitmentDetail = () => {
   const { id } = useParams();
   const recruitmentId = parseInt(id, 10);
   const navigate = useNavigate();
+  const [showMoreMenu, setShowMoreMenu] = useState(false);
 
   const { data: detail, isLoading, error } = useRecruitmentDetails(recruitmentId);
 
@@ -31,14 +32,46 @@ const RecruitmentDetail = () => {
     console.log('약속을 생성합니다.');
   };
 
+  const handleEditRecruitment = () => {
+    // 모집 글 수정 로직
+    console.log('모집 글 수정');
+    // 여기에 모집 글을 수정하는 로직을 추가하세요.
+  };
+
+  const handleDeleteRecruitment = () => {
+    // 모집 글 삭제 로직
+    console.log('모집 글 삭제');
+    // 여기에 모집 글을 삭제하는 로직을 추가하세요.
+  };
+
   if (isLoading) return <div className="flex justify-center items-center p-4">로딩중...</div>;
   if (error) return <div className="alert alert-error shadow-lg text-center p-4"><div>{error.message}</div></div>;
 
   return (
     <div className="max-w-lg mx-auto p-4 bg-base-100 shadow-2xl rounded-lg">
+  {/* Flex 컨테이너: 제목과 "더 보기" 메뉴 버튼 */}
+  <div className="flex justify-between items-center mb-6">
+    {/* 제목 */}
+    <h2 className="text-2xl font-bold pb-1">{detail?.recruitmentDto?.title}</h2>
+    {/* "더 보기" 메뉴 버튼 */}
+    <button className="more-menu-btn " onClick={() => setShowMoreMenu(!showMoreMenu)}>
+      <FaEllipsisV />
+    </button>
+  </div>
+
+  {/* "더 보기" 메뉴 */}
+  {showMoreMenu && (
+    <div className="more-menu absolute right-0 mt-2 w-48 bg-white rounded-md overflow-hidden shadow-xl z-10">
+      <ul>
+        <li className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={handleEditRecruitment}>모집 글 수정</li>
+        <li className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={handleDeleteRecruitment}>모집 글 삭제</li>
+      </ul>
+    </div>
+  )}
+
+      
       <div className="mb-6">
-        <h2 className="text-2xl font-bold mb-4 border-b pb-2">{detail?.recruitmentDto?.title}</h2>
-        <p className="mb-4">{detail?.recruitmentDto?.content}</p>
+        <p className="mb-4 border-t pt-4">{detail?.recruitmentDto?.content}</p>
         <div className="text-sm mb-4 space-y-2">
           <p className="flex items-center"><MdSchedule className="mr-2" />모집 날짜: <span className="font-semibold ml-1">{detail?.recruitmentDto?.recruit_date}</span></p>
           <p className="flex items-center"><MdPlace className="mr-2" />장소: <span className="font-semibold ml-1">{detail?.recruitmentDto?.place}</span></p>
