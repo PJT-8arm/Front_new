@@ -13,7 +13,7 @@ const AppointmentList = () => {
         const fetchAppointments = async () => {
             try {
                 const response = await axios.get('http://localhost:8080/api/applications/list');
-                setAppointments(response.data);
+                setAppointments(response);
                 setIsLoading(false);
             } catch (error) {
                 setError(error);

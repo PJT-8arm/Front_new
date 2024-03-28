@@ -15,11 +15,14 @@ const Upload = ({ setImgUrl }) => {
         });
 
         try {
-            const response = await axiosInstance.get(`/api/file/upload/url?${params.toString()}`);
-          
-            
+            const response = await axiosInstance({
+                url: '/api/file/upload/url',
+                method: 'get',
+                params: params
+              });
+
             console.log(response);
-            return response.data.preSignedUrl; // 사전 서명된 URL 반환
+            return response.preSignedUrl; // 사전 서명된 URL 반환
         } catch (error) {
             console.error('Error fetching pre-signed URL:', error);
             return null;
@@ -79,10 +82,10 @@ const Upload = ({ setImgUrl }) => {
 
     return (
         <>
-        {imageSrc&&<div className='profile-uploading-img'>
+            {imageSrc && <div className='profile-uploading-img'>
                 <img
                     className='rounded-full'
-                    
+
                     src={imageSrc}
                 />
             </div>}

@@ -8,8 +8,11 @@ import {
 
 export function loginUser(dataToSubmit) {
 
-    const request = axiosInstance.post('/api/users/login', dataToSubmit)
-        .then(response => response.data)
+    const request = await axiosInstance({
+        method: 'post',
+        url: '/api/users/login',
+        data: dataToSubmit
+    });
 
     return {
         type: LOGIN_USER,
@@ -19,8 +22,12 @@ export function loginUser(dataToSubmit) {
 
 export function registerUser(dataToSubmit) {
 
-    const request = axiosInstance.post('/api/members/join', dataToSubmit)
-        .then(response => response.data)
+    const request = await axiosInstance({
+        method: 'post',
+        url: '/api/members/join',
+        data: dataToSubmit
+    });
+
 
     return {
         type: REGISTER_USER,
