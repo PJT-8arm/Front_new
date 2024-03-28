@@ -3,8 +3,7 @@ import './signup.css';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Upload from '../file/Upload';
-import { axiosInstance } from '../utils/axiosInstance'; // AXIOS_INSTANCE 대신에 axiosInstance를 가져옵니다.
-
+import { axiosInstance } from '../../utils/axiosInstance';
 
 function RegisterPage() {
   const [name, setName] = useState('');
@@ -47,7 +46,7 @@ function RegisterPage() {
     }
 
     try {
-      const response = await axiosInstance.post('/members/join', { 
+      const response = await axiosInstance.post('/api/members/join', { 
         name,
         username,
         nickname,
