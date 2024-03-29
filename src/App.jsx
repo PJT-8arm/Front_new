@@ -21,6 +21,7 @@ import AppointmentList from './components/appointment/AppointmentList';
 import AppointmentDetail from './components/appointment/AppointmentDetail';
 import './App.css'
 import Upload from './components/file/Upload';
+import Myapplication from './components/member/mypage/myapplication/Myapplication';
 
 function App() {
   const [isLogined, setlogin] = useState(false);
@@ -42,10 +43,11 @@ function App() {
               <Route path="/chat/room/:roomId" element={<ChatRoom />}></Route>
               {/* 마이페이지 화면으로 접근했을 때 보여줄 컴포넌트 */}
               <Route path="/mypage" element={<Mypage />}>
-                <Route path='/mypage/list' element={<MypageList />}></Route>
-                <Route path='/mypage/modifyinfo' element={<ModifyInfo />}></Route>
-                <Route path='/mypage/profile' element={<Profile />}></Route>
+                <Route path='list' element={<MypageList />}></Route>
+                <Route path='modifyinfo' element={<ModifyInfo />}></Route>
+                <Route path='profile' element={<Profile />}></Route>
                 <Route path="myrecruitment" element={<Myrecruitment/>}></Route>
+                <Route path='myapplication' element={<Myapplication/>}></Route>
               </Route>
               {/* 로그인 화면으로 접근했을 때 보여줄 컴포넌트 */}
               <Route path="/login" element={<LoginPage />} />
