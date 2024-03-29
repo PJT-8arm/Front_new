@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useMypageMyApplication } from '../../../../openapi/orval_query/api/mypage-controller/mypage-controller';
 import { useLocation, useSearchParams, Link } from 'react-router-dom';
+import AppointmentDetail from '../../../appointment/AppointmentDetail';
 
-function RecruitmentCard({ item, index }) {
+function ApplicationCard({ item, index }) {
 
     const [card, setCard] = useState({
         isCanceled: false,
@@ -47,7 +48,7 @@ function RecruitmentCard({ item, index }) {
     return (
         <>
             <Link className="card w-3/4 bg-base-100 shadow-sm hover:shadow-2xl m-2"
-                to={`/recruitments/detail/${card.id}`} element={<RecruitmentDetail />}>
+                to={`/appointments/detail/${card.id}`} element={<AppointmentDetail />}>
                 <div className="card-body">
                     <h2 className="card-title">{card.title}</h2>
                     <div className='text-sm'>
@@ -111,9 +112,9 @@ function Myapplication() {
                     {!MyapplicationPage.last && <button onClick={clickNext} className="join-item btn">»</button>}
                 </div>
             </section>
-            <div className='flex justify-center items-center'>
+            {/* <div className='flex justify-center items-center'>
                 <button className='btn btn-primary m-4'><Link to="/mypage/list">이전 페이지</Link></button>
-            </div>
+            </div> */}
         </>
     );
 }
