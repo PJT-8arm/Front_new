@@ -8,7 +8,7 @@ import { axiosInstance } from '../../../utils/axiosInstance'; // AXIOS_INSTANCE 
 
 
 function Mypage(props) {
-    const { user, logOut, setUser } = useAuth();
+    const { user, logIn, logOut, setUser } = useAuth();
     const [isLoggedIn, setIsLoggedIn] = useState(!!user);
     const navigate = useNavigate();
 
@@ -41,6 +41,10 @@ function Mypage(props) {
             console.log('사용자가 로그인되지 않았습니다.');
         }
     }, [user]); // user 상태가 변경될 때마다 실행되도록 함
+
+    useEffect(() => {
+        logIn();
+    }, [])
 
     return (
         <>
