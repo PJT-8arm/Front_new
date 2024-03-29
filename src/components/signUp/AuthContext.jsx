@@ -6,16 +6,21 @@ const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
-    const { data: userInfo, refetch } = useMemberInfo();
 
-    useEffect(() => {
-        if (userInfo) {
-            setUser(userInfo);
-        }
-    }, [userInfo]);
+    const getUserInfo = async () => {
+        const response = await axiosInstance({
+            url: '/api/members/info',
+            method: 'get'
+        }).then(response => {
+            console.log(response);
+            if (response) setUser(response);
+        })
+    };
+
+    useEffect(()=>{console.log(user)},[user]);
 
     const logIn = async () => {
-        await refetch();
+        getUserInfo();
     };
 
     const logOut = () => {
