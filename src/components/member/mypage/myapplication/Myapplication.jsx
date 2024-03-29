@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useMypageMyApplication } from '../../../../openapi/orval_query/api/mypage-controller/mypage-controller';
-import { useLocation, useSearchParams } from 'react-router-dom';
+import { useLocation, useSearchParams, Link } from 'react-router-dom';
 
 function RecruitmentCard({ item, index }) {
 
